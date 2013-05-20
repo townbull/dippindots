@@ -7,6 +7,13 @@ tput setaf 4
 echo "Starting up..."
 tput sgr0
 
+tput setaf 3
+read -p "This will overwrite your existing dotfiles. Do you want to continue?. (y/n) " -n 1
+tput sgr0
+if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+	exit 1
+fi
+
 
 
 # ===============  OSX  =================================
@@ -137,12 +144,6 @@ echo "Installing Node..."
 brew install node
 echo "Installing Grunt (grunt-cli)..."
 npm -g install grunt-cli
-
-
-
-# =============== GEMS =================================
-echo "Installing some good gems..."
-sh ./init/gems
 
 
 

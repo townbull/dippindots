@@ -18,9 +18,6 @@ brew install screen
 brew install gpg
 brew install dos2unix
 
-# Multimarkdown processor
-brew install multimarkdown
-
 # Necessary for Vim Plugins
 brew install ctags
 
