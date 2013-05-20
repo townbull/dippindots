@@ -141,7 +141,6 @@ endif
 " ----------------------------------------------------------------------------
 "  File Types
 " ----------------------------------------------------------------------------
-filetype on 							" Enable filetype detection
 filetype plugin indent on " Turn on filetype plugins (:help filetype-plugin)
 
 " Some file types should wrap their text
