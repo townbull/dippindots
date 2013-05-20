@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# If Git is not installed...
+echo "Checking for Git..."
+if [[ ! "$(type -P git)" ]]; then
+  echo "Git not found. Will try to install..."
+	echo "Installing Git"
+	brew install git
+	brew link --overwrite git
+else
+  echo "Git found! Moving on..."
+fi
+
+# Configure Git
+# Requires your SSH keys!
+read -p "Do you want to setup Github SSH access? (y/n) " -n 1
+if [[ ! -f ~/.ssh/id_rsa && ! -f ~/.ssh/id_rsa.pub ]]; then
+	echo "Now we need to configure git a bit."
+	tput setaf 4
+	echo "What's your git email?"
+	tput sgr0
+	read email
+	tput setaf 4
+	echo "What's your git name? Use your full name."
+	tput sgr0
+	read name
+	echo "\n[user]\n\temail = $email\n\tname = $name" >> ~/.gitconfig
+
+	# To bypass some symlink issues. Maybe too brute.
+	brew link --overwrite git
+
+	# So we can push without logging in
+	ssh -vT git@github.com
+
+	echo "gitconfig updated. Moving on..."
+else
+	echo "No SSH keys found, skipping Git config..."
+	echo "You can set this up later with init/git."
+fi

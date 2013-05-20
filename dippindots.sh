@@ -36,14 +36,6 @@ fi
 
 
 
-# ===============  SYMLINK  =================================
-tput setaf 4
-echo "Symlinking dotfiles..."
-tput sgr0
-ln -s ./vim ~/.vim
-ln -s ./vim/vimrc ~/.vimrc
-ln -s ./dots/bash_profile ~/.bash_profile
-source ~/.bash_profile
 
 
 
@@ -61,42 +53,7 @@ fi
 
 
 # =============== GIT =================================
-# If Git is not installed...
-echo "Checking for Git..."
-if [[ ! "$(type -P git)" ]]; then
-  echo "Git not found. Will try to install..."
-	echo "Installing Git"
-	brew install git
-	brew link --overwrite git
-else
-  echo "Git found! Moving on..."
-fi
-
-# Configure Git
-# Requires your SSH keys!
-read -p "Do you want to setup Github SSH access? (y/n) " -n 1
-if [[ ! -f ~/.ssh/id_rsa && ! -f ~/.ssh/id_rsa.pub ]]; then
-	echo "Now we need to configure git a bit."
-	tput setaf 4
-	echo "What's your git email?"
-	tput sgr0
-	read email
-	tput setaf 4
-	echo "What's your git name? Use your full name."
-	tput sgr0
-	read name
-	echo "\n[user]\n\temail = $email\n\tname = $name" >> ~/.gitconfig
-
-	# To bypass some symlink issues. Maybe too brute.
-	brew link --overwrite git
-
-	# So we can push without logging in
-	ssh -vT git@github.com
-
-	echo "gitconfig updated. Moving on..."
-else
-	echo "No SSH keys found, skipping Git config..."
-fi
+sh ./init/git
 
 # If Git isn't installed by now, something messed up...here's the contigency plan.
 if [[ ! "$(type -P git)" ]]; then
@@ -110,19 +67,9 @@ fi
 
 # =============== BREWS =================================
 # Install Homebrew goodies
-tput setaf 4
-read -p "Do you want to install some Homebrew goodies? It's a good idea to do this on a fresh install. (y/n) " -n 1
-tput sgr0
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-	echo "\nInstalling some more Homebrew goodies..."
-	echo "Running .brew (this may take awhile)"
-	sh ./init/brews
-else
-	echo "\nOk, just updating Homebrew stuff..."
-	brew update
-	brew upgrade
-	brew cleanup
-fi
+echo "\nInstalling some more Homebrew goodies..."
+echo "(this may take awhile)"
+sh ./init/brews
 echo "Brewing complete! Moving on..."
 
 
@@ -131,9 +78,9 @@ echo "Brewing complete! Moving on..."
 echo "Checking for RVM and Ruby..."
 if [[ ! "$(type -P rvm)" ]]; then
   echo "RVM not found. Will try to install..."
-	echo "Installing RVM, Ruby, and RubyGems..."
 	echo "Installing RVM dependencies..."
 	brew install autoconf automake libtool libyaml libxml2 libxslt libksba openssl
+	echo "Installing RVM, Ruby, and RubyGems..."
 	\curl -L https://get.rvm.io | bash -s stable --ruby
 else
   echo "RVM found!"
@@ -165,7 +112,7 @@ pip install virtualenv
 # =============== VIM =================================
 echo "Installing Homebrew Vim..."
 brew install vim
-cp "./init/Inconsolata+for+Powerline.otf" ~/Library/Fonts
+cp "./assets/Inconsolata+for+Powerline.otf" ~/Library/Fonts
 
 
 
@@ -179,7 +126,6 @@ rm -rf XVim
 
 
 # =============== FONT CUSTOM =================================
-# http://fontcustom.com/
 echo "Installing fontcustom (http://fontcustom.com/)..."
 brew install fontforge ttfautohint
 gem install fontcustom
@@ -191,6 +137,12 @@ echo "Installing Node..."
 brew install node
 echo "Installing Grunt (grunt-cli)..."
 npm -g install grunt-cli
+
+
+
+# =============== GEMS =================================
+echo "Installing some good gems..."
+sh ./.gems
 
 
 
@@ -209,9 +161,14 @@ fi
 
 
 
-# =============== GEMS =================================
-echo "Installing some good gems..."
-sh ./.gems
+# ===============  SYMLINK  =================================
+tput setaf 4
+echo "Symlinking dotfiles..."
+tput sgr0
+ln -s ./vim ~/.vim
+ln -s ./vim/vimrc ~/.vimrc
+ln -s ./dots/bash_profile ~/.bash_profile
+source ~/.bash_profile
 
 
 
