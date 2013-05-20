@@ -52,10 +52,6 @@ fi
 
 
 # =============== HOMEBREW =================================
-tput setaf 4
-echo "Checking for Homebrew..."
-tput sgr0
-
 if [[ ! "$(type -P brew)" ]]; then
 	tput setaf 5
 	echo "Installing Homebrew..."
@@ -66,7 +62,7 @@ if [[ ! "$(type -P brew)" ]]; then
 
 else
 	tput setaf 2
-	echo "Homebrew found, moving on..."
+	echo "Homebrew found! Moving on..."
 	tput sgr0
 fi
 
@@ -100,9 +96,6 @@ tput sgr0
 
 
 # =============== RVM & RUBY =================================
-tput setaf 4
-echo "Checking for RVM and Ruby..."
-tput sgr0
 if [[ ! "$(type -P rvm)" ]]; then
 	tput setaf 5
   echo "RVM not found. Will try to install..."
@@ -119,7 +112,7 @@ if [[ ! "$(type -P rvm)" ]]; then
 	curl -L https://get.rvm.io | bash -s stable --ruby
 else
 	tput setaf 2
-  echo "RVM found!"
+  echo "RVM found! Moving on..."
 	tput sgr0
 fi
 
@@ -178,20 +171,33 @@ rm -rf XVim
 
 
 # =============== FONT CUSTOM =================================
-tput setaf 5
-echo "Installing fontcustom (http://fontcustom.com/)..."
-tput sgr0
-brew install fontforge ttfautohint
-gem install fontcustom
+if [[ ! "$(type -P fontcustom)" ]]; then
+  tput setaf 5
+  echo "Installing fontcustom (http://fontcustom.com/)..."
+  tput sgr0
+  brew install fontforge ttfautohint
+  gem install fontcustom
+else
+  tput setaf 2
+  echo "Font Custom found! Moving on..."
+  tput sgr0
+fi
 
 
 
 # =============== NODE & GRUNT =================================
-tput setaf 5
-echo "Installing Node..."
-tput sgr0
+if [[ ! "$(type -P node)" ]]; then
+  tput setaf 5
+  echo "Installing Node..."
+  tput sgr0
 
-brew install node
+  brew install node
+else
+  tput setaf 2
+  echo "Node found! Moving on..."
+  tput sgr0
+fi
+
 
 tput setaf 5
 echo "Installing Grunt (grunt-cli)..."
@@ -203,7 +209,7 @@ npm -g install grunt-cli
 
 # =============== TERMINAL =================================
 tput setaf 5
-echo "Configuring Terminal..."
+echo "\nConfiguring Terminal..."
 tput sgr0
 
 cp ./assets/com.apple.Terminal.plist ~/Library/Preferences/
@@ -241,9 +247,9 @@ rm ~/.vimrc
 rm ~/.bash_profile
 
 # Symlink files
-ln -s ./vim ~/.vim
-ln -s ./vim/vimrc ~/.vimrc
-ln -s ./dots/bash_profile ~/.bash_profile
+ln -s ~/.dippindots/vim ~/.vim
+ln -s ~/.dippindots/vim/vimrc ~/.vimrc
+ln -s ~/.dippindots/dots/bash_profile ~/.bash_profile
 
 
 
