@@ -21,6 +21,10 @@ else
   exit 1
 fi
 
+ln -s ./vim ~/.vim
+ln -s ./vim/vimrc ~/.vimrc
+ln -s ./dots/bash_profile ~/.bash_profile
+
 
 
 # =============== DOTFILES =================================
