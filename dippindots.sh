@@ -152,6 +152,10 @@ tput sgr0
 
 brew install vim
 
+# Powerline
+pip install --user git+git://github.com/Lokaltog/powerline
+
+
 # Copy over necessary fonts
 cp "./assets/Inconsolata+for+Powerline.otf" ~/Library/Fonts
 cp "./assets/Inconsolata-dz.otf" ~/Library/Fonts
