@@ -134,7 +134,7 @@ set wildignore+=*.swp,*~,._*
 set backupdir^=~/.vim/_backup// 	" Backup files
 set directory^=~/.vim/_temp// 		" Swap files
 if exists("&undodir")
-	set undodir=~/.vim/undo 				" Undo files
+	set undodir=~/.vim/_undo 				" Undo files
 endif
 
 
