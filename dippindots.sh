@@ -149,6 +149,12 @@ sh ./.gems
 
 
 
+# =============== TERMINAL =================================
+echo "Configuring Terminal..."
+cp ./assets/com.apple.Terminal.plist ~/Library/Preferences/
+
+
+
 # =============== OSX SETUP  =================================
 if [[ "$OSTYPE" =~ ^darwin ]]; then
   tput setaf 4
