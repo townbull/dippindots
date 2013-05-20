@@ -1,25 +1,13 @@
-# Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH"
-
-# Add Homebrews to the `$PATH`
-export PATH="/usr/local/bin:$PATH"
-
-# Use Homebrew's Python
-export PATH="/usr/local/share/python:$PATH"
-
-# Add Amazon Web Services tools to `$PATH`
-export PATH="~/.aws:$PATH"
-
-# Load RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/dippindots/{path,bash_prompt,exports,aliases,functions,extra}; do
+for file in ~/.dippindots/{path,bash_prompt,exports,aliases,functions,extra}; do
 	[ -r "$file" ] && source "$file"
 done
 unset file
+
+# Load RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob

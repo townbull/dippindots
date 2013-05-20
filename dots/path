@@ -1,0 +1,11 @@
+# Add `~/bin` to the `$PATH`
+export PATH="$HOME/bin:$PATH"
+
+# Add Homebrews to the `$PATH`
+export PATH="/usr/local/bin:$PATH"
+
+# Use Homebrew's Python
+export PATH="/usr/local/share/python:$PATH"
+
+# Add Amazon Web Services tools to `$PATH`
+export PATH="~/.aws:$PATH"
