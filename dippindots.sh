@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # =============== WELCOME =================================
-tput setaf 1
+tput setaf 6
 echo "Welcome to DippinDots, the dotfiles of the future!"
-tput setaf 4
+tput setaf 2
 echo "Starting up..."
 tput sgr0
 
@@ -11,6 +11,7 @@ tput setaf 3
 read -p "This will overwrite your existing dotfiles. Do you want to continue?. (y/n) " -n 1
 tput sgr0
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+	echo "\nExiting..."
 	exit 1
 fi
 
@@ -172,10 +173,16 @@ fi
 tput setaf 4
 echo "Symlinking dotfiles..."
 tput sgr0
+
+# Cleanup old files
+rm -rf ~/.vim
+rm ~/.vimrc
+rm ~/.bash_profile
+
+# Symlink files
 ln -s ./vim ~/.vim
 ln -s ./vim/vimrc ~/.vimrc
 ln -s ./dots/bash_profile ~/.bash_profile
-source ~/.bash_profile
 
 
 
