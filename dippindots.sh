@@ -20,6 +20,8 @@ else
   exit 1
 fi
 
+
+
 # =============== COMMAND LINE TOOLS =================================
 # Check for Command Line Tools
 echo "Checking for XCode Command Line Tools..."
@@ -28,47 +30,29 @@ if [[ ! "$(type -P gcc)" && "$OSTYPE" =~ ^darwin ]]; then
   echo "The XCode Command Line Tools must be installed first."
 	tput sgr0
   echo "Sending you to the download page..."
-  open "https://developer.apple.com/downloads/index.action?=command%20line%20tools"
   exit 1
+  open "https://developer.apple.com/downloads/index.action?=command%20line%20tools"
 fi
 
+
+
 # ===============  SYMLINK  =================================
+tput setaf 4
+echo "Symlinking dotfiles..."
+tput sgr0
 ln -s ./vim ~/.vim
 ln -s ./vim/vimrc ~/.vimrc
 ln -s ./dots/bash_profile ~/.bash_profile
-
-
-
-# =============== DOTFILES =================================
-# Copy over our dotfiles.
-echo "Copying over dotfiles..."
-cd "$(dirname "${BASH_SOURCE}")"
-#git pull
-function doIt() {
-  rsync --exclude ".git/" --exclude "bin/" --exclude ".DS_Store" --exclude "dippindots.sh" --exclude ".brew" --exclude ".gems" --exclude ".osx" --exclude "README.md" --exclude "brews/" --exclude ".weechat/" -av . ~
-	sudo rsync bin / -av
-}
-if [ "$1" == "--force" -o "$1" == "-f" ]; then
-  doIt
-else
-  read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1
-  echo
-  if [[ $REPLY =~ ^[Yy]$ ]]; then
-      doIt
-  fi  
-fi
-unset doIt
 source ~/.bash_profile
-
-
-
 
 
 
 # =============== HOMEBREW =================================
 echo "Checking for Homebrew..."
 if [[ ! "$(type -P brew)" ]]; then
-	echo "Installing Homebrew"
+	tput setaf 4
+	echo "Installing Homebrew..."
+	tput sgr0
 	true | ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 else
 	echo "Homebrew found, moving on..."
@@ -88,22 +72,31 @@ else
   echo "Git found! Moving on..."
 fi
 
-# Configure git
-echo "Now we need to configure git a bit."
-tput setaf 4
-echo "What's your git email?"
-tput sgr0
-read email
-tput setaf 4
-echo "What's your git name? Use your full name."
-tput sgr0
-read name
-echo "\n[user]\n\temail = $email\n\tname = $name" >> ~/.gitconfig
-# To bypass some symlink issues. Maybe too brute.
-brew link --overwrite git
-# So we can push without logging in
-ssh -vT git@github.com
-echo "gitconfig updated. Moving on..."
+# Configure Git
+# Requires your SSH keys!
+read -p "Do you want to setup Github SSH access? (y/n) " -n 1
+if [[ ! -f ~/.ssh/id_rsa && ! -f ~/.ssh/id_rsa.pub ]]; then
+	echo "Now we need to configure git a bit."
+	tput setaf 4
+	echo "What's your git email?"
+	tput sgr0
+	read email
+	tput setaf 4
+	echo "What's your git name? Use your full name."
+	tput sgr0
+	read name
+	echo "\n[user]\n\temail = $email\n\tname = $name" >> ~/.gitconfig
+
+	# To bypass some symlink issues. Maybe too brute.
+	brew link --overwrite git
+
+	# So we can push without logging in
+	ssh -vT git@github.com
+
+	echo "gitconfig updated. Moving on..."
+else
+	echo "No SSH keys found, skipping Git config..."
+fi
 
 # If Git isn't installed by now, something messed up...here's the contigency plan.
 if [[ ! "$(type -P git)" ]]; then
@@ -123,7 +116,7 @@ tput sgr0
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 	echo "\nInstalling some more Homebrew goodies..."
 	echo "Running .brew (this may take awhile)"
-	sh ./.brew
+	sh ./init/brews
 else
 	echo "\nOk, just updating Homebrew stuff..."
 	brew update
@@ -135,14 +128,12 @@ echo "Brewing complete! Moving on..."
 
 
 # =============== RVM & RUBY =================================
-echo "Modifying bash_profile to include RVM..."
-# Add the RVM load path to bash_profile
-echo "\n[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function" >> ~/.bash_profile
-source ~/.bash_profile
 echo "Checking for RVM and Ruby..."
 if [[ ! "$(type -P rvm)" ]]; then
   echo "RVM not found. Will try to install..."
 	echo "Installing RVM, Ruby, and RubyGems..."
+	echo "Installing RVM dependencies..."
+	brew install autoconf automake libtool libyaml libxml2 libxslt libksba openssl
 	\curl -L https://get.rvm.io | bash -s stable --ruby
 else
   echo "RVM found!"
@@ -157,50 +148,24 @@ if [[ ! "$(type -P rvm)" ]]; then
 fi
 
 
+# =============== GEMS =================================
+echo "Installing some gems..."
+sh ./init/gems
+
+
 
 # =============== PYTHON & PIP =================================
-echo "Installing (homebrew) Python and pip...."
-# Add the python path to bash_profile
-echo "\nexport PATH=/usr/local/bin:/usr/local/share/python:$PATH" >> ~/.bash_profile
-source ~/.bash_profile
-brew install python
-easy_install pip
+echo "Installing (Homebrew) Python2, Python3, pip, and virtualenv...."
+brew install python 	# Brew Python includes pip
+brew install python3
+pip install virtualenv
 
 
 
 # =============== VIM =================================
+echo "Installing Homebrew Vim..."
 brew install vim
-
-
-# =============== FONT CUSTOM =================================
-# Installing fontcustom
-# http://fontcustom.com/
-echo "Installing fontcustom (http://fontcustom.com/)..."
-brew install fontforge ttfautohint
-gem install fontcustom
-
-echo "Installing Powerline..."
-pip install --user git+git://github.com/Lokaltog/powerline
 cp "./init/Inconsolata+for+Powerline.otf" ~/Library/Fonts
-
-echo "Installing Processing syntax files..."
-cp -r ./init/processing ~/.vim/janus/vim/langs/processing
-
-
-
-# =============== WEECHAT =================================
-tput setaf 4
-read -p "Do you want to install Weechat? (y/n) " -n 1
-tput sgr0
-if [[ $REPLY =~ ^[Yy]$ ]]; then	
-	echo "Installing Weechat (custom brew)..."
-	sudo perl -MCPAN -e 'install Crypt::OpenSSL::Bignum, Crypt::DH, Crypt::Blowfish, Math::BigInt, MIME::Base64'
-	cp -R .weechat ~/.weechat
-	brew install ./brews/weechat.rb
-	echo "Weechat has been installed. You will need to configure ~/.weechat/irc.conf with your nick credentials"
-else
-	echo "Skipping Weechat..."
-fi
 
 
 
@@ -210,6 +175,22 @@ echo "Installing XVim (Vim for XCode)..."
 git clone https://github.com/JugglerShu/XVim.git
 xcodebuild -project XVim/XVim.xcodeproj
 rm -rf XVim
+
+
+
+# =============== FONT CUSTOM =================================
+# http://fontcustom.com/
+echo "Installing fontcustom (http://fontcustom.com/)..."
+brew install fontforge ttfautohint
+gem install fontcustom
+
+
+
+# =============== NODE & GRUNT =================================
+echo "Installing Node..."
+brew install node
+echo "Installing Grunt (grunt-cli)..."
+npm -g install grunt-cli
 
 
 
