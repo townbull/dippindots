@@ -245,5 +245,3 @@ noremap <leader>ss :call StripWhitespace()<CR>
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 
-" Load Powerline
-source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
