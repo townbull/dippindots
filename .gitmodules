@@ -43,9 +43,6 @@
 [submodule "vim/bundle/coffeescript"]
 	path = vim/bundle/coffeescript
 	url = https://github.com/kchmck/vim-coffee-script.git
-[submodule "vim/bundle/javascript"]
-	path = vim/bundle/javascript
-	url = https://github.com/pangloss/vim-javascript.git
 [submodule "vim/bundle/processing"]
 	path = vim/bundle/processing
 	url = https://github.com/sophacles/vim-processing.git
