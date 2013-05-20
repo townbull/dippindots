@@ -179,44 +179,6 @@ echo "Installing fontcustom (http://fontcustom.com/)..."
 brew install fontforge ttfautohint
 gem install fontcustom
 
-
-
-# =============== JANUS VIM PLUGINS & MORE =================================
-echo "Installing Janus and other vim powerups..."
-echo "\nChecking Janus dependencies..."
-if [[ ! "$(type -P rake)" ]]; then
-	echo "Rake not found, installing Rake..."
-	gem install rake
-else
-	echo "Rake found!"
-fi
-if [[ ! "$(type -P ack)" ]]; then
-	echo "ack not found, installing ack..."
-	brew install ack
-else
-	echo "ack found!"
-fi
-if [[ ! "$(type -P ctags)" ]]; then
-	echo "ctags not found, installing ctags..."
-	brew install ctags
-else
-	echo "ctags found!"
-fi
-
-# First check if RVM/Ruby/Rake/ack/ctags are installed
-echo "Changing existing .vimrc to .vimrc.after"
-mv ~/.vimrc ~/.vimrc.after
-echo "Installing Janus vim plugins..."
-echo "(this may take awhile)"
-curl -Lo- https://bit.ly/janus-bootstrap | bash
-echo "Removing old vim files"
-rm -rf ~/.vim.old
-rm ~/.vimrc.old
-rm ~/.gvimrc.old
-
-echo "Adding some nice color schemes..."
-cp -R ./init/colors/* ~/.vim/janus/vim/colors
-
 echo "Installing Powerline..."
 pip install --user git+git://github.com/Lokaltog/powerline
 cp "./init/Inconsolata+for+Powerline.otf" ~/Library/Fonts
