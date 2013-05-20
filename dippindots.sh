@@ -112,7 +112,10 @@ pip install virtualenv
 # =============== VIM =================================
 echo "Installing Homebrew Vim..."
 brew install vim
+
+# Copy over necessary fonts
 cp "./assets/Inconsolata+for+Powerline.otf" ~/Library/Fonts
+cp "./assets/Inconsolata-dz.otf" ~/Library/Fonts
 
 
 
