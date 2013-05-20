@@ -2,6 +2,9 @@
 "  vimrc
 " ----------------------------------------------------------------------------
 
+syntax on
+filetype plugin indent on
+
 set nocompatible      			" Use vim, no vi defaults
 syntax enable         			" Turn on syntax highlighting
 set encoding=utf-8 nobomb   " Set default encoding to UTF-8
@@ -27,13 +30,8 @@ set modelines=4
 " Colors
 " ----------------------------------------------------------------------------
 set background=dark
-colorscheme tomorrow-night 
+colorscheme tomorrow-night
 
-
-" ----------------------------------------------------------------------------
-"  Pathogen
-" ----------------------------------------------------------------------------
-execute pathogen#infect()
 
 
 " ----------------------------------------------------------------------------
