@@ -2,9 +2,8 @@
 "  vimrc
 " ----------------------------------------------------------------------------
 
+" Pathogen
 execute pathogen#infect()
-syntax on
-filetype plugin indent on
 
 set nocompatible      			" Use vim, no vi defaults
 syntax enable         			" Turn on syntax highlighting
@@ -25,6 +24,7 @@ set noeol
 " Respect modeline in files
 set modeline
 set modelines=4
+
 
 
 " ----------------------------------------------------------------------------
