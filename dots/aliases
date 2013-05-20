@@ -23,6 +23,7 @@ alias gst="git status"
 # Shortcuts
 alias d="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
+alias dt="cd ~/Desktop"
 alias g="git"
 alias h="history"
 alias j="jobs"
@@ -31,11 +32,6 @@ alias m="mate ."
 alias s="subl ."
 alias o="open"
 alias oo="open ."
-
-alias htdocs="cd /Applications/MAMP/htdocs"
-alias dt="cd ~/Desktop"
-alias p="cd ~/Projects"
-alias pi="ssh pi@raspberrypi"
 
 # Quickly build and run a Processing sketch in the current directory.
 # You must have Processing and then do Tools > Install "processing-java" for this to work.
