@@ -1,6 +1,6 @@
 # DippinDots
 
-These are my personal dotfiles. Please feel free to use/modify them as
+These are my personal (OSX) dotfiles. Please feel free to use/modify them as
 you like!
 
 Credit for the foundation of these dotfiles goes to:
