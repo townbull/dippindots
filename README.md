@@ -11,7 +11,15 @@ You should also have your Github SSH keys (`id_rsa` and `id_rsa.pub`) in
 
 ## Usage ##
 ``` bash
-$ git clone https://github.com/ftzeng/dippindots.git ~/.dippindots && cd ~/.dippindots && ./dippindots.sh
+$ git clone https://github.com/ftzeng/dippindots.git ~/.dippindots
+$ cd ~/.dippindots
+$ git submodule init && git submuodle update
+$ ./dippindots.sh
+```
+
+Or, in one long line:
+``` bash
+$ git clone https://github.com/ftzeng/dippindots.git ~/.dippindots && cd ~/.dippindots && git submodule init && git submodule update && ./dippindots.sh
 ```
 
 ## Credits ##
