@@ -13,7 +13,7 @@ You should also have your Github SSH keys (`id_rsa` and `id_rsa.pub`) in
 ``` bash
 $ git clone https://github.com/ftzeng/dippindots.git ~/.dippindots
 $ cd ~/.dippindots
-$ git submodule init && git submuodle update
+$ git submodule init && git submodule update
 $ ./dippindots.sh
 ```
 
