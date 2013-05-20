@@ -36,9 +36,6 @@ fi
 
 
 
-
-
-
 # =============== HOMEBREW =================================
 echo "Checking for Homebrew..."
 if [[ ! "$(type -P brew)" ]]; then
@@ -145,7 +142,7 @@ npm -g install grunt-cli
 
 # =============== GEMS =================================
 echo "Installing some good gems..."
-sh ./.gems
+sh ./init/gems
 
 
 
@@ -162,7 +159,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   tput sgr0
   if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo "\nOk, running .osx"
-    sh ./.osx
+    sh ./init/osx
   else
     echo "\nOk, skipping..."
   fi 
