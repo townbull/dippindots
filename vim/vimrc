@@ -232,9 +232,6 @@ imap <C-8> <Esc>8gt
 map  <C-9> 9gt
 imap <C-9> <Esc>9gt
 
-" Map Ctrl+t to toggle NERDTree
-:nmap <silent> <C-t> :NERDTreeToggle<CR>
-
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
 	let save_cursor = getpos(".")
@@ -247,12 +244,3 @@ noremap <leader>ss :call StripWhitespace()<CR>
 
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
-
-
-
-" ----------------------------------------------------------------------------
-"  Plugins
-" ----------------------------------------------------------------------------
-let NERDTreeHijackNetrw = 0
-
-
