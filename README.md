@@ -15,6 +15,7 @@ $ git clone https://github.com/ftzeng/dippindots.git ~/.dippindots &&
 ./dippindots.sh
 ```
 
+## Credits ##
 Credit for the foundation of these dotfiles goes to:
 * [Mathias Bynen](http://mths.be/dotfiles)
 * [Ben Alman](https://github.com/cowboy/dotfiles)
