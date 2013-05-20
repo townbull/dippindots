@@ -2,10 +2,9 @@
 
 # =============== WELCOME =================================
 tput setaf 1
-echo "Welcome to DippinDots, the dotfile of the future!"
+echo "Welcome to DippinDots, the dotfiles of the future!"
 tput setaf 4
-echo "A customized version of Mathias Bynens' dotfiles (http://mths.be/dotfiles)"
-echo "and Ben Alman's dotfiles (https://github.com/cowboy/dotfiles)."
+echo "Starting up..."
 tput sgr0
 
 
@@ -16,11 +15,24 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   echo "You're running OSX!"
 else
   tput setaf 1
-	echo "You are not running OSX. Aborting!"
+	echo "DippinDots is meant for use with OSX. Goodbye!"
   tput sgr0
   exit 1
 fi
 
+# =============== COMMAND LINE TOOLS =================================
+# Check for Command Line Tools
+echo "Checking for XCode Command Line Tools..."
+if [[ ! "$(type -P gcc)" && "$OSTYPE" =~ ^darwin ]]; then
+  tput setaf 1
+  echo "The XCode Command Line Tools must be installed first."
+	tput sgr0
+  echo "Sending you to the download page..."
+  open "https://developer.apple.com/downloads/index.action?=command%20line%20tools"
+  exit 1
+fi
+
+# ===============  SYMLINK  =================================
 ln -s ./vim ~/.vim
 ln -s ./vim/vimrc ~/.vimrc
 ln -s ./dots/bash_profile ~/.bash_profile
@@ -50,15 +62,6 @@ source ~/.bash_profile
 
 
 
-# =============== COMMAND LINE TOOLS =================================
-# Check for Command Line Tools
-echo "Checking for XCode Command Line Tools..."
-if [[ ! "$(type -P gcc)" && "$OSTYPE" =~ ^darwin ]]; then
-  echo "The XCode Command Line Tools must be installed first."
-  echo "Sending you to the download page..."
-  open "https://developer.apple.com/downloads/index.action?=command%20line%20tools"
-  exit 1
-fi
 
 
 
