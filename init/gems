@@ -1,2 +1,4 @@
+#!/bin/bash
+
 gem install rake
 gem install sass
