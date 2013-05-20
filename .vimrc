@@ -1,0 +1,250 @@
+" ----------------------------------------------------------------------------
+"  vimrc
+" ----------------------------------------------------------------------------
+
+set nocompatible      			" Use vim, no vi defaults
+syntax enable         			" Turn on syntax highlighting
+set encoding=utf-8 nobomb   " Set default encoding to UTF-8
+set clipboard=unnamed 			" Use OS clipboard (on +clipboard compiled Vim)
+set noerrorbells 						" Disable error bells
+set title 									" Show filename in window titlebar
+set showmode 								" Show the current mode
+set timeoutlen=100 					" Set timeoutlen to be sort, avoiding a lag
+set showcmd 								" Show the command as it's typed
+set shortmess=atI 					" Hide Vim intro message
+let mapleader="," 					" Change mapleader
+
+" Don’t add empty newlines at the end of files
+set binary
+set noeol
+
+" Respect modeline in files
+set modeline
+set modelines=4
+
+
+" ----------------------------------------------------------------------------
+" Colors
+" ----------------------------------------------------------------------------
+set background=dark
+colorscheme tomorrow-night 
+
+
+" ----------------------------------------------------------------------------
+"  Pathogen
+" ----------------------------------------------------------------------------
+execute pathogen#infect()
+
+
+" ----------------------------------------------------------------------------
+"  Navigation
+" ----------------------------------------------------------------------------
+set number            			" Show line numbers
+set ruler             			" Show line and column number of cursor
+set nostartofline 					" Don't reset cursor to start of line when moving
+set cursorcolumn 						" Highlight current column
+set cursorline 							" Highlight current line
+set scrolloff=3 						" Start scrolling three lines before border
+set showmatch 							" Show matching brackets
+if exists("&relativenumber")
+	set relativenumber 				" Use relative line numbering
+	au BufReadPost * set relativenumber
+endif
+
+
+" ----------------------------------------------------------------------------
+"  Status Bar
+" ----------------------------------------------------------------------------
+set laststatus=2  " Always show the status bar
+" Start the status line
+set statusline=%f\ %m\ %r
+set statusline+=Line:%l/%L[%p%%]
+set statusline+=Col:%v
+set statusline+=Buf:#%n
+set statusline+=[%b][0x%B]
+
+" ----------------------------------------------------------------------------
+"  Search
+" ----------------------------------------------------------------------------
+set incsearch   " Search as pattern is typed
+set ignorecase  " Case insensitive searches...
+set smartcase   " Unless they contain 1+ capital letters
+set nohlsearch  " Don't highlight search matches
+set gdefault 		" Global search/replace by default
+
+
+" ----------------------------------------------------------------------------
+" Indentation
+" ----------------------------------------------------------------------------
+set cindent
+set smartindent
+set autoindent
+
+
+" ----------------------------------------------------------------------------
+"  Folding
+" ----------------------------------------------------------------------------
+set foldlevel=1
+set foldmethod=indent 	" Set fold based on indent
+set foldnestmax=6 			" Max 6 levels
+set nofoldenable 				" No fold by default
+
+
+" ----------------------------------------------------------------------------
+" Whitespace
+" ----------------------------------------------------------------------------
+set nowrap                        " Don't wrap lines
+set tabstop=2                     " Set tab to two spaces
+set shiftwidth=2                  " Set autoindent (with <<) to two spaces
+set expandtab                     " Use spaces, not tabs
+set list                          " Show invisible characters
+set backspace=indent,eol,start    " Backspace through everything in insert mode
+
+" List chars (i.e. hidden characters)
+set listchars=""                  " Reset the listchars
+set listchars=tab:\ \             " A tab should display as "  ", trailing whitespace as "."
+set listchars+=trail:.            " Show trailing spaces as dots
+set listchars+=extends:>          " The character to show in the last column when wrap is
+                                  " off and the line continues beyond the right of the screen
+set listchars+=precedes:<         " The character to show in the last column when wrap is
+                                  " off and the line continues beyond the right of the screen
+
+" ----------------------------------------------------------------------------
+"  Wild
+" ----------------------------------------------------------------------------
+" Enhance command-line completion
+set wildmenu
+
+" Disable output and VCS files
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
+
+" Disable archive files
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+
+" Ignore bundler and sass cache
+set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
+
+" Disable temp and backup files
+set wildignore+=*.swp,*~,._*
+
+
+" ----------------------------------------------------------------------------
+"  Backup, swap, and undo
+" ----------------------------------------------------------------------------
+" Centralize these files
+set backupdir^=~/.vim/_backup// 	" Backup files
+set directory^=~/.vim/_temp// 		" Swap files
+if exists("&undodir")
+	set undodir=~/.vim/undo 				" Undo files
+endif
+
+
+" ----------------------------------------------------------------------------
+"  File Types
+" ----------------------------------------------------------------------------
+filetype on 							" Enable filetype detection
+filetype plugin indent on " Turn on filetype plugins (:help filetype-plugin)
+
+" Some file types should wrap their text
+function! s:setupWrapping()
+  set wrap
+  set linebreak
+  set textwidth=72
+  set nolist
+endfunction
+
+if has("autocmd")
+  " In Makefiles, use real tabs, not tabs expanded to spaces
+  au FileType make setlocal noexpandtab
+
+  " Make sure all markdown files have the correct filetype set and setup wrapping
+  au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
+  au FileType markdown call s:setupWrapping()
+
+  " Treat JSON files like JavaScript
+  au BufNewFile,BufRead *.json set ft=javascript
+
+  " make Python follow PEP8 for whitespace ( http://www.python.org/dev/peps/pep-0008/ )
+  au FileType python setlocal softtabstop=4 tabstop=4 shiftwidth=4
+
+  " Remember last location in file, but not for commit messages.
+  au BufReadPost * if &filetype !~ '^git\c' && line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g`\"" | endif
+endif
+
+
+" ----------------------------------------------------------------------------
+"  Mappings
+" ----------------------------------------------------------------------------
+
+" format the entire file
+nmap <leader>fef ggVG=
+
+" upper/lower word
+nmap <leader>u mQviwU`Q
+nmap <leader>l mQviwu`Q
+
+" upper/lower first char of word
+nmap <leader>U mQgewvU`Q
+nmap <leader>L mQgewvu`Q
+
+" Some helpers to edit mode
+" http://vimcasts.org/e/14
+nmap <leader>ew :e <C-R>=expand('%:h').'/'<cr>
+nmap <leader>es :sp <C-R>=expand('%:h').'/'<cr>
+nmap <leader>ev :vsp <C-R>=expand('%:h').'/'<cr>
+nmap <leader>et :tabe <C-R>=expand('%:h').'/'<cr>
+
+" Swap two words
+nmap <silent> gw :s/\(\%#\w\+\)\(\_W\+\)\(\w\+\)/\3\2\1/<CR>`'
+
+" set text wrapping toggles
+nmap <silent> <leader>tw :set invwrap<CR>:set wrap?<CR>
+
+" find merge conflict markers
+nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
+
+" Underline the current line with '='
+nmap <silent> <leader>ul :t.<CR>Vr=
+
+" Map the arrow keys to be based on display lines, not physical lines
+map <Down> gj
+map <Up> gk
+
+" Map Control-# to switch tabs
+map  <C-0> 0gt
+imap <C-0> <Esc>0gt
+map  <C-1> 1gt
+imap <C-1> <Esc>1gt
+map  <C-2> 2gt
+imap <C-2> <Esc>2gt
+map  <C-3> 3gt
+imap <C-3> <Esc>3gt
+map  <C-4> 4gt
+imap <C-4> <Esc>4gt
+map  <C-5> 5gt
+imap <C-5> <Esc>5gt
+map  <C-6> 6gt
+imap <C-6> <Esc>6gt
+map  <C-7> 7gt
+imap <C-7> <Esc>7gt
+map  <C-8> 8gt
+imap <C-8> <Esc>8gt
+map  <C-9> 9gt
+imap <C-9> <Esc>9gt
+
+" Map Ctrl+t to toggle NERDTree
+:nmap <silent> <C-t> :NERDTreeToggle<CR>
+
+" Strip trailing whitespace (,ss)
+function! StripWhitespace()
+	let save_cursor = getpos(".")
+	let old_query = getreg('/')
+	:%s/\s\+$//e
+	call setpos('.', save_cursor)
+	call setreg('/', old_query)
+endfunction
+noremap <leader>ss :call StripWhitespace()<CR>
+
+" Save a file as root (,W)
+noremap <leader>W :w !sudo tee % > /dev/null<CR>
