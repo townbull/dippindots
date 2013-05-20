@@ -245,11 +245,17 @@ tput sgr0
 rm -rf ~/.vim
 rm ~/.vimrc
 rm ~/.bash_profile
+rm ~/.bashrc
+rm ~/.inputrc
+rm ~/.screenrc
 
 # Symlink files
 ln -s ~/.dippindots/vim ~/.vim
 ln -s ~/.dippindots/vim/vimrc ~/.vimrc
 ln -s ~/.dippindots/dots/bash_profile ~/.bash_profile
+ln -s ~/.dippindots/dots/bashrc ~/.bashrc
+ln -s ~/.dippindots/dots/inputrc ~/.inputrc
+ln -s ~/.dippindots/dots/screenrc ~/.screenrc
 
 
 
