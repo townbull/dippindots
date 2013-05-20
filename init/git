@@ -1,26 +1,33 @@
 #!/bin/bash
 
 # If Git is not installed...
+tput setaf 4
 echo "Checking for Git..."
+tput sgr0
 if [[ ! "$(type -P git)" ]]; then
-  echo "Git not found. Will try to install..."
+	tput setaf 5
 	echo "Installing Git"
+	tput sgr0
 	brew install git
 	brew link --overwrite git
 else
+	tput setaf 2
   echo "Git found! Moving on..."
+	tput sgr0
 fi
 
 # Configure Git
 # Requires your SSH keys!
+tput setaf 5
 read -p "Do you want to setup Github SSH access? (y/n) " -n 1
+tput sgr0
 if [[ ! -f ~/.ssh/id_rsa && ! -f ~/.ssh/id_rsa.pub ]]; then
 	echo "Now we need to configure git a bit."
-	tput setaf 4
+	tput setaf 5
 	echo "What's your git email?"
 	tput sgr0
 	read email
-	tput setaf 4
+	tput setaf 5
 	echo "What's your git name? Use your full name."
 	tput sgr0
 	read name
@@ -32,8 +39,12 @@ if [[ ! -f ~/.ssh/id_rsa && ! -f ~/.ssh/id_rsa.pub ]]; then
 	# So we can push without logging in
 	ssh -vT git@github.com
 
+	tput setaf 2
 	echo "gitconfig updated. Moving on..."
+	tput sgr0
 else
+	tput setaf 3
 	echo "No SSH keys found, skipping Git config..."
 	echo "You can set this up later with init/git."
+	tput sgr0
 fi

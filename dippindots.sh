@@ -18,9 +18,13 @@ fi
 
 
 # ===============  OSX  =================================
-echo "Checking OS..."
+tput setaf 4
+echo "\nChecking OS..."
+tput sgr0
 if [[ "$OSTYPE" =~ ^darwin ]]; then
+	tput setaf 2
   echo "You're running OSX!"
+	tput sgr0
 else
   tput setaf 1
 	echo "DippinDots is meant for use with OSX. Goodbye!"
@@ -31,28 +35,39 @@ fi
 
 
 # =============== COMMAND LINE TOOLS =================================
-# Check for Command Line Tools
+tput setaf 4
 echo "Checking for XCode Command Line Tools..."
+tput sgr0
+
 if [[ ! "$(type -P gcc)" && "$OSTYPE" =~ ^darwin ]]; then
   tput setaf 1
   echo "The XCode Command Line Tools must be installed first."
 	tput sgr0
+
   echo "Sending you to the download page..."
-  exit 1
   open "https://developer.apple.com/downloads/index.action?=command%20line%20tools"
+  exit 1
 fi
 
 
 
 # =============== HOMEBREW =================================
+tput setaf 4
 echo "Checking for Homebrew..."
+tput sgr0
+
 if [[ ! "$(type -P brew)" ]]; then
-	tput setaf 4
+	tput setaf 5
 	echo "Installing Homebrew..."
 	tput sgr0
-	true | ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+
+	# Install Homebrew
+	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+
 else
+	tput setaf 2
 	echo "Homebrew found, moving on..."
+	tput sgr0
 fi
 
 
@@ -71,24 +86,41 @@ fi
 
 
 # =============== BREWS =================================
-# Install Homebrew goodies
+tput setaf 5
 echo "\nInstalling some more Homebrew goodies..."
 echo "(this may take awhile)"
+tput sgr0
+
 sh ./init/brews
+
+tput setaf 2
 echo "Brewing complete! Moving on..."
+tput sgr0
 
 
 
 # =============== RVM & RUBY =================================
+tput setaf 4
 echo "Checking for RVM and Ruby..."
+tput sgr0
 if [[ ! "$(type -P rvm)" ]]; then
+	tput setaf 5
   echo "RVM not found. Will try to install..."
+
 	echo "Installing RVM dependencies..."
+	tput sgr0
 	brew install autoconf automake libtool libyaml libxml2 libxslt libksba openssl
+
+	tput setaf 5
 	echo "Installing RVM, Ruby, and RubyGems..."
-	\curl -L https://get.rvm.io | bash -s stable --ruby
+	tput sgr0
+
+	# Install RVM w/ Ruby
+	curl -L https://get.rvm.io | bash -s stable --ruby
 else
+	tput setaf 2
   echo "RVM found!"
+	tput sgr0
 fi
 
 # Need to ensure RVM was installed properly
@@ -101,13 +133,19 @@ fi
 
 
 # =============== GEMS =================================
+tput setaf 5
 echo "Installing some gems..."
+tput sgr0
+
 sh ./init/gems
 
 
 
 # =============== PYTHON & PIP =================================
+tput setaf 5
 echo "Installing (Homebrew) Python2, Python3, pip, and virtualenv...."
+tput sgr0
+
 brew install python 	# Brew Python includes pip
 brew install python3
 pip install virtualenv
@@ -115,7 +153,10 @@ pip install virtualenv
 
 
 # =============== VIM =================================
+tput setaf 5
 echo "Installing Homebrew Vim..."
+tput sgr0
+
 brew install vim
 
 # Copy over necessary fonts
@@ -125,8 +166,11 @@ cp "./assets/Inconsolata-dz.otf" ~/Library/Fonts
 
 
 # =============== XVIM =================================
-# Install XVim (Vim for XCode)
+tput setaf 5
 echo "Installing XVim (Vim for XCode)..."
+tput sgr0
+
+# Install XVim (Vim for XCode)
 git clone https://github.com/JugglerShu/XVim.git
 xcodebuild -project XVim/XVim.xcodeproj
 rm -rf XVim
@@ -134,43 +178,60 @@ rm -rf XVim
 
 
 # =============== FONT CUSTOM =================================
+tput setaf 5
 echo "Installing fontcustom (http://fontcustom.com/)..."
+tput sgr0
 brew install fontforge ttfautohint
 gem install fontcustom
 
 
 
 # =============== NODE & GRUNT =================================
+tput setaf 5
 echo "Installing Node..."
+tput sgr0
+
 brew install node
+
+tput setaf 5
 echo "Installing Grunt (grunt-cli)..."
+tput sgr0
+
 npm -g install grunt-cli
 
 
 
 # =============== TERMINAL =================================
+tput setaf 5
 echo "Configuring Terminal..."
+tput sgr0
+
 cp ./assets/com.apple.Terminal.plist ~/Library/Preferences/
 
 
 
 # =============== OSX SETUP  =================================
 if [[ "$OSTYPE" =~ ^darwin ]]; then
-  tput setaf 4
+  tput setaf 5
   read -p "Since you're running OSX, do you want to do some additional setup? This is a good idea for a fresh install. (y/n) " -n 1
   tput sgr0
   if [[ $REPLY =~ ^[Yy]$ ]]; then
+		tput setaf 2
     echo "\nOk, running .osx"
+		tput sgr0
+
     sh ./init/osx
   else
+		tput setaf 4
     echo "\nOk, skipping..."
+		tput sgr0
   fi 
 fi
 
 
 
 # ===============  SYMLINK  =================================
-tput setaf 4
+tput setaf 5
 echo "Symlinking dotfiles..."
 tput sgr0
 
