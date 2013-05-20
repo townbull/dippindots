@@ -7,7 +7,7 @@ Before you begin, you should have XCode and the XCode Command Line Tools
 installed.
 
 You should also have your Github SSH keys (`id_rsa` and `id_rsa.pub`) in
-`~/.ssh/` so login-less Github push/pulling can be setup.
+`~/.ssh/` so login-less (SSH) Github access can be setup.
 
 ## Usage ##
 ``` bash
