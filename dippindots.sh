@@ -252,6 +252,7 @@ rm ~/.bash_profile
 rm ~/.bashrc
 rm ~/.inputrc
 rm ~/.screenrc
+rm ~/.bin
 
 # Symlink files
 ln -s ~/.dippindots/vim ~/.vim
@@ -260,6 +261,7 @@ ln -s ~/.dippindots/dots/bash_profile ~/.bash_profile
 ln -s ~/.dippindots/dots/bashrc ~/.bashrc
 ln -s ~/.dippindots/dots/inputrc ~/.inputrc
 ln -s ~/.dippindots/dots/screenrc ~/.screenrc
+ln -s ~/.dippindots/bin ~/.bin
 
 
 

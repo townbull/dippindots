@@ -21,5 +21,8 @@ brew install dos2unix
 # Necessary for Vim Plugins
 brew install ctags
 
+# Necessary for markdown2evernote
+brew install multimarkdown
+
 # Remove outdated versions from the cellar
 brew cleanup
