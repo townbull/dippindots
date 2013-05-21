@@ -67,3 +67,6 @@
 [submodule "vim/bundle/showmarks"]
 	path = vim/bundle/showmarks
 	url = https://github.com/vim-scripts/ShowMarks.git
+[submodule "vim/bundle/vimroom"]
+	path = vim/bundle/vimroom
+	url = https://github.com/mikewest/vimroom.git
