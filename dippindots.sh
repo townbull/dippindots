@@ -245,23 +245,15 @@ tput setaf 5
 echo "Symlinking dotfiles..."
 tput sgr0
 
-# Cleanup old files
-rm -rf ~/.vim
-rm ~/.vimrc
-rm ~/.bash_profile
-rm ~/.bashrc
-rm ~/.inputrc
-rm ~/.screenrc
-rm ~/.bin
 
 # Symlink files
-ln -s ~/.dippindots/vim ~/.vim
-ln -s ~/.dippindots/vim/vimrc ~/.vimrc
-ln -s ~/.dippindots/dots/bash_profile ~/.bash_profile
-ln -s ~/.dippindots/dots/bashrc ~/.bashrc
-ln -s ~/.dippindots/dots/inputrc ~/.inputrc
-ln -s ~/.dippindots/dots/screenrc ~/.screenrc
-ln -s ~/.dippindots/bin ~/.bin
+ln -sf ~/.dippindots/vim ~/.vim
+ln -sf ~/.dippindots/vim/vimrc ~/.vimrc
+ln -sf ~/.dippindots/dots/bash_profile ~/.bash_profile
+ln -sf ~/.dippindots/dots/bashrc ~/.bashrc
+ln -sf ~/.dippindots/dots/inputrc ~/.inputrc
+ln -sf ~/.dippindots/dots/screenrc ~/.screenrc
+ln -sf ~/.dippindots/bin ~/.bin
 
 
 
