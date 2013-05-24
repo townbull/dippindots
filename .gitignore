@@ -1,8 +1,8 @@
 .DS_Store
 
 .netrwhist
-vim/_undo/*
-vim/_backup/*
-vim/_temp/*
+vim/.undo/*
+vim/.backup/*
+vim/.temp/*
 *.swp
 *.swo

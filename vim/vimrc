@@ -131,10 +131,10 @@ set wildignore+=*.swp,*~,._*
 "  Backup, swap, and undo
 " ----------------------------------------------------------------------------
 " Centralize these files
-set backupdir^=~/.vim/_backup// 	" Backup files
-set directory^=~/.vim/_temp// 		" Swap files
+set backupdir^=~/.vim/.backup// 	" Backup files
+set directory^=~/.vim/.temp// 		" Swap files
 if exists("&undodir")
-	set undodir=~/.vim/_undo 				" Undo files
+	set undodir=~/.vim/.undo 				" Undo files
 endif
 
 
