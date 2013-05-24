@@ -31,7 +31,7 @@ set modelines=4
 " Colors
 " ----------------------------------------------------------------------------
 set background=dark
-colorscheme tomorrow-night
+colorscheme futora
 
 
 
