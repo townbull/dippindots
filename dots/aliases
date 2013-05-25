@@ -17,7 +17,7 @@ alias gcb="git checkout -b"
 alias gm="git merge --no-ff"
 alias gch="git checkout"
 alias gbd="git branch -d"
-alias gbs="git branches"
+alias gbs="git branch"
 alias gst="git status"
 
 # Shortcuts
@@ -151,6 +151,3 @@ done
 alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 7'"
 alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
-
-# Alias to list aliases
-alias aliases="tput setaf 4;cat ~/.aliases;tput sgr0"
