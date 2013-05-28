@@ -73,3 +73,6 @@
 [submodule "vim/bundle/jinja"]
 	path = vim/bundle/jinja
 	url = https://github.com/lepture/vim-jinja.git
+[submodule "vim/bundle/javascript"]
+	path = vim/bundle/javascript
+	url = https://github.com/pangloss/vim-javascript.git
