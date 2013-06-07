@@ -100,7 +100,7 @@ set nofoldenable 				" No fold by default
 " ----------------------------------------------------------------------------
 " Whitespace
 " ----------------------------------------------------------------------------
-set nowrap                        " Don't wrap lines
+set wrap                          " Wrap lines
 set tabstop=2                     " Set tab to two spaces
 set shiftwidth=2                  " Set autoindent (with <<) to two spaces
 set expandtab                     " Use spaces, not tabs
