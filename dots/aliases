@@ -33,6 +33,9 @@ alias s="subl ."
 alias o="open"
 alias oo="open ."
 
+# Easily clear Solr
+alias clearsolr="curl http://localhost:8983/solr/update --data '<delete><query>*:*</query></delete>' -H 'Content-type:text/xml; charset=utf-8'; curl http://localhost:8983/solr/update --data '<commit/>' -H 'Content-type:text/xml; charset=utf-8'"
+
 # Quickly build and run a Processing sketch in the current directory.
 # You must have Processing and then do Tools > Install "processing-java" for this to work.
 alias p5="processing-java --sketch=\${PWD} --output=\${PWD}/temp --run --force"
