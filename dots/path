@@ -9,3 +9,6 @@ export PATH="/usr/local/share/python:$PATH"
 
 # Add Amazon Web Services tools to `$PATH`
 export PATH="~/.aws:$PATH"
+
+# Add NPM
+export PATH="/usr/local/share/npm/bin:$PATH"
