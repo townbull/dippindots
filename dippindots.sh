@@ -209,6 +209,12 @@ tput sgr0
 
 npm -g install grunt-cli
 
+tput setaf 5
+echo "Installing JamJS..."
+tput sgr0
+
+npm -g install jamjs
+
 
 
 # =============== TERMINAL =================================
