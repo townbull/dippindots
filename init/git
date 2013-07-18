@@ -19,7 +19,7 @@ fi
 # Configure Git
 # Requires your SSH keys!
 tput setaf 5
-read -p "Do you want to setup Github SSH access? (y/n) " -n 1
+read -p "Do you want to setup Github SSH access? This requires that your SSH keys are available in ~/.ssh. (y/n) " -n 1
 tput sgr0
 if [[ ! -f ~/.ssh/id_rsa && ! -f ~/.ssh/id_rsa.pub ]]; then
 	echo "Now we need to configure git a bit."
