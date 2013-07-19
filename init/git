@@ -21,8 +21,8 @@ fi
 tput setaf 5
 read -p "Do you want to setup Github SSH access? This requires that your SSH keys are available in ~/.ssh. (y/n) " -n 1
 tput sgr0
-if [[ ! -f ~/.ssh/id_rsa && ! -f ~/.ssh/id_rsa.pub ]]; then
-	echo "Now we need to configure git a bit."
+if [[ $REPLY =~ ^[Yy]$ && ! -f ~/.ssh/id_rsa && ! -f ~/.ssh/id_rsa.pub ]]; then
+	echo -e "\nNow we need to configure git a bit."
 	tput setaf 5
 	echo "What's your git email?"
 	tput sgr0
@@ -44,7 +44,7 @@ if [[ ! -f ~/.ssh/id_rsa && ! -f ~/.ssh/id_rsa.pub ]]; then
 	tput sgr0
 else
 	tput setaf 3
-	echo "No SSH keys found, skipping Git config..."
+	echo -e "\nNo SSH keys found, or user skipped, skipping Git config..."
 	echo "You can set this up later with init/git."
 	tput sgr0
 fi
