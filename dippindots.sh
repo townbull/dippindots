@@ -11,7 +11,7 @@ tput setaf 3
 read -p "This will overwrite your existing dotfiles. Do you want to continue?. (y/n) " -n 1
 tput sgr0
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-	echo "\nExiting..."
+	echo -e "\nExiting..."
 	exit 1
 fi
 
@@ -19,7 +19,7 @@ fi
 
 # ===============  OSX  =================================
 tput setaf 4
-echo "\nChecking OS..."
+echo -e "\nChecking OS..."
 tput sgr0
 if [[ "$OSTYPE" =~ ^darwin ]]; then
 	tput setaf 2
@@ -83,7 +83,7 @@ fi
 
 # =============== BREWS =================================
 tput setaf 5
-echo "\nInstalling some more Homebrew goodies..."
+echo -e "\nInstalling some more Homebrew goodies..."
 echo "(this may take awhile)"
 tput sgr0
 
@@ -217,7 +217,7 @@ npm -g install jamjs
 
 # =============== TERMINAL =================================
 tput setaf 5
-echo "\nConfiguring Terminal..."
+echo -e "\nConfiguring Terminal..."
 tput sgr0
 
 cp ./assets/com.apple.Terminal.plist ~/Library/Preferences/
@@ -231,13 +231,13 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
   tput sgr0
   if [[ $REPLY =~ ^[Yy]$ ]]; then
 		tput setaf 2
-    echo "\nOk, running .osx"
+    echo -e "\nOk, running .osx"
 		tput sgr0
 
     sh ./init/osx
   else
 		tput setaf 4
-    echo "\nOk, skipping..."
+    echo -e "\nOk, skipping..."
 		tput sgr0
   fi 
 fi
