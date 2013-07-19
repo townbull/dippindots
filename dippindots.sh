@@ -110,6 +110,8 @@ if [[ ! "$(type -P rvm)" ]]; then
 
 	# Install RVM w/ Ruby
 	curl -L https://get.rvm.io | bash -s stable --ruby
+
+	source ~/.rvm/scripts/rvm
 else
 	tput setaf 2
   echo "RVM found! Moving on..."
