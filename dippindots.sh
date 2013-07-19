@@ -99,7 +99,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	tput sgr0
 else
 	tput setaf 3
-	echo "Skipping brews..."
+	echo -e "\nSkipping brews...\n"
 	tput sgr0
 fi
 
@@ -151,7 +151,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	sh ./init/gems
 else
 	tput setaf 3
-	echo "Skipping gems..."
+	echo -e "\nSkipping gems...\n"
 	tput sgr0
 fi
 
@@ -196,7 +196,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	rm -rf XVim
 else
 	tput setaf 3
-	echo "Skipping XVim..."
+	echo -e "\nSkipping XVim...\n"
 	tput sgr0
 fi
 
