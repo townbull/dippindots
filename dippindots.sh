@@ -294,7 +294,7 @@ tput sgr0
 pwd=$(pwd)
 
 # Symlink files
-sudo ln -sf $pwd/vim ~/.vim
+ln -sf $pwd/vim ~/.vim
 ln -sf $pwd/vim/vimrc ~/.vimrc
 ln -sf $pwd/dots/bash_profile ~/.bash_profile
 ln -sf $pwd/dots/bashrc ~/.bashrc
