@@ -14,7 +14,6 @@ brew install wget --enable-iri
 
 brew install tree
 brew install nmap
-brew install screen
 brew install gpg
 brew install dos2unix
 
