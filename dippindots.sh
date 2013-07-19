@@ -291,15 +291,16 @@ tput setaf 5
 echo "Symlinking dotfiles..."
 tput sgr0
 
+pwd=$(pwd)
 
 # Symlink files
-ln -sf ./vim ~/.vim
-ln -sf ./vim/vimrc ~/.vimrc
-ln -sf ./dots/bash_profile ~/.bash_profile
-ln -sf ./dots/bashrc ~/.bashrc
-ln -sf ./dots/inputrc ~/.inputrc
-ln -sf ./dots/screenrc ~/.screenrc
-ln -sf ./bin ~/.bin
+ln -sf $pwd/vim ~/.vim
+ln -sf $pwd/vim/vimrc ~/.vimrc
+ln -sf $pwd/dots/bash_profile ~/.bash_profile
+ln -sf $pwd/dots/bashrc ~/.bashrc
+ln -sf $pwd/dots/inputrc ~/.inputrc
+ln -sf $pwd/dots/screenrc ~/.screenrc
+ln -sf $pwd/bin ~/.bin
 
 
 
