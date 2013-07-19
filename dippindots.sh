@@ -293,6 +293,9 @@ tput sgr0
 
 pwd=$(pwd)
 
+# Clear out old files
+rm -rf ~/.vim
+
 # Symlink files
 ln -sf $pwd/vim ~/.vim
 ln -sf $pwd/vim/vimrc ~/.vimrc
