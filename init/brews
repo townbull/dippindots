@@ -16,6 +16,7 @@ brew install tree
 brew install nmap
 brew install gpg
 brew install dos2unix
+brew install git
 
 # Necessary for Vim Plugins
 brew install ctags
