@@ -61,9 +61,6 @@
 [submodule "vim/bundle/vimroom"]
 	path = vim/bundle/vimroom
 	url = https://github.com/mikewest/vimroom.git
-[submodule "vim/bundle/ultisnips"]
-	path = vim/bundle/ultisnips
-	url = https://github.com/SirVer/ultisnips.git
 [submodule "vim/bundle/futora"]
 	path = vim/bundle/futora
 	url = https://github.com/ftzeng/futora.git
