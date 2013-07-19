@@ -36,6 +36,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	# To bypass some symlink issues. Maybe too brute.
 	brew link --overwrite git
 
+    git config --global credential.helper osxkeychain
+
 	# So we can push without logging in
 	ssh -vT git@github.com
 
