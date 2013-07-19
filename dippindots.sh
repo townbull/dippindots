@@ -82,16 +82,28 @@ fi
 
 
 # =============== BREWS =================================
+
 tput setaf 5
-echo -e "\nInstalling some more Homebrew goodies..."
-echo "(this may take awhile)"
+read -p "Do you want install some brews? (y/n) " -n 1
 tput sgr0
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	tput setaf 5
+	echo -e "\nInstalling some more Homebrew goodies..."
+	echo "(this may take awhile)"
+	tput sgr0
 
-sh ./init/brews
+	sh ./init/brews
 
-tput setaf 2
-echo "Brewing complete! Moving on..."
-tput sgr0
+	tput setaf 2
+	echo "Brewing complete! Moving on..."
+	tput sgr0
+else
+	tput setaf 3
+	echo "Skipping brews..."
+	tput sgr0
+fi
+
+
 
 
 
@@ -129,10 +141,19 @@ fi
 
 # =============== GEMS =================================
 tput setaf 5
-echo "Installing some gems..."
+read -p "Do you want install some gems? (y/n) " -n 1
 tput sgr0
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	tput setaf 5
+	echo "Installing some gems..."
+	tput sgr0
 
-sh ./init/gems
+	sh ./init/gems
+else
+	tput setaf 3
+	echo "Skipping gems..."
+	tput sgr0
+fi
 
 
 
