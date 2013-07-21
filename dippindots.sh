@@ -170,10 +170,12 @@ pip install virtualenv
 
 # =============== VIM =================================
 tput setaf 5
-echo "Installing Homebrew Vim..."
+echo "Installing MacVim as system Vim..."
 tput sgr0
 
-brew install vim
+brew install macvim --override-system-vim
+brew linkapps
+brew link --overwrite macvim
 
 # Copy over necessary fonts
 cp "./assets/Inconsolata+for+Powerline.otf" ~/Library/Fonts

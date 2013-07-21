@@ -6,9 +6,6 @@ for file in ~/.dippindots/dots/{path,bash_prompt,exports,aliases,functions,extra
 done
 unset file
 
-# Load RVM
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 

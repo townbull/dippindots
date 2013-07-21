@@ -1,8 +1,8 @@
+# Load RVM
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
 # Add `~/.bin` to the `$PATH`
 export PATH="$HOME/.bin:$PATH"
-
-# Add Homebrews to the `$PATH`
-export PATH="/usr/local/bin:$PATH"
 
 # Use Homebrew's Python
 export PATH="/usr/local/share/python:$PATH"
@@ -12,3 +12,8 @@ export PATH="~/.aws:$PATH"
 
 # Add NPM
 export PATH="/usr/local/share/npm/bin:$PATH"
+
+# Add Homebrews to the `$PATH`
+# Keep this last so that /usr/local/bin is
+# at the beginning of your path.
+export PATH="/usr/local/bin:$PATH"
