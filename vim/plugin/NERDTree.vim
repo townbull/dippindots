@@ -5,6 +5,7 @@
 
 let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o$', '\~$']
 let NERDTreeHijackNetrw = 0
+let NERDTreeShowHidden=1
 
 augroup AuNERDTreeCmd
 autocmd AuNERDTreeCmd VimEnter * call s:CdIfDirectory(expand("<amatch>"))
