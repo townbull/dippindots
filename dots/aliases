@@ -33,6 +33,9 @@ alias s="subl ."
 alias o="open"
 alias oo="open ."
 
+# Clear all DS_Stores from the current directory and its subdirectories.
+alias killdsstores="find . -name '*.DS_Store' -type f -delete"
+
 # Easily clear Solr
 alias clearsolr="curl http://localhost:8983/solr/update --data '<delete><query>*:*</query></delete>' -H 'Content-type:text/xml; charset=utf-8'; curl http://localhost:8983/solr/update --data '<commit/>' -H 'Content-type:text/xml; charset=utf-8'"
 
