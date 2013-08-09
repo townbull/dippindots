@@ -17,6 +17,11 @@ brew install nmap
 brew install gpg
 brew install dos2unix
 brew install git
+brew install ffmpeg
+
+# Requires that you do:
+# export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
+brew install curl-ca-bundle
 
 # Necessary for Vim Plugins
 brew install ctags
