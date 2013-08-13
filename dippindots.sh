@@ -165,6 +165,7 @@ tput sgr0
 brew install python 	# Brew Python includes pip
 brew install python3
 pip install virtualenv
+pip3 install virtualenv
 
 
 
