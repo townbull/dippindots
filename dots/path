@@ -17,3 +17,6 @@ export PATH="/usr/local/share/npm/bin:$PATH"
 # Keep this last so that /usr/local/bin is
 # at the beginning of your path.
 export PATH="/usr/local/bin:$PATH"
+
+# Add /usr/local/sbin to path.
+export PATH="/usr/local/sbin:$PATH"
