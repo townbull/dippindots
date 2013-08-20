@@ -24,12 +24,14 @@ set noeol
 " Respect modeline in files
 "set modeline
 "set modelines=4
+"
 
 
 
 " ----------------------------------------------------------------------------
 " Colors
 " ----------------------------------------------------------------------------
+set t_Co=256
 set background=dark
 colorscheme futora
 
