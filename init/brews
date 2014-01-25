@@ -18,7 +18,10 @@ brew install gpg
 brew install dos2unix
 brew install git
 brew install ffmpeg
+
+# tmux (with vim copy paste support)
 brew install tmux
+brew install reattach-to-user-namespace --wrap-pbcopy-pbpaste && brew link reattach-to-user-namespace
 
 # Requires that you do:
 # export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
