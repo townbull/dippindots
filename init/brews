@@ -18,6 +18,7 @@ brew install gpg
 brew install dos2unix
 brew install git
 brew install ffmpeg
+brew install tmux
 
 # Requires that you do:
 # export SSL_CERT_FILE=/usr/local/opt/curl-ca-bundle/share/ca-bundle.crt
