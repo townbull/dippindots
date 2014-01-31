@@ -309,6 +309,9 @@ ln -sf $pwd/dots/screenrc ~/.screenrc
 ln -sf $pwd/bin ~/.bin
 ln -sf $pwd/dots/tmux.conf ~/.tmux.conf
 
+# Create an empty env file.
+sudo touch /etc/environment
+
 
 
 # =============== FIN! =================================
