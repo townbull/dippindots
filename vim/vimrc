@@ -16,6 +16,8 @@ set timeoutlen=100 				" Set timeoutlen to be sort, avoiding a lag
 set showcmd 					" Show the command as it's typed
 set shortmess=atI 				" Hide Vim intro message
 let mapleader="," 				" Change mapleader
+set wrap
+set textwidth=0 wrapmargin=0
 
 " Don’t add empty newlines at the end of files
 set binary
