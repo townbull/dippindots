@@ -88,3 +88,6 @@
 [submodule "vim/bundle/neocomplete"]
 	path = vim/bundle/neocomplete
 	url = https://github.com/Shougo/neocomplete.vim.git
+[submodule "vim/bundle/summerfruit256"]
+	path = vim/bundle/summerfruit256
+	url = https://github.com/ftzeng/summerfruit256.vim
