@@ -45,7 +45,7 @@ set number            			" Show line numbers
 set ruler             			" Show line and column number of cursor
 set nostartofline 				" Don't reset cursor to start of line when moving
 set cursorcolumn 				" Highlight current column
-set cursorline 					" Highlight current line
+set nocursorline 				" Don't highlight current line
 set scrolloff=3 				" Start scrolling three lines before border
 set showmatch 					" Show matching brackets
 if exists("&relativenumber")
