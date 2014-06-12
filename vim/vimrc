@@ -220,27 +220,27 @@ nmap <silent> <leader>ul :t.<CR>Vr=
 map <Down> gj
 map <Up> gk
 
-" Map Control-# to switch tabs
-map  <C-0> 0gt
-imap <C-0> <Esc>0gt
-map  <C-1> 1gt
-imap <C-1> <Esc>1gt
-map  <C-2> 2gt
-imap <C-2> <Esc>2gt
-map  <C-3> 3gt
-imap <C-3> <Esc>3gt
-map  <C-4> 4gt
-imap <C-4> <Esc>4gt
-map  <C-5> 5gt
-imap <C-5> <Esc>5gt
-map  <C-6> 6gt
-imap <C-6> <Esc>6gt
-map  <C-7> 7gt
-imap <C-7> <Esc>7gt
-map  <C-8> 8gt
-imap <C-8> <Esc>8gt
-map  <C-9> 9gt
-imap <C-9> <Esc>9gt
+" Map Leader-# to switch tabs
+map  <leader>0 0gt
+imap <leader>0 <Esc>0gt
+map  <leader>1 1gt
+imap <leader>1 <Esc>1gt
+map  <leader>2 2gt
+imap <leader>2 <Esc>2gt
+map  <leader>3 3gt
+imap <leader>3 <Esc>3gt
+map  <leader>4 4gt
+imap <leader>4 <Esc>4gt
+map  <leader>5 5gt
+imap <leader>5 <Esc>5gt
+map  <leader>6 6gt
+imap <leader>6 <Esc>6gt
+map  <leader>7 7gt
+imap <leader>7 <Esc>7gt
+map  <leader>8 8gt
+imap <leader>8 <Esc>8gt
+map  <leader>9 9gt
+imap <leader>9 <Esc>9gt
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
