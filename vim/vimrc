@@ -241,6 +241,7 @@ map  <leader>8 8gt
 imap <leader>8 <Esc>8gt
 map  <leader>9 9gt
 imap <leader>9 <Esc>9gt
+map gr gT
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
