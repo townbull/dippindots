@@ -17,6 +17,7 @@ brew install nmap
 brew install gpg
 brew install dos2unix
 brew install git
+brew install ghi
 brew install ffmpeg
 
 # tmux (with vim copy paste support)
