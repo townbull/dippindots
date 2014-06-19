@@ -79,12 +79,6 @@
 [submodule "vim/bundle/javascript"]
 	path = vim/bundle/javascript
 	url = https://github.com/pangloss/vim-javascript.git
-[submodule "vim/bundle/omnisharp"]
-	path = vim/bundle/omnisharp
-	url = https://github.com/nosami/Omnisharp.git
-[submodule "vim/bundle/dispatch"]
-	path = vim/bundle/dispatch
-	url = https://github.com/tpope/vim-dispatch.git
 [submodule "vim/bundle/neocomplete"]
 	path = vim/bundle/neocomplete
 	url = https://github.com/Shougo/neocomplete.vim.git
