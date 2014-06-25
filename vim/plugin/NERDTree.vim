@@ -3,7 +3,7 @@
 " ----------------------------------------------------------------------------
 " From Janus
 
-let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o$', '\~$', '__pycache__', '\.DS_Store$', '\.meta$', '\.swp$', '\.swo$']
+let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o$', '\~$', '__pycache__', '\.DS_Store$', '\.meta$', '\.swp$', '\.swo$', '.sass-cache', 'node_modules']
 let NERDTreeHijackNetrw = 0
 let NERDTreeShowHidden=1
 
