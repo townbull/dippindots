@@ -6,6 +6,11 @@ for file in ~/.dippindots/dots/{path,bash_prompt,exports,aliases,functions,extra
 done
 unset file
 
+# You can store temporary aliases in ~/.temp_aliases.
+if [ -f ~/.temp_aliases ]; then
+    source ~/.temp_aliases
+fi
+
 source /etc/environment
 
 # Case-insensitive globbing (used in pathname expansion)
