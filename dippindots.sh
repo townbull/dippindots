@@ -290,6 +290,10 @@ ln -sf $pwd/dots/tmux.conf ~/.tmux.conf
 echo "Creating an empty environment variables file at /etc/environment..."
 sudo touch /etc/environment
 
+# Create an empty temporary alias file.
+echo "Creating an empty temporary alias file at ~/.temp_aliases"
+sudo touch ~/.temp_aliases
+
 
 
 # =============== FIN! =================================
