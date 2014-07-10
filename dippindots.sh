@@ -58,7 +58,7 @@ if [[ ! "$(type -P brew)" ]]; then
 	tput sgr0
 
 	# Install Homebrew
-	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+	ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 
 else
 	tput setaf 2
@@ -174,7 +174,7 @@ tput setaf 5
 echo "Installing MacVim as system Vim..."
 tput sgr0
 
-brew install macvim --override-system-vim
+brew install macvim --with-features=huge --with-lua --with-python3 --override-system-vim
 brew linkapps
 brew link --overwrite macvim
 
@@ -256,7 +256,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     echo -e "\nOk, running .osx"
 		tput sgr0
 
-    sh ./init/osx
+    sudo sh ./init/osx
   else
 		tput setaf 4
     echo -e "\nOk, skipping..."

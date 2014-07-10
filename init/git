@@ -4,17 +4,12 @@
 tput setaf 4
 echo "Checking for Git..."
 tput sgr0
-if [[ ! "$(type -P git)" ]]; then
-	tput setaf 5
-	echo "Installing Git"
-	tput sgr0
-	brew install git
-	brew link --overwrite git
-else
-	tput setaf 2
-    echo "Git found! Moving on..."
-	tput sgr0
-fi
+
+tput setaf 5
+echo "Installing Git"
+tput sgr0
+brew install git
+brew link --overwrite git
 
 # Configure Git
 # Requires your SSH keys!
@@ -23,7 +18,7 @@ read -p "Do you want to setup Github SSH access? This requires that your SSH key
 tput sgr0
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     # If gitconfig doesn't exist, set it up.
-    if [ ! -f "~/.gitconfig" ]; then
+    if [ ! -f ~/.gitconfig ]; then
         echo -e "\nNow we need to configure git a bit."
         tput setaf 5
         echo "What's your git email?"

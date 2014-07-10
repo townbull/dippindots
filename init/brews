@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# So brew linking works.
+sudo chown -R $USER /usr/local/include
+sudo chown -R $USER /usr/local/lib
+
 # Make sure we’re using the latest Homebrew
 brew update
 
