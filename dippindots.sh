@@ -287,6 +287,7 @@ ln -sf $pwd/bin ~/.bin
 ln -sf $pwd/dots/tmux.conf ~/.tmux.conf
 
 # Create an empty env file.
+echo "Creating an empty environment variables file at /etc/environment..."
 sudo touch /etc/environment
 
 
