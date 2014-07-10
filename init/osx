@@ -28,6 +28,9 @@ defaults write com.apple.systemuiserver menuExtras -array \
 	"/System/Library/CoreServices/Menu Extras/Battery.menu" \
 	"/System/Library/CoreServices/Menu Extras/Clock.menu"
 
+# Set highlight color to bluish grey
+defaults write NSGlobalDomain AppleHighlightColor -string "0.780400 0.815700 0.858800"
+
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
 
