@@ -233,30 +233,7 @@ else
   tput sgr0
 fi
 
-
-if [[ ! "$(type -P grunt)" ]]; then
-	tput setaf 5
-	echo "Installing Grunt (grunt-cli)..."
-	tput sgr0
-
-	npm -g install grunt-cli
-else
-  tput setaf 2
-  echo "Grunt found! Moving on..."
-  tput sgr0
-fi
-
-if [[ ! "$(type -P jam)" ]]; then
-	tput setaf 5
-	echo "Installing JamJS..."
-	tput sgr0
-
-	npm -g install jamjs
-else
-  tput setaf 2
-  echo "Jam found! Moving on..."
-  tput sgr0
-fi
+sh ./init/npm
 
 
 
