@@ -1,3 +1,2 @@
 set background=light
-colorscheme summerfruit256
 set nocursorcolumn
