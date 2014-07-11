@@ -282,7 +282,6 @@ ln -sf $pwd/vim/vimrc ~/.vimrc
 ln -sf $pwd/dots/bash_profile ~/.bash_profile
 ln -sf $pwd/dots/bashrc ~/.bashrc
 ln -sf $pwd/dots/inputrc ~/.inputrc
-ln -sf $pwd/dots/screenrc ~/.screenrc
 ln -sf $pwd/bin ~/.bin
 ln -sf $pwd/dots/tmux.conf ~/.tmux.conf
 

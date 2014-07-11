@@ -1,8 +1,3 @@
 alias p="cd ~/Desktop/projects; ll"
 alias work="cd ~/Desktop/work; ll"
-alias ideo="cd ~/Desktop/work/ideo; ll"
 alias pi="ssh pi@raspberrypi"
-
-alias current="cd ~/Desktop/work/ideo/carson/prototype"
-alias goodmorning="current; grunt"
-alias go="current; vi ."
