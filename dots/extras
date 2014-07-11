@@ -3,3 +3,4 @@ alias work="cd ~/Desktop/work; ll"
 alias pi="ssh pi@raspberrypi"
 
 alias todo="vi ~/Desktop/STUFF/common/to_do.md"
+alias common="vi -p ~/Desktop/STUFF/common/*.md"
