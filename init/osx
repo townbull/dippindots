@@ -76,6 +76,9 @@ sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo Hos
 # Restart automatically if the computer freezes
 systemsetup -setrestartfreeze on
 
+# Hide system sounds (trash emptying, screenshot)
+defaults write com.apple.systemsound "com.apple.sound.uiaudio.enabled" -int 0
+
 # Set a custom wallpaper image. `DefaultDesktop.jpg` is already a symlink, and
 # all wallpapers are in `/Library/Desktop Pictures/`. The default is `Wave.jpg`.
 #rm -rf ~/Library/Application Support/Dock/desktoppicture.db
