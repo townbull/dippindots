@@ -35,3 +35,9 @@ function phpserver() {
 		sleep 1 && open "http://${ip}:${port}/" &
 		php -S "${ip}:${port}ip"
 }
+
+# Activate a Python virtualenv by name.
+# Assumes that envs are stored in ~/env/.
+function activate() {
+    source ~/env/$1/bin/activate
+}
