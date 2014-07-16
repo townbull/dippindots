@@ -85,3 +85,6 @@
 [submodule "vim/bundle/summerfruit256"]
 	path = vim/bundle/summerfruit256
 	url = https://github.com/ftzeng/summerfruit256.vim
+[submodule "vim/bundle/easymotion"]
+	path = vim/bundle/easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git
