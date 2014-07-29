@@ -1,10 +1,10 @@
 # DippinDots
 
-These are my personal (OSX) dotfiles. Please feel free to use/modify them as
+These are my personal dotfiles for OSX and Debian (in particular, !#/Crunchbang). Please feel free to use/modify them as
 you like!
 
-Before you begin, you should have XCode and the XCode Command Line Tools
-installed. Make sure you open XCode at least once to agree to the
+If you're on OSX, you should have XCode and the XCode Command Line Tools
+installed before you begin. Make sure you open XCode at least once to agree to the
 license.
 
 You should also have your Github SSH keys (`id_rsa` and `id_rsa.pub`) in
