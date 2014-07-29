@@ -128,4 +128,9 @@ if [[ "$(uname -a)" == *crunchbang* ]]; then
     # Terminator config
     mv ~/.config/terminator/config ~/.config/terminator/config.old
     ln -s $DIR/dots/terminator ~/.config/terminator/config
+
+    # Openbox theme (Numix)
+    git clone https://github.com/shimmerproject/Numix ~/.themes/Numix
+    echo "You will have to manually set this with Settings > Openbox > GUI Config Tool and select the theme."
+    echo "Same in Settings > User Interface Settings."
 fi
