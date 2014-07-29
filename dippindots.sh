@@ -73,7 +73,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	echo "Installing some gems..."
 	tput sgr0
 
-	sh ./init/gems
+	bash ./init/gems
 else
 	tput setaf 3
 	echo -e "\nSkipping gems...\n"
