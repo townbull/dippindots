@@ -37,7 +37,7 @@ fi
 
 
 # =============== GIT =================================
-sh ./init/git
+bash ./init/git
 
 # If Git isn't installed by now, something messed up...here's the contigency plan.
 if [[ ! "$(type -P git)" ]]; then
@@ -60,7 +60,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	echo "(this may take awhile)"
 	tput sgr0
 
-	sh ./init/brews
+	bash ./init/brews
 
 	tput setaf 2
 	echo "Brewing complete! Moving on..."
@@ -163,7 +163,7 @@ else
   tput sgr0
 fi
 
-sh ./init/npm
+bash ./init/npm
 
 
 
@@ -186,7 +186,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     echo -e "\nOk, running .osx"
 		tput sgr0
 
-    sudo sh ./init/osx
+    sudo bash ./init/osx
   else
 		tput setaf 4
     echo -e "\nOk, skipping..."

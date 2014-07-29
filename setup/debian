@@ -1,13 +1,14 @@
 #!/bin/bash
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+# this script's directory and up one.
+DIR=.."$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # =============== DEPENDENCIES =================================
-sudo apt-get install python g++ make wget git
+sudo apt-get install python g++ make wget git -y
 
 
 # =============== GIT =================================
-sh ./init/git
+bash ./init/git
 
 # If Git isn't installed by now, something messed up...here's the contigency plan.
 if [[ ! "$(type -P git)" ]]; then
@@ -26,7 +27,7 @@ echo -e "\nInstalling some more goodies..."
 echo "(this may take awhile)"
 tput sgr0
 
-sh ./init/apt
+bash ./init/apt
 
 tput setaf 2
 echo "Package installation complete! Moving on..."
@@ -34,7 +35,7 @@ tput sgr0
 
 
 # =============== RUBY & RUBYGEMS =================================
-sudo apt-get install ruby rubygems ruby-dev
+sudo apt-get install ruby rubygems ruby-dev -y
 
 
 # =============== PYTHON & PIP =================================
@@ -42,29 +43,9 @@ tput setaf 5
 echo "Installing Python2, Python3, pip, and virtualenv...."
 tput sgr0
 
-sudo apt-get install python3 python3-pip python-pip
+sudo apt-get install python3 python3-pip python-pip -y
 sudo pip install virtualenv
 sudo pip-3.2 install virtualenv
-
-
-
-# =============== VIM =================================
-tput setaf 5
-echo "Installing Vim..."
-tput sgr0
-
-mkdir /tmp/vim && cd $_
-wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2 
-tar xvjf vim-7.4.tar.bz2
-cd vim*
-./configure --with-features=huge --enable-luainterp=yes --enable-pythoninterp=yes --enable-python3interp=yes
-make && sudo make install
-cd $DIR
-
-# Copy over necessary fonts
-cp "./assets/Inconsolata+for+Powerline.otf" ~/.fonts
-cp "./assets/Inconsolata-dz.otf" ~/.fonts
-
 
 
 
@@ -74,7 +55,7 @@ if [[ ! "$(type -P fontcustom)" ]]; then
   echo "Installing fontcustom (http://fontcustom.com/)..."
   tput sgr0
 
-  sudo apt-get install fontforge ttfautohint
+  sudo apt-get install fontforge ttfautohint -y
   cd /tmp/
   wget http://people.mozilla.com/~jkew/woff/woff-code-latest.zip
   unzip woff-code-latest.zip -d sfnt2woff && cd sfnt2woff && make && sudo mv sfnt2woff /usr/local/bin/
@@ -106,7 +87,26 @@ else
   tput sgr0
 fi
 
-sh ./init/npm
+sudo bash ./init/npm
+
+
+# =============== VIM =================================
+tput setaf 5
+echo "Installing Vim..."
+tput sgr0
+
+mkdir /tmp/vim && cd $_
+wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2 
+tar xvjf vim-7.4.tar.bz2
+cd vim*
+./configure --with-features=huge --enable-luainterp=yes --enable-pythoninterp=yes --enable-python3interp=yes
+make && sudo make install
+cd $DIR
+
+# Copy over necessary fonts
+cp "./assets/Inconsolata+for+Powerline.otf" ~/.fonts
+cp "./assets/Inconsolata-dz.otf" ~/.fonts
+
 
 
 # =============== CONFIGURATION =================================
@@ -117,5 +117,6 @@ if [[ "$(uname -a)" == *crunchbang* ]]; then
     echo -e '\n## Mouse Speed\nxset m 5 10 &' >> ~/.config/openbox/autostart
 
     # Terminator config
+    mv ~/.config/terminator/config ~/.config/terminator/config.old
     ln -s $pwd/dots/terminator ~/.config/terminator/config
 fi
