@@ -16,6 +16,13 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 fi
 
 
+# =============== SUBMODULES =================================
+tput setaf 5
+echo "Installing and updating git submodules..."
+tput sgr0
+git submodule init && git submodule update
+git submodule foreach git pull origin master
+
 
 # ===============  OS SETUP  ================================
 tput setaf 4

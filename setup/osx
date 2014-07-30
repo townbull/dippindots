@@ -112,6 +112,10 @@ brew link --overwrite macvim
 cp "./assets/Inconsolata+for+Powerline.otf" ~/Library/Fonts
 cp "./assets/Inconsolata-dz.otf" ~/Library/Fonts
 
+# Build vimproc
+cd vim/bundle/vimproc/
+make
+cd $DIR
 
 
 # =============== XVIM =================================

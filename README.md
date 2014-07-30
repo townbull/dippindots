@@ -21,20 +21,18 @@ $ chmod 600 ~/.ssh/config
 ```bash
 $ git clone https://github.com/ftzeng/dippindots.git ~/.dippindots
 $ cd ~/.dippindots
-$ git submodule init && git submodule update
 $ ./dippindots.sh
 ```
 
 Or, in one long line:
 ```bash
-$ git clone https://github.com/ftzeng/dippindots.git ~/.dippindots && cd ~/.dippindots && git submodule init && git submodule update && ./dippindots.sh
+$ git clone https://github.com/ftzeng/dippindots.git ~/.dippindots && cd ~/.dippindots && ./dippindots.sh
 ```
 
 To update the git submodules:
 ```bash
 $ git submodule foreach git pull origin master
 ```
-You should probably run this at least once after you set things up.
 
 ## Credits ##
 Credit for the foundation of these dotfiles goes to:

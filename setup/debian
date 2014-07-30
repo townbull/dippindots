@@ -116,6 +116,11 @@ cp "./assets/Inconsolata-dz.otf" ~/.fonts
 # Rebuild font cache
 fc-cache -fv
 
+# Build vimproc
+cd vim/bundle/vimproc/
+make
+cd $DIR
+
 
 
 # =============== CONFIGURATION =================================
