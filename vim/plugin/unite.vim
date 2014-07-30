@@ -10,6 +10,7 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '\.svn/',
       \ '\.pyc/',
       \ '\.pyo/',
+      \ 'node_modules/',
       \ ], '\|'))
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
