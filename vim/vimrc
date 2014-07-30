@@ -48,6 +48,7 @@ set cursorcolumn 				" Highlight current column
 set cursorline 				    " Highlight current line
 set scrolloff=3 				" Start scrolling three lines before border
 set showmatch 					" Show matching brackets
+let &showbreak='↪ '             " Show this at the start of wrapped lines
 if exists("&relativenumber")
 	set relativenumber 			" Use relative line numbering
 	au BufReadPost * set relativenumber
@@ -242,6 +243,8 @@ imap <leader>8 <Esc>8gt
 map  <leader>9 9gt
 imap <leader>9 <Esc>9gt
 map gr gT
+nnoremap [t :tabprevious<cr>
+nnoremap ]t :tabnext<cr>
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
@@ -260,6 +263,8 @@ noremap <leader>W :w !sudo tee % > /dev/null<CR>
 " Buffers
 " Map Ctrl+l to toggle buffer list
 :nmap <silent> <C-l> :ls<CR>
+nnoremap [b :bprevious<cr>
+nnoremap ]b :bnext<cr>
 
 " NERDComment toggle to Ctrl+x
 :vmap <silent> <C-x> :call NERDComment(0,"toggle")<CR>
