@@ -127,8 +127,15 @@ cd $DIR
 
 # ~~~~ CRUNCHBANG SPECIFIC ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 if [[ "$(uname -a)" == *crunchbang* ]]; then
-    # Better mouse speed
-    echo -e '\n## Mouse Speed\nxset m 5 10 &' >> ~/.config/openbox/autostart
+cat >> ~/.config/openbox/autostart <<EOL
+
+## Mousespeed
+xset m 5 10 &
+
+## Resolution for MBPr
+xrandr -s 1440x900 -r60 &
+xrandr --dpi 220 &
+EOL
 
     # Terminator config
     mv ~/.config/terminator/config ~/.config/terminator/config.old
