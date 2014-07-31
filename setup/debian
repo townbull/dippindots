@@ -125,8 +125,6 @@ cd $DIR
 
 # =============== CONFIGURATION =================================
 
-# ~~~~ CRUNCHBANG SPECIFIC ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-if [[ "$(uname -a)" == *crunchbang* ]]; then
 cat >> ~/.config/openbox/autostart <<EOL
 
 ## Mousespeed
@@ -137,12 +135,11 @@ xrandr -s 1440x900 -r60 &
 xrandr --dpi 220 &
 EOL
 
-    # Terminator config
-    mv ~/.config/terminator/config ~/.config/terminator/config.old
-    ln -s $DIR/dots/terminator ~/.config/terminator/config
+# Terminator config
+mv ~/.config/terminator/config ~/.config/terminator/config.old
+ln -s $DIR/dots/terminator ~/.config/terminator/config
 
-    # Openbox theme (Numix)
-    git clone https://github.com/shimmerproject/Numix ~/.themes/Numix
-    echo "You will have to manually set this with Settings > Openbox > GUI Config Tool and select the theme."
-    echo "Same in Settings > User Interface Settings."
-fi
+# Openbox theme (Numix)
+git clone https://github.com/shimmerproject/Numix ~/.themes/Numix
+echo "You will have to manually set this with Settings > Openbox > GUI Config Tool and select the theme."
+echo "Same in Settings > User Interface Settings."
