@@ -138,6 +138,7 @@ EOL
 # Terminator config
 mv ~/.config/terminator/config ~/.config/terminator/config.old
 ln -s $DIR/dots/terminator ~/.config/terminator/config
+ln -s $DIR/dots/Xdefaults ~/.Xdefaults
 
 # Openbox theme (Numix)
 git clone https://github.com/shimmerproject/Numix ~/.themes/Numix
