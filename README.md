@@ -17,7 +17,7 @@ $ chmod 600 ~/.ssh/id_rsa
 $ chmod 600 ~/.ssh/config
 ```
 
-## Usage ##
+## Usage
 ```bash
 $ git clone https://github.com/ftzeng/dippindots.git ~/.dippindots
 $ cd ~/.dippindots
@@ -34,7 +34,13 @@ To update the git submodules:
 $ git submodule foreach git pull origin master
 ```
 
-## Credits ##
+## Notes
+If you've setup SSH access to GitHub but still have issues pushing
+to GitHub repos, you may need to edit: `.git/config` and change the
+`[remote "origin"]` `url` value to the format:
+`git@github.com:username/repo.git`.
+
+## Credits
 Credit for the foundation of these dotfiles goes to:
 * [Mathias Bynen](http://mths.be/dotfiles)
 * [Ben Alman](https://github.com/cowboy/dotfiles)
