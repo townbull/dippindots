@@ -4,7 +4,7 @@
 sudo apt-get update
 sudo apt-get upgrade
 
-sudo apt-get install dos2unix ffmpeg tmux kupfer -y
+sudo apt-get install dos2unix ffmpeg tmux kupfer dnsutils -y
 
 # Browsers
 sudo apt-get remove iceweasel -y

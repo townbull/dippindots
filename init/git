@@ -31,11 +31,13 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         printf "\n[user]\n\temail = $email\n\tname = $name" >> ~/.gitconfig
     fi
 
-	# To bypass some symlink issues. Maybe too brute.
-	brew link --overwrite git
+    if [[ "$OSTYPE" =~ ^darwin ]]; then
+        # To bypass some symlink issues. Maybe too brute.
+        brew link --overwrite git
+        git config --global credential.helper osxkeychain
+    fi
 
     git config --global push.default simple
-    git config --global credential.helper osxkeychain
 
 	# So we can push without logging in
 	ssh -vT git@github.com
