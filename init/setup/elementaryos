@@ -34,7 +34,9 @@ sudo apt-get install -y \
     # Spreadsheet calculator
     sc \
     # Alfred/Quicksilver-like launcher
-    gnome-do
+    gnome-do \
+    # Colorpicker
+    gpick
 
 # And remove others.
 sudo apt-get purge empathy -y
