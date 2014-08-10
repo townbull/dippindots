@@ -190,7 +190,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     echo -e "\nOk, running .osx"
 		tput sgr0
 
-    sudo bash ./init/osx
+    sudo bash ./init/setup/osx
   else
 		tput setaf 4
     echo -e "\nOk, skipping..."

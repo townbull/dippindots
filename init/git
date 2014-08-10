@@ -8,8 +8,13 @@ tput sgr0
 tput setaf 5
 echo "Installing Git"
 tput sgr0
-brew install git
-brew link --overwrite git
+
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+    brew install git
+    brew link --overwrite git
+else
+    sudo apt-get install git -y
+fi
 
 # Configure Git
 # Requires your SSH keys!

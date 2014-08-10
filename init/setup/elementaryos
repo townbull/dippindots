@@ -1,0 +1,86 @@
+#!/bin/bash
+
+# See http://www.binarytides.com/better-elementary-os-luna/
+# for additional options.
+
+# Add the Spotify repository.
+sudo apt-add-repository "deb http://repository.spotify.com stable non-free"
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
+
+# Add the BTSync repository.
+sh -c "$(curl -fsSL http://debian.yeasoft.net/add-btsync-repository.sh)"
+
+# Add the Zeal repositories.
+sudo add-apt-repository ppa:jerzy-kozera/zeal-ppa
+sudo add-apt-repository ppa:ubuntu-sdk-team/ppa
+
+# Update the repositories.
+sudo apt-get update
+
+# Install some cool apps :D
+sudo apt-get install -y \
+    chromium-browser \
+    deluge \
+    pidgin \
+    vlc \
+    blender \
+    birdie \
+    gimp \
+    inkscape \
+    spotify-client \
+    btsync-gui \
+    # Offline documentation
+    zeal \
+    # Spreadsheet calculator
+    sc \
+    # Alfred/Quicksilver-like launcher
+    gnome-do
+
+# And remove others.
+sudo apt-get purge empathy -y
+
+# TrueCrypt 7.1a.
+cd /tmp
+wget https://github.com/AuditProject/truecrypt-verified-mirror/blob/master/Linux/truecrypt-7.1a-linux-x64.tar.gz?raw=true
+tar xvzf truecrypt*
+./truecrypt-7.1a-setup-x64
+cd $DIR
+
+# Conky
+sudo apt-get install conky-all -y
+sudo ln -s $DIR
+sudo ln -s ~/.conky/conkyrc ~/.conkyrc
+
+# This repository provides a lot of extra ElementaryOS packages.
+sudo apt-add-repository ppa:versable/elementary-update -y
+sudo apt-get update
+
+# Some extra settings, available in System Settings > Tweaks.
+sudo apt-get install elementary-tweaks
+
+# Some extra themes, accessible in the Tweaks panel.
+sudo apt-get install elementary-.*-theme
+
+# Spotlight-like universal search bar.
+sudo apt-get install indicator-synapse
+
+# Show hidden applications in System Settings > Startup Applications.
+sudo sed -i 's/NoDisplay=true/NoDisplay=false/g' /etc/xdg/autostart/*.desktop
+
+
+# Disable bluetooth and hide the menubar icon.
+gsettings set com.canonical.indicator.bluetooth visible false
+rfkill block bluetooth
+
+# Disable the audible bell.
+gsettings set org.gnome.desktop.wm.preferences audible-bell false
+
+# Pantheon Terminal colors.
+gsettings set org.pantheon.terminal.settings foreground "#9D9F9D"
+gsettings set org.pantheon.terminal.settings background "#F8F6F4"
+gsettings set org.pantheon.terminal.settings cursor-color "#FFE230"
+gsettings set org.pantheon.terminal.settings opacity 100
+gsettings set org.pantheon.terminal.settings font "Inconsolata-dz Medium 10"
+gsettings set org.pantheon.terminal.settings font "utf-8"
+gsettings set org.pantheon.terminal.settings palette "#696F77:#F33B23:#58D2A0:#E9D04D:#29AED7:#C678E6:#34BFAC:#C4C7C4"
+

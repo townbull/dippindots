@@ -1,0 +1,20 @@
+#!/bin/bash
+
+sudo apt-get remove iceweasel -y
+sudo apt-get install kupfer chromium -y
+
+cat >> ~/.config/openbox/autostart <<EOL
+
+## Mousespeed
+xset m 5 10 &
+EOL
+
+# Terminator config
+mv ~/.config/terminator/config ~/.config/terminator/config.old
+ln -s $DIR/dots/crunchbang/terminator ~/.config/terminator/config
+ln -s $DIR/dots/crunchbang/Xdefaults ~/.Xdefaults
+
+# Openbox theme (Numix)
+git clone https://github.com/shimmerproject/Numix ~/.themes/Numix
+echo "You will have to manually set this with Settings > Openbox > GUI Config Tool and select the theme."
+echo "Same in Settings > User Interface Settings."
