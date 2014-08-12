@@ -4,15 +4,18 @@
 # for additional options.
 
 # Add the Spotify repository.
-sudo apt-add-repository "deb http://repository.spotify.com stable non-free"
+sudo add-apt-repository "deb http://repository.spotify.com stable non-free" -y
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
 
 # Add the BTSync repository.
 sh -c "$(curl -fsSL http://debian.yeasoft.net/add-btsync-repository.sh)"
 
 # Add the Zeal repositories.
-sudo add-apt-repository ppa:jerzy-kozera/zeal-ppa
-sudo add-apt-repository ppa:ubuntu-sdk-team/ppa
+sudo add-apt-repository ppa:jerzy-kozera/zeal-ppa -y
+sudo add-apt-repository ppa:ubuntu-sdk-team/ppa -y
+
+# Add the Netflix Desktop repository.
+sudo add-apt-repository ppa:pipelight/stable -y
 
 # Update the repositories.
 sudo apt-get update
@@ -29,14 +32,15 @@ sudo apt-get install -y \
     inkscape \
     spotify-client \
     btsync-gui \
+    netflix-desktop \
     # Offline documentation
     zeal \
     # Spreadsheet calculator
     sc \
-    # Alfred/Quicksilver-like launcher
-    gnome-do \
     # Colorpicker
-    gpick
+    gpick \
+    # App launcher (Slingshot) customization
+    alacarte
 
 # And remove others.
 sudo apt-get purge empathy -y
