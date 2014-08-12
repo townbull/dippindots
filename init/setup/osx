@@ -259,6 +259,13 @@ file=/Applications/Dropbox.app/Contents/Resources/check.icns
 [ -e "$file" ] && mv -f "$file" "$file.bak"
 unset file
 
+# Hide a bunch of apps I wish I could remove.
+for app in Stickies Game\ Center iBooks DVD\ Player Dashboard Chess Contacts Time\ Machine Reminders Photo\ Booth Mission\ Control FaceTime Messages Launchpad Notes iTunes Maps Dictionary Calculator Automator App\ Store Image\ Capture
+do
+    sudo chflags hidden "/Applications/$app.app/"
+done
+
+
 ###############################################################################
 # Dock, Dashboard, & hot corners                                              #
 ###############################################################################
