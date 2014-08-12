@@ -35,3 +35,6 @@ else
   echo "Yeoman found! Moving on..."
   tput sgr0
 fi
+
+# For vim-instant-markdown
+npm -g install instant-markdown-d

@@ -2,3 +2,7 @@
 
 gem install rake
 gem install sass
+
+# For vim-instant-markdown
+gem install pygments.rb
+gem install redcarpet
