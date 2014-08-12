@@ -37,4 +37,4 @@ else
 fi
 
 # For vim-instant-markdown
-npm -g install instant-markdown-d
+npm -g install git+https://github.com/ftzeng/instant-markdown-d.git
