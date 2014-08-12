@@ -21,7 +21,8 @@ sudo add-apt-repository ppa:pipelight/stable -y
 sudo apt-get update
 
 # Install some cool apps :D
-sudo apt-get install -y \
+sudo apt-get install \
+    --no-install-recommends \
     chromium-browser \
     deluge \
     pidgin \
@@ -40,10 +41,14 @@ sudo apt-get install -y \
     # Colorpicker
     gpick \
     # App launcher (Slingshot) customization
-    alacarte
+    alacarte \
+    -y
 
 # And remove others.
 sudo apt-get purge empathy -y
+sudo apt-get purge midori-granite -y
+sudo apt-get purge brasero -y
+sudo apt-get purge rhythmbox -y
 
 # TrueCrypt 7.1a.
 cd /tmp
@@ -62,13 +67,13 @@ sudo apt-add-repository ppa:versable/elementary-update -y
 sudo apt-get update
 
 # Some extra settings, available in System Settings > Tweaks.
-sudo apt-get install elementary-tweaks
+sudo apt-get install elementary-tweaks -y
 
 # Some extra themes, accessible in the Tweaks panel.
-sudo apt-get install elementary-.*-theme
+sudo apt-get install elementary-.*-theme -y
 
 # Spotlight-like universal search bar.
-sudo apt-get install indicator-synapse
+sudo apt-get install indicator-synapse -y
 
 # Show hidden applications in System Settings > Startup Applications.
 sudo sed -i 's/NoDisplay=true/NoDisplay=false/g' /etc/xdg/autostart/*.desktop

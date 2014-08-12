@@ -5,7 +5,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
 
 # =============== DEPENDENCIES =================================
 sudo apt-get update
-sudo apt-get upgrade
+sudo apt-get upgrade -y
 sudo apt-get install python g++ make wget git libncurses5-dev -y
 
 
@@ -68,7 +68,7 @@ if [[ ! "$(type -P fontcustom)" ]]; then
       tar xvzf ttfautohint-0.97.tar.gz
       cd ttfautohint-0.97/
       ./configure
-      make && sudo make install
+      make -s && sudo make install
   else
       sudo apt-get install ttfautohint -y
   fi
@@ -76,7 +76,7 @@ if [[ ! "$(type -P fontcustom)" ]]; then
   sudo apt-get install fontforge -y
   cd /tmp/
   wget http://people.mozilla.com/~jkew/woff/woff-code-latest.zip
-  unzip woff-code-latest.zip -d sfnt2woff && cd sfnt2woff && make && sudo mv sfnt2woff /usr/local/bin/
+  unzip woff-code-latest.zip -d sfnt2woff && cd sfnt2woff && make -s && sudo mv sfnt2woff /usr/local/bin/
   sudo gem install fontcustom
   cd $DIR
 else
@@ -97,7 +97,7 @@ if [[ ! "$(type -P node)" ]]; then
   wget -N http://nodejs.org/dist/node-latest.tar.gz
   tar xzvf node-latest.tar.gz && cd `ls -rd node-v*`
   ./configure
-  sudo make install
+  sudo make install -s
   cd $DIR
 else
   tput setaf 2
@@ -121,7 +121,7 @@ wget ftp://ftp.ca.vim.org/pub/vim/unix/vim-7.4.tar.bz2
 tar xvjf vim-7.4.tar.bz2
 cd vim*
 ./configure --with-features=huge --enable-luainterp=yes --enable-pythoninterp=yes --enable-python3interp=yes --enable-gui=gtk2 --with-x --with-lua-prefix=/usr
-make && sudo make install
+make -s && sudo make install
 cd $DIR
 
 # Overwrite vi
@@ -137,7 +137,7 @@ fc-cache -fv
 
 # Build vimproc
 cd vim/bundle/vimproc/
-make
+make -s
 cd $DIR
 
 
