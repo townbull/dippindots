@@ -22,10 +22,10 @@ sudo apt-get update
 # sc        -- spreadsheet calculator
 # gpick     -- colorpicker
 # alacarte  -- slingshot (app launcher) customization
-sudo apt-get install --no-install-recommends --yes chromium-browser deluge pidgin vlc blender gimp inkscape spotify-client btsync-gui netflix-desktop zeal sc gpick alacarte
+sudo apt-get install --no-install-recommends --yes chromium-browser deluge pidgin vlc blender gimp inkscape spotify-client btsync-gui netflix-desktop zeal sc gpick
 
 # And remove others.
-sudo apt-get purge gnome-mines gnome-sudoku simple-scan transmission-gtk parole gmusicbrowser printer-driver-foo2zjs-common xfburn -y
+sudo apt-get purge gnome-mines gnome-sudoku simple-scan transmission-gtk parole gmusicbrowser printer-driver-foo2zjs-common xfburn gnumeric abiword -y
 
 # TrueCrypt 7.1a.
 cd /tmp
@@ -46,6 +46,6 @@ sudo sed -i 's/NoDisplay=true/NoDisplay=false/g' /etc/xdg/autostart/*.desktop
 
 # Disable bluetooth and hide the menubar icon.
 sudo rfkill block bluetooth
-mkdir ~./config/autostart
+mkdir ~/.config/autostart
 cp /etc/xdg/autostart/blueman.desktop ~/.config/autostart
 echo "Hidden=true" | tee -a ~/.config/autostart/blueman.desktop
