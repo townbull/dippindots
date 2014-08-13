@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# Add the Spotify repository.
+sudo add-apt-repository "deb http://repository.spotify.com stable non-free" -y
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
+
+# Add the BTSync repository.
+sh -c "$(curl -fsSL http://debian.yeasoft.net/add-btsync-repository.sh)"
+
+# Add the Zeal repositories.
+sudo add-apt-repository ppa:jerzy-kozera/zeal-ppa -y
+sudo add-apt-repository ppa:ubuntu-sdk-team/ppa -y
+
+# Add the Netflix Desktop repository.
+sudo add-apt-repository ppa:pipelight/stable -y
+
+# Update the repositories.
+sudo apt-get update
+
+# Install some cool apps :D
+# zeal      -- offline documentation
+# sc        -- spreadsheet calculator
+# gpick     -- colorpicker
+# alacarte  -- slingshot (app launcher) customization
+sudo apt-get install --no-install-recommends --yes chromium-browser deluge pidgin vlc blender gimp inkscape spotify-client btsync-gui netflix-desktop zeal sc gpick alacarte
+
+# And remove others.
+sudo apt-get purge gnome-mines gnome-sudoku simple-scan transmission-gtk parole gmusicbrowser printer-driver-foo2zjs-common xfburn -y
+
+# TrueCrypt 7.1a.
+cd /tmp
+wget https://github.com/AuditProject/truecrypt-verified-mirror/blob/master/Linux/truecrypt-7.1a-linux-x64.tar.gz?raw=true
+tar xvzf truecrypt*
+./truecrypt-7.1a-setup-x64
+cd $DIR
+
+# Conky
+sudo apt-get install --no-install-recommends conky-all -y
+sudo ln -s $DIR/dots/conky ~/.conky
+sudo ln -s ~/.conky/conkyrc ~/.conkyrc
+sudo ln -s ~/.conky/conky.desktop ~/.config/autostart/conky.desktop
+
+# Show hidden applications in System Settings > Startup Applications.
+sudo sed -i 's/NoDisplay=true/NoDisplay=false/g' /etc/xdg/autostart/*.desktop
+
+
+# Disable bluetooth and hide the menubar icon.
+sudo rfkill block bluetooth
+mkdir ~./config/autostart
+cp /etc/xdg/autostart/blueman.desktop ~/.config/autostart
+echo "Hidden=true" | tee -a ~/.config/autostart/blueman.desktop

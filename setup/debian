@@ -147,7 +147,7 @@ cd $DIR
 if [[ $(cat /etc/*-release) == *"elementary OS"* ]]; then
     ./init/setup/elementaryos
 else
-    ./init/setup/crunchbang
+    ./init/setup/xubuntu
 fi
 
 
