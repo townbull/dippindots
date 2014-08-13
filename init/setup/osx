@@ -265,6 +265,12 @@ do
     sudo chflags hidden "/Applications/$app.app/"
 done
 
+# Hide directories I never use.
+for dir in Movies Music Pictures Public Documents env
+do
+    sudo chflags hidden "~/$dir"
+done
+
 
 ###############################################################################
 # Dock, Dashboard, & hot corners                                              #
