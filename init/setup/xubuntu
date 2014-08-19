@@ -17,6 +17,9 @@ sudo add-apt-repository ppa:pipelight/stable -y
 # Update the repositories.
 sudo apt-get update
 
+# Required for netflix-desktop.
+sudo apt-get install ttf-mscorefonts-installer
+
 # Install some cool apps :D
 # zeal      -- offline documentation
 # sc        -- spreadsheet calculator
