@@ -46,6 +46,11 @@ sudo ln -s $DIR/dots/conky ~/.conky
 sudo ln -s ~/.conky/conkyrc ~/.conkyrc
 sudo ln -s ~/.conky/conky.desktop ~/.config/autostart/conky.desktop
 
+# HFS+ file system support.
+# You can re-mount the HFS+ drives with writable access:
+# sudo mount -t hfsplus -o remount,force,rw /mount/point
+sudo apt-get install hfsprogs -y
+
 # Show hidden applications in System Settings > Startup Applications.
 sudo sed -i 's/NoDisplay=true/NoDisplay=false/g' /etc/xdg/autostart/*.desktop
 
