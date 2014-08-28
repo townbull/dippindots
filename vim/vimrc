@@ -8,8 +8,9 @@ execute pathogen#infect()
 set nocompatible      			" Use vim, no vi defaults
 syntax enable         			" Turn on syntax highlighting
 set encoding=utf-8 nobomb       " Set default encoding to UTF-8
-set clipboard=unnamed 			" Use OS clipboard (on +clipboard compiled Vim)
+set clipboard=unnamed           " Use OS clipboard (on +clipboard compiled Vim)
 set noerrorbells 				" Disable error bells
+set novisualbell                " Disable visual bells
 set title 						" Show filename in window titlebar
 set showmode 					" Show the current mode
 set timeoutlen=100 				" Set timeoutlen to be sort, avoiding a lag
@@ -28,6 +29,8 @@ set noeol
 "set modelines=4
 "
 
+" Disable bells in GUI vim.
+autocmd! GUIEnter * set vb t_vb=
 
 
 " ----------------------------------------------------------------------------
