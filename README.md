@@ -1,7 +1,7 @@
 # DippinDots
 
-These are my personal dotfiles for OSX and Debian (in particular, !#/Crunchbang). Please feel free to use/modify them as
-you like!
+These are my personal dotfiles for OSX and Linux (in particular, Xubuntu, with iffy Crunchbang/ElementaryOS settings).
+Please feel free to use/modify them as you like!
 
 If you're on OSX, you should have XCode and the XCode Command Line Tools
 installed before you begin. Make sure you open XCode at least once to agree to the

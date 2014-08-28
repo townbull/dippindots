@@ -18,7 +18,7 @@ set showcmd 					" Show the command as it's typed
 set shortmess=atI 				" Hide Vim intro message
 let mapleader=";" 				" Change mapleader
 set wrap
-set textwidth=0 wrapmargin=0
+set textwidth=0 wrapmargin=0 formatoptions=cq
 
 " Don’t add empty newlines at the end of files
 set binary
@@ -49,6 +49,7 @@ set ruler             			" Show line and column number of cursor
 set nostartofline 				" Don't reset cursor to start of line when moving
 set cursorcolumn 				" Highlight current column
 set cursorline 				    " Highlight current line
+set colorcolumn=88              " Highlight column 88
 set scrolloff=3 				" Start scrolling three lines before border
 set showmatch 					" Show matching brackets
 let &showbreak='↪ '             " Show this at the start of wrapped lines
@@ -162,7 +163,7 @@ filetype plugin indent on " Turn on filetype plugins (:help filetype-plugin)
 function! s:setupWrapping()
   set wrap
   set linebreak
-  set textwidth=72
+  set textwidth=88
   set nolist
 endfunction
 
