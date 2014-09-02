@@ -88,3 +88,6 @@
 [submodule "vim/bundle/instant-markdown"]
 	path = vim/bundle/instant-markdown
 	url = https://github.com/suan/vim-instant-markdown
+[submodule "vim/bundle/vimroom"]
+	path = vim/bundle/vimroom
+	url = https://github.com/mikewest/vimroom
