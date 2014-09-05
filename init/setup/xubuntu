@@ -11,6 +11,9 @@ sh -c "$(curl -fsSL http://debian.yeasoft.net/add-btsync-repository.sh)"
 sudo add-apt-repository ppa:jerzy-kozera/zeal-ppa -y
 sudo add-apt-repository ppa:ubuntu-sdk-team/ppa -y
 
+# Add the Yorba daily build repository.
+sudo add-apt-repository ppa:yorba/daily-builds
+
 # Add the Netflix Desktop repository.
 sudo add-apt-repository ppa:pipelight/stable -y
 
@@ -25,10 +28,10 @@ sudo apt-get install ttf-mscorefonts-installer
 # sc        -- spreadsheet calculator
 # gpick     -- colorpicker
 # alacarte  -- slingshot (app launcher) customization
-sudo apt-get install --no-install-recommends --yes chromium-browser deluge pidgin vlc blender gimp inkscape spotify-client btsync-gui netflix-desktop zeal sc gpick geary
+sudo apt-get install --no-install-recommends --yes chromium-browser deluge pidgin vlc blender gimp inkscape spotify-client btsync-gui netflix-desktop zeal sc gpick geary california
 
 # And remove others.
-sudo apt-get purge gnome-mines gnome-sudoku simple-scan transmission-gtk parole gmusicbrowser printer-driver-foo2zjs-common xfburn gnumeric abiword thunderbird -y
+sudo apt-get purge gnome-mines gnome-sudoku simple-scan transmission-gtk parole gmusicbrowser printer-driver-foo2zjs-common xfburn gnumeric abiword thunderbird orage -y
 
 # Was having issues with Light Locker when it comes to suspending the Acer C720, so removing it.
 sudo apt-get purge light-locker light-locker-settings -y
