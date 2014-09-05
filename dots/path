@@ -1,6 +1,9 @@
 # Load RVM
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
+# Add RVM-installed gems.
+export PATH="$(rvm gemdir)/bin:$PATH"
+
 # Add `~/.bin` to the `$PATH`
 export PATH="$HOME/.bin:$PATH"
 

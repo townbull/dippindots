@@ -2,6 +2,7 @@
 
 gem install rake
 gem install sass
+gem install tmuxinator
 
 # For vim-instant-markdown
 gem install pygments.rb
