@@ -23,6 +23,10 @@ sudo apt-get update
 # Required for netflix-desktop.
 sudo apt-get install ttf-mscorefonts-installer
 
+# Flash player
+sudo apt-get install pepperflashplugin-nonfree
+sudo update-pepperflashplugin-nonfree --install
+
 # Install some cool apps :D
 # zeal      -- offline documentation
 # sc        -- spreadsheet calculator
@@ -31,7 +35,7 @@ sudo apt-get install ttf-mscorefonts-installer
 sudo apt-get install --no-install-recommends --yes chromium-browser deluge pidgin vlc blender gimp inkscape spotify-client btsync-gui netflix-desktop zeal sc gpick geary california
 
 # And remove others.
-sudo apt-get purge gnome-mines gnome-sudoku simple-scan transmission-gtk parole gmusicbrowser printer-driver-foo2zjs-common xfburn gnumeric abiword thunderbird orage -y
+sudo apt-get purge gnome-mines gnome-sudoku simple-scan transmission-gtk parole gmusicbrowser printer-driver-foo3zjs-common xfburn gnumeric abiword thunderbird orage -y
 
 # Was having issues with Light Locker when it comes to suspending the Acer C720, so removing it.
 sudo apt-get purge light-locker light-locker-settings -y
