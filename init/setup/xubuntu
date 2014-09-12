@@ -27,6 +27,9 @@ sudo apt-get install ttf-mscorefonts-installer
 sudo apt-get install pepperflashplugin-nonfree
 sudo update-pepperflashplugin-nonfree --install
 
+# Dependency for California calendar.
+sudo apt-get install evolution-data-server
+
 # Install some cool apps :D
 # zeal      -- offline documentation
 # sc        -- spreadsheet calculator
