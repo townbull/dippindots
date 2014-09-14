@@ -21,4 +21,4 @@ export PATH="/usr/local/bin:$PATH"
 # Add /usr/local/sbin to path.
 export PATH="/usr/local/sbin:$PATH"
 
-export PATH="/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+export PATH="$PATH:/usr/sbin:/usr/bin:/sbin:/bin"
