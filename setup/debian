@@ -34,6 +34,12 @@ sudo apt-get update
 
 sudo apt-get install --no-install-recommends dos2unix ffmpeg tmux curl dnsutils -y
 
+# Note: For raster image previews (NOT ascii previews) with w3m-image to work,
+# you have to use xterm, not xfce terminal.
+sudo apt-get install ranger highlight atool caca-utils w3m w3m-image poppler-utils
+ranger --copy-config=all
+sed -i 's/set use_preview_script false/set use_preview_script true' ~/.config/ranger/rc.conf
+
 tput setaf 2
 echo "Package installation complete! Moving on..."
 tput sgr0
