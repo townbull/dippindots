@@ -46,3 +46,4 @@ complete -W "NSGlobalDomain" defaults
 
 # vi keybindings for bash
 set -o vi
+PATH=$PATH:~/Library/Python/2.7/bin
