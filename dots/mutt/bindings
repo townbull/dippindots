@@ -1,0 +1,39 @@
+bind editor <space> noop
+macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
+macro index gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
+macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+
+# Dealing with URLs, use CTRL+U (\cu)
+macro index \cu |urlview\n 'call urlview to extract URLs out of a message'
+
+bind pager k  previous-line
+bind pager j  next-line
+bind pager gg top
+bind pager G  bottom
+bind pager R  group-reply
+bind pager [ previous-unread
+bind pager ] next-unread
+bind attach <return> view-mailcap
+
+bind index,pager s  flag-message                    # Star a message
+bind index - collapse-thread
+bind index _ collapse-all
+bind index B bounce-message                         # Remap bounce-message function to “B”
+bind index R group-reply
+bind index <tab> sync-mailbox 
+bind index G imap-fetch-mail
+bind index C create-alias
+
+bind index \eD purge-message
+bind pager \eD purge-message
+
+
+# Folder hooks (folder-specific bindings)
+
+# Archiving messages is available only in the inbox.
+folder-hook +INBOX 'macro index,pager a "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"'
+
+# Collapse threads by default.
+folder-hook . "exec collapse-all"

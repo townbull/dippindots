@@ -1,0 +1,19 @@
+# much of this mutt config was nabbed from:
+# https://github.com/bubbl/bubb-confs/tree/master/mutt
+
+set signature=~/.mutt/signature
+set mailcap_path=~/.mutt/mailcap
+set alias_file=~/.mutt/aliases
+
+# Local folders for cached headers and certs
+set header_cache=~/.mutt/cache/headers
+set message_cachedir=~/.mutt/cache/bodies
+set certificate_file=~/.mutt/certificates
+
+source ~/.mutt/auth
+source ~/.mutt/folders
+source ~/.mutt/options
+source ~/.mutt/colors
+source ~/.mutt/aliases
+source ~/.mutt/bindings
+source ~/.mutt/auto_views

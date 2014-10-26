@@ -1,0 +1,31 @@
+set charset="utf-8"                 # encoding
+set move=no                         # no annoying "move read" prompt
+set mail_check=0                    # check for mail often
+set copy=no                         # do not copy sent mail, since Gmail smtp already does this
+set ispell="aspell -e -c"           # spell checking
+set implicit_autoview               # for handling attachments
+mailboxes +INBOX                    # mailboxes to have notifications for
+
+
+# Mailbox view
+set date_format="%m/%d %I:%M"
+set index_format="%Z  %D  %-20.20F  %s"
+set sort_aux="reverse-last-date-received"
+set sort_browser="date"             # sort by date
+set sort=threads                    # threaded view
+set strict_threads="yes"            # don't thread just based on same subjects, but using reply-tos
+unset collapse_unread               # uncollapse any threads with unread messages
+unset mark_old                      # don't mark unread messages as "old"
+
+
+# Message (page) view
+set tilde                           # pad bottom blank lines with "~"
+
+
+# Compose view
+set reverse_name                    # reply as whomever it was to
+set attribution="On %d, %n wrote:"  # format of quoting header
+set edit_headers=yes                # show headers when composing
+set askcc                           # ask for CC:
+set forward_format="Fwd: %s"        # format of subject when forwarding
+set forward_decode                  # decode when forwarding

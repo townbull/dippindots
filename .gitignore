@@ -6,3 +6,7 @@ vim/.backup/*
 vim/.temp/*
 *.swp
 *.swo
+cache/
+dots/mutt/aliases
+dots/mutt/auth
+dots/mutt/signature
