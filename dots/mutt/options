@@ -1,9 +1,11 @@
 set charset="utf-8"                 # encoding
-set move=no                         # no annoying "move read" prompt
+set move=no                         # don't move read mail
 set mail_check=0                    # check for mail often
 set copy=no                         # do not copy sent mail, since Gmail smtp already does this
 set ispell="aspell -e -c"           # spell checking
 set implicit_autoview               # for handling attachments
+set fast_reply                      # skip asking for address and subject when replying
+set delete=yes                      # automatically purge deleted messages
 mailboxes +INBOX                    # mailboxes to have notifications for
 
 
@@ -20,6 +22,9 @@ unset mark_old                      # don't mark unread messages as "old"
 
 # Message (page) view
 set tilde                           # pad bottom blank lines with "~"
+set pager_index_lines=10            # Show 2 messages on either side of the message I'm reading.
+set pager_context=5                 # Paging down a message leaves 5 lines of overlap, so you don't get lost.
+set pager_stop                      # don't go to next message automatically
 
 
 # Compose view

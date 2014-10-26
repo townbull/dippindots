@@ -5,8 +5,9 @@ macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
 macro index gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
 macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
 
-# Dealing with URLs, use CTRL+U (\cu)
-macro index,pager \cu |urlview\n 'call urlview to extract URLs out of a message'
+# Dealing with URLs, use CTRL+B (\cb)
+macro index,pager \cb |urlview\n 'call urlview to extract URLs out of a message'
+
 
 bind pager k  previous-line
 bind pager j  next-line
@@ -15,16 +16,22 @@ bind pager G  bottom
 bind pager R  group-reply
 bind pager [ previous-unread
 bind pager ] next-unread
+bind pager \cj next-entry
+bind pager \ck previous-entry
+bind pager \cd next-page
+bind pager \cu previous-page
 bind attach <return> view-mailcap
 
 bind index,pager s  flag-message                    # Star a message
-bind index o collapse-thread
+bind index <space> collapse-thread
 bind index O collapse-all
 bind index B bounce-message                         # Remap bounce-message function to “B”
 bind index R group-reply
 bind index <tab> sync-mailbox 
-bind index G imap-fetch-mail
+bind index F imap-fetch-mail
 bind index C create-alias
+bind index gg first-entry
+bind index G last-entry
 
 bind index \eD purge-message
 bind pager \eD purge-message
@@ -32,8 +39,11 @@ bind pager \eD purge-message
 
 # Folder hooks (folder-specific bindings)
 
-# Archiving messages is available only in the inbox.
+# Archiving messages
 folder-hook +INBOX 'macro index,pager a "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"'
+
+# Archiving conversations
+folder-hook +INBOX 'macro index,pager A "<tag-thread><tag-prefix><save-message>=[Gmail]/All Mail<enter><enter>" "Archive"'
 
 # Collapse threads by default.
 folder-hook . "exec collapse-all"
