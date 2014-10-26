@@ -6,7 +6,7 @@ macro index gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
 macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
 
 # Dealing with URLs, use CTRL+U (\cu)
-macro index \cu |urlview\n 'call urlview to extract URLs out of a message'
+macro index,pager \cu |urlview\n 'call urlview to extract URLs out of a message'
 
 bind pager k  previous-line
 bind pager j  next-line
@@ -18,8 +18,8 @@ bind pager ] next-unread
 bind attach <return> view-mailcap
 
 bind index,pager s  flag-message                    # Star a message
-bind index - collapse-thread
-bind index _ collapse-all
+bind index o collapse-thread
+bind index O collapse-all
 bind index B bounce-message                         # Remap bounce-message function to “B”
 bind index R group-reply
 bind index <tab> sync-mailbox 

@@ -1,36 +1,39 @@
+color normal black default
+color tree cyan default
 color status black yellow
-color indicator black cyan
+color indicator black white
+color tilde blue default
+
 
 # urls
 color body black yellow "(^|<| )mailto:[^ ]+@[^ ]( |>|$)"
 color body black yellow "(^|<| )(http|https|ftp|file|telnet|news|finger)://[^ ]+( |>|$)"
 
 # mailbox colors
-color index   default             black     ~p      # i am to/cc
-color index   default             black     ~P      # from me
-color index   white               blue      ~N      # new
-color index   brightyellow        black     ~O      # old
-color index   yellow              black     ~F      # flagged
-color index   blue                black     ~T      # tagged
-color index   red                 black     ~D      # deleted
-color index   blue                black     ~Q      # replied
-color index   magenta             black     ~k      # GPG
-color index   black               white     ~v      # collapsed thread
-color index   brightgreen         black     '~f someone@mail.mail' # Separate colours for certain recipients 
+color index   black               default     ~p      # i am to/cc
+color index   cyan               default     ~P      # from me
+color index   blue                default     ~N      # new
+color index   black               default     ~O      # old
+color index   blue                default     ~F      # flagged
+color index   black               default     ~T      # tagged
+color index   white               default     ~D      # deleted
+color index   black               default     ~Q      # replied
+color index   black               default     ~k      # GPG
+color index   magenta             default     ~v      # collapsed thread
 
 # message headers
-color header    brightgreen   black ^From:
-color header    brightcyan    black ^To:
-color header    brightcyan    black ^Reply-To:
-color header    brightcyan    black ^Cc:
-color header    brightblue    black ^Subject:
+color header    brightgreen   default ^From:
+color header    brightcyan    default ^To:
+color header    brightcyan    default ^Reply-To:
+color header    brightcyan    default ^Cc:
+color header    brightblue    default ^Subject:
 
 # quote blocks
-color quoted     magenta       black
-color quoted1    cyan          black
-color quoted2    green         black
-color quoted3    magenta       black
-color quoted4    cyan          black
-color quoted5    green         black
-color quoted6    magenta       black
-color quoted7    cyan          black
+color quoted     magenta       default
+color quoted1    cyan          default
+color quoted2    green         default
+color quoted3    magenta       default
+color quoted4    cyan          default
+color quoted5    green         default
+color quoted6    magenta       default
+color quoted7    cyan          default
