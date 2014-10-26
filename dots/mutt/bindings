@@ -28,7 +28,7 @@ bind index O collapse-all
 bind index B bounce-message                         # Remap bounce-message function to “B”
 bind index R group-reply
 bind index <tab> sync-mailbox 
-bind index F imap-fetch-mail
+bind index \cf imap-fetch-mail
 bind index C create-alias
 bind index gg first-entry
 bind index G last-entry

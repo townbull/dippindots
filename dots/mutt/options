@@ -6,12 +6,15 @@ set ispell="aspell -e -c"           # spell checking
 set implicit_autoview               # for handling attachments
 set fast_reply                      # skip asking for address and subject when replying
 set delete=yes                      # automatically purge deleted messages
+set sleep_time=0                    # quicker folder switching
 mailboxes +INBOX                    # mailboxes to have notifications for
 
 
 # Mailbox view
 set date_format="%m/%d %I:%M"
-set index_format="%Z  %D  %-20.20F  %s"
+set index_format="%4C %Z  %D  %-20.20F  %s %?M?(%M) ?"
+set status_format="%f ~ new: %n ~ total: %m"
+set compose_format="Compose ~ attachments: %a"
 set sort_aux="reverse-last-date-received"
 set sort_browser="date"             # sort by date
 set sort=threads                    # threaded view
