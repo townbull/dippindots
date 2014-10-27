@@ -16,10 +16,10 @@ bind pager G  bottom
 bind pager R  group-reply
 bind pager [ previous-unread
 bind pager ] next-unread
-bind pager \cj next-entry
-bind pager \ck previous-entry
-bind pager \cd next-page
-bind pager \cu previous-page
+bind pager \cd next-entry
+bind pager \cu previous-entry
+bind pager \cj next-page
+bind pager \ck previous-page
 bind attach <return> view-mailcap
 
 bind index,pager s  flag-message                    # Star a message
