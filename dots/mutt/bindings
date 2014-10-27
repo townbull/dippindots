@@ -1,5 +1,5 @@
 bind editor <space> noop
-macro index,pager d "<save-message>=[Gmail]/Trash<enter><enter>" "Trash"
+macro index,pager d "<save-message>=[Gmail]/Trash<enter>" "Trash"
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
 macro index gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
@@ -40,10 +40,10 @@ bind pager \eD purge-message
 # Folder hooks (folder-specific bindings)
 
 # Archiving messages
-folder-hook +INBOX 'macro index,pager a "<save-message>=[Gmail]/All Mail<enter><enter>" "Archive"'
+#folder-hook +INBOX 'macro index,pager a "<save-message>=[Gmail]/All Mail<enter>" "Archive"'
 
 # Archiving conversations
-folder-hook +INBOX 'macro index,pager A "<tag-thread><tag-prefix><save-message>=[Gmail]/All Mail<enter><enter>" "Archive"'
+folder-hook +INBOX 'macro index,pager A "<tag-thread><tag-prefix><save-message>=[Gmail]/All Mail<enter>" "Archive"'
 
 # Collapse threads by default.
 folder-hook . "exec collapse-all"
