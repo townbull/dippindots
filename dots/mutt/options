@@ -1,13 +1,13 @@
 set charset="utf-8"                 # encoding
 set move=no                         # don't move read mail
-set mail_check=0                    # check for mail often
+set mail_check=1000                 # check for mail often
 set copy=no                         # do not copy sent mail, since Gmail smtp already does this
 set ispell="aspell -e -c"           # spell checking
 set implicit_autoview               # for handling attachments
 set fast_reply                      # skip asking for address and subject when replying
 set delete=yes                      # automatically purge deleted messages
 set sleep_time=0                    # quicker folder switching
-mailboxes +INBOX                    # mailboxes to have notifications for
+mailboxes =INBOX                    # mailboxes to have notifications for
 
 
 # Mailbox view
@@ -21,6 +21,7 @@ set sort=threads                    # threaded view
 set strict_threads="yes"            # don't thread just based on same subjects, but using reply-tos
 unset collapse_unread               # uncollapse any threads with unread messages
 unset mark_old                      # don't mark unread messages as "old"
+set confirmappend=yes               # ask for confirmation before moving a message to another mailbox
 
 
 # Message (page) view

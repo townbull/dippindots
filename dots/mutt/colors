@@ -11,7 +11,7 @@ color body black yellow "(^|<| )(http|https|ftp|file|telnet|news|finger)://[^ ]+
 
 # mailbox colors
 color index   white               black     ~p      # i am to/cc
-color index   cyan                black     ~P      # from me
+color index   white               black     ~P      # from me
 color index   black               cyan      ~N      # new
 color index   white               black     ~O      # old
 color index   yellow              black     ~F      # flagged
@@ -19,7 +19,7 @@ color index   white               black     ~T      # tagged
 color index   white               black     ~Q      # replied
 color index   white               black     ~k      # GPG
 color index   default             black     ~D      # deleted
-color index   magenta             black     ~v      # collapsed thread
+color index   cyan                black     ~v      # collapsed thread
 
 # message headers
 color header    brightgreen   black ^From:
