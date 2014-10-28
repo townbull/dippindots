@@ -26,6 +26,7 @@ set confirmappend=yes               # ask for confirmation before moving a messa
 
 
 # Message (page) view
+set pager_format="%-20.20n %s"
 set tilde                           # pad bottom blank lines with "~"
 set pager_index_lines=10            # Show 2 messages on either side of the message I'm reading.
 set pager_context=5                 # Paging down a message leaves 5 lines of overlap, so you don't get lost.
