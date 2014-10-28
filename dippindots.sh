@@ -108,6 +108,12 @@ ln -sf $pwd/dots/inputrc ~/.inputrc
 ln -sf $pwd/bin ~/.bin
 ln -sf $pwd/dots/tmux.conf ~/.tmux.conf
 
+cp $pwd/dots/mutt/_aliases $pwd/dots/mutt/aliases
+cp $pwd/dots/mutt/_auth $pwd/dots/mutt/auth
+cp $pwd/dots/mutt/_signature $pwd/dots/mutt/signature
+sudo ln -s $pwd/dots/mutt ~/.mutt
+echo "Setup ~/.mutt/aliases, ~/.mutt/auth, and ~/.mutt/signature as needed!"
+
 if [ ! -f /etc/environment ]; then
     # Create an empty env file.
     echo "Creating an empty environment variables file at /etc/environment..."

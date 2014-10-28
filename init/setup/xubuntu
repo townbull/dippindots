@@ -39,11 +39,6 @@ sudo apt-get install --no-install-recommends --yes chromium-browser deluge pidgi
 
 # Mutt for email.
 sudo apt-get install --yes mutt w3m urlview
-cp $DIR/dots/mutt/_aliases $DIR/dots/mutt/aliases
-cp $DIR/dots/mutt/_auth $DIR/dots/mutt/auth
-cp $DIR/dots/mutt/_signature $DIR/dots/mutt/signature
-sudo ln -s $DIR/dots/mutt ~/.mutt
-echo "Setup ~/.mutt/aliases, ~/.mutt/auth, and ~/.mutt/signature as needed!"
 
 # And remove others.
 sudo apt-get purge gnome-mines gnome-sudoku simple-scan transmission-gtk parole gmusicbrowser printer-driver-foo3zjs-common xfburn gnumeric abiword thunderbird orage -y

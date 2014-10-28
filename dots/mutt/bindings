@@ -33,8 +33,8 @@ bind index C create-alias
 bind index gg first-entry
 bind index G last-entry
 
-bind index \eD purge-message
-bind pager \eD purge-message
+#bind index \eD purge-message
+#bind pager \eD purge-message
 
 
 # Folder hooks (folder-specific bindings)

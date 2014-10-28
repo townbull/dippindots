@@ -37,5 +37,10 @@ brew install ctags
 # Necessary for markdown2evernote
 brew install multimarkdown
 
+# Mutt for email
+brew install mutt
+brew install w3m
+brew install urlview
+
 # Remove outdated versions from the cellar
 brew cleanup
