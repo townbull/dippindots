@@ -40,7 +40,7 @@ bind pager \eD purge-message
 # Folder hooks (folder-specific bindings)
 
 # Archiving messages
-#folder-hook +INBOX 'macro index,pager a "<save-message>=[Gmail]/All Mail<enter>" "Archive"'
+folder-hook +INBOX 'macro index,pager a "<save-message>=[Gmail]/All Mail<enter>" "Archive"'
 
 # Archiving conversations
 folder-hook +INBOX 'macro index,pager A "<tag-thread><tag-prefix><save-message>=[Gmail]/All Mail<enter>" "Archive"'
