@@ -29,6 +29,7 @@ set tilde                           # pad bottom blank lines with "~"
 set pager_index_lines=10            # Show 2 messages on either side of the message I'm reading.
 set pager_context=5                 # Paging down a message leaves 5 lines of overlap, so you don't get lost.
 set pager_stop                      # don't go to next message automatically
+unset markers                       # remove plus signs for text wrapping
 
 
 # Compose view
