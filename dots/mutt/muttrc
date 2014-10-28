@@ -17,3 +17,4 @@ source ~/.mutt/colors
 source ~/.mutt/aliases
 source ~/.mutt/bindings
 source ~/.mutt/auto_views
+#source ~/.mutt/crypto
