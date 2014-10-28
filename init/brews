@@ -41,6 +41,8 @@ brew install multimarkdown
 brew install mutt
 brew install w3m
 brew install urlview
+brew install pandoc
+brew install aspell
 
 # Remove outdated versions from the cellar
 brew cleanup

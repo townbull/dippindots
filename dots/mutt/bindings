@@ -5,6 +5,9 @@ macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
 macro index gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
 macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
 
+# Convert markdown to html in the composer. Select the attached plaintext and hit "M".
+macro compose M "F pandoc -s -f markdown -t html \ny^T^Utext/html; charset=us-ascii\n"
+
 # Dealing with URLs, use CTRL+B (\cb)
 macro index,pager \cb |urlview\n 'call urlview to extract URLs out of a message'
 
