@@ -2,8 +2,8 @@
 set from="me@somegoogleapps.com"
 set realname="Francis Tseng"
 set imap_user="me@somegoogleapps.com"
-set imap_pass="mypassword"
+#set imap_pass="mypassword" # optional password. I suggest leaving it out.
 set imap_keepalive=900
 
 set smtp_url="smtp://me@somegoogleapps.com@smtp.gmail.com:587"
-set smtp_pass="mypassword"
+#set smtp_pass="mypassword" # optional password. I suggest leaving it out.
