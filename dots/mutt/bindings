@@ -11,6 +11,10 @@ macro compose M "F pandoc -s -f markdown -t html \ny^T^Utext/html; charset=us-as
 # Dealing with URLs, use CTRL+B (\cb)
 macro index,pager \cb |urlview\n 'call urlview to extract URLs out of a message'
 
+# View as HTML (shortcut). Opens the attachments, finds one with "html" in it,
+# runs through mailcap via "m", then goes back with "q"
+macro pager V "<view-attachments>/html<enter>mq"
+
 
 bind pager k  previous-line
 bind pager j  next-line
@@ -35,9 +39,6 @@ bind index <tab> sync-mailbox
 bind index C create-alias
 bind index gg first-entry
 bind index G last-entry
-
-#bind index \eD purge-message
-#bind pager \eD purge-message
 
 
 # Folder hooks (folder-specific bindings)

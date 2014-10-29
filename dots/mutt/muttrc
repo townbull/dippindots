@@ -2,8 +2,10 @@
 # https://github.com/bubbl/bubb-confs/tree/master/mutt
 
 set signature=~/.mutt/signature
-set mailcap_path=~/.mutt/mailcap
 set alias_file=~/.mutt/aliases
+
+# Platform-dependent mailcap
+`source ~/.mutt/ext/handle_platform`
 
 # Local folders for cached headers and certs
 set header_cache=~/.mutt/cache/headers

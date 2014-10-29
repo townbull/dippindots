@@ -1,0 +1,17 @@
+# OSX-specific mailcap
+
+# HTML
+text/html;                          ~/.mutt/ext/view_attachment %s html
+
+# Images
+image/jpg;                          ~/.mutt/ext/view_attachment %s jpg
+image/jpeg;                         ~/.mutt/ext/view_attachment %s jpg
+image/png;                          ~/.mutt/ext/view_attachment %s png
+image/gif;                          ~/.mutt/ext/view_attachment %s gif
+image/tiff;                         ~/.mutt/ext/view_attachment %s tiff
+
+# PDF
+application/pdf;                    ~/.mutt/ext/view_attachment %s pdf
+
+# Unidentified files
+application/octet-stream;           ~/.mutt/ext/view_attachment %s "-"
