@@ -39,15 +39,3 @@ bind index <tab> sync-mailbox
 bind index C create-alias
 bind index gg first-entry
 bind index G last-entry
-
-
-# Folder hooks (folder-specific bindings)
-
-# Archiving messages
-folder-hook +INBOX 'macro index,pager a "<save-message>=[Gmail]/All Mail<enter>" "Archive"'
-
-# Archiving conversations
-folder-hook +INBOX 'macro index,pager A "<tag-thread><tag-prefix><save-message>=[Gmail]/All Mail<enter>" "Archive"'
-
-# Collapse threads by default.
-folder-hook . "exec collapse-all"

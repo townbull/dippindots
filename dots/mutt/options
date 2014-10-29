@@ -1,7 +1,6 @@
 set charset="utf-8"                 # encoding
 set move=no                         # don't move read mail
 set mail_check=1000                 # check for mail often
-set copy=no                         # do not copy sent mail, since Gmail smtp already does this
 set ispell="aspell -e -c"           # spell checking
 set implicit_autoview               # for handling attachments
 set fast_reply                      # skip asking for address and subject when replying
@@ -10,6 +9,9 @@ set sleep_time=0                    # quicker folder switching
 set wait_key=no                     # don't ask for "press any key to continue" for external commands
 mailboxes =INBOX                    # mailboxes to have notifications for
 
+# The next two settings are so we can see our own replies in a thread.
+set copy=yes                        # copy sent mail
+fcc-hook .* !                       # Fcc all sent mails to the inbox
 
 # Mailbox view
 set date_format="%m/%d %I:%M"

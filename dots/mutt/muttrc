@@ -18,5 +18,6 @@ source ~/.mutt/options
 source ~/.mutt/colors
 source ~/.mutt/aliases
 source ~/.mutt/bindings
+source ~/.mutt/hooks
 source ~/.mutt/auto_views
 #source ~/.mutt/crypto

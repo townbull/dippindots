@@ -3,6 +3,12 @@ color tree cyan black
 color status black yellow
 color indicator black white
 color tilde blue black
+color signature default black
+color message white black
+color error white black
+color bold red black
+color underline red black
+color search black yellow
 
 
 # urls
@@ -22,6 +28,8 @@ color index   default             black     ~D      # deleted
 color index   cyan                black     ~v      # collapsed thread
 
 # message headers
+color hdrdefault white black
+color header    brightgreen   black ^Date:
 color header    brightgreen   black ^From:
 color header    brightcyan    black ^To:
 color header    brightcyan    black ^Reply-To:
