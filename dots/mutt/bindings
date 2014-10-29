@@ -8,8 +8,8 @@ macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
 # Convert markdown to html in the composer. Select the attached plaintext and hit "M".
 macro compose M "F pandoc -s -f markdown -t html \ny^T^Utext/html; charset=us-ascii\n"
 
-# Dealing with URLs, use CTRL+B (\cb)
-macro index,pager \cb |urlview\n 'call urlview to extract URLs out of a message'
+# Dealing with URLs.
+macro pager O |urlview\n 'call urlview to extract URLs out of a message'
 
 # View as HTML (shortcut). Opens the attachments, finds one with "html" in it,
 # runs through mailcap via "m", then goes back with "q"
@@ -32,7 +32,7 @@ bind attach <return> view-mailcap
 bind index,pager \cf imap-fetch-mail
 bind index,pager s  flag-message                    # Star a message
 bind index <space> collapse-thread
-bind index O collapse-all
+bind index H collapse-all
 bind index B bounce-message                         # Remap bounce-message function to “B”
 bind index R group-reply
 bind index <tab> sync-mailbox 
