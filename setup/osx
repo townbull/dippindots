@@ -179,7 +179,7 @@ tput sgr0
 cp ./assets/com.apple.Terminal.plist ~/Library/Preferences/
 
 
-# =============== IRSSI ====================================
+# =============== IRC ======================================
 
 # Install stuff for Freenode SASL
 #for i in 'Crypt::OpenSSL::Bignum' 'Crypt::DH' 'Crypt::Blowfish' 'Math::BigInt' ; do sudo perl -MCPAN -e shell <<< "install $i" ; done

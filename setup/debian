@@ -153,6 +153,10 @@ make -s
 cd $DIR
 
 
+# =============== IRC ======================================
+sudo apt-get install weechat bitlbee
+
+
 
 # =============== DISTRO-SPECIFIC SETUP =================================
 
