@@ -197,6 +197,8 @@ sudo mkdir -p /etc/ssl/certs/
 sudo mv ca-bundle.crt /etc/ssl/certs/ca-certificates.crt
 cd $DIR
 
+pip install pync # for OSX notifications via weechat
+
 
 
 # =============== OSX SETUP  =================================
