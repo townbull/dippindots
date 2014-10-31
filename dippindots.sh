@@ -114,6 +114,8 @@ cp $pwd/dots/mutt/_signature $pwd/dots/mutt/signature
 sudo ln -s $pwd/dots/mutt ~/.mutt
 echo "Setup ~/.mutt/aliases, ~/.mutt/auth, and ~/.mutt/signature as needed!"
 
+sudo ln -s $pwd/dots/weechat ~/.weechat
+
 if [ ! -f /etc/environment ]; then
     # Create an empty env file.
     echo "Creating an empty environment variables file at /etc/environment..."

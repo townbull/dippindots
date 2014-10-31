@@ -10,3 +10,5 @@ cache/
 dots/mutt/aliases
 dots/mutt/auth
 dots/mutt/signature
+logs/
+*.log
