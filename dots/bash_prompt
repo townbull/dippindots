@@ -62,5 +62,5 @@ function parse_git_branch() {
 # \w = cwd (full path)
 # \W = cwd (current dir only)
 #export PS1="\[${BOLD}${RED}\]\u \[$WHITE\]at \[$BLUE\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$PURPLE\]\n\$ \[$RESET\]"
-export PS1="\[${WHITE}\033[44m\] \u@\h \[${GREEN}\033[40m\] \W\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \[\033[0m\033[43m\] \")\$(parse_git_branch) \[$RESET\] > "
+export PS1="\[${WHITE}\033[44m\] \u@\h \[${GREEN}\033[40m\] \W\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" \[${WHITE}\033[43m\] \")\$(parse_git_branch) \[$RESET\] > "
 export PS2="\[$ORANGE\]→ \[$RESET\]"
