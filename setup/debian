@@ -159,6 +159,9 @@ sudo apt-get install weechat bitlbee
 # for sound notifications
 sudo apt-get install mpg123
 
+# Also, rainbowstream for twitter
+sudo pip install rainbowstream
+
 
 
 # =============== DISTRO-SPECIFIC SETUP =================================

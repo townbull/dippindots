@@ -199,6 +199,9 @@ cd $DIR
 
 pip install pync # for OSX notifications via weechat
 
+# Also, rainbowstream for twitter
+sudo pip install rainbowstream
+
 
 
 # =============== OSX SETUP  =================================

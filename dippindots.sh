@@ -116,6 +116,9 @@ echo "Setup ~/.mutt/aliases, ~/.mutt/auth, and ~/.mutt/signature as needed!"
 
 sudo ln -s $pwd/dots/weechat ~/.weechat
 
+# rainbowstream for twitter
+sudo ln -sf $pwd/dots/rainbow_config.json ~/.rainbow_config.json
+
 if [ ! -f /etc/environment ]; then
     # Create an empty env file.
     echo "Creating an empty environment variables file at /etc/environment..."
