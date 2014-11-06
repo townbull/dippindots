@@ -202,6 +202,13 @@ pip install pync # for OSX notifications via weechat
 # Also, rainbowstream for twitter
 sudo pip install rainbowstream
 
+# Also, gcalcli for gcal on the CL.
+sudo pip install vobject parsedatetime
+git clone https://github.com/insanum/gcalcli.git /tmp/
+cd /tmp/gcalcli
+python setup.py install
+cd $DIR
+
 
 
 # =============== OSX SETUP  =================================

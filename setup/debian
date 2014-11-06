@@ -153,7 +153,7 @@ make -s
 cd $DIR
 
 
-# =============== IRC ======================================
+# =============== APPS ======================================
 sudo apt-get install weechat bitlbee
 
 # for sound notifications
@@ -161,6 +161,13 @@ sudo apt-get install mpg123
 
 # Also, rainbowstream for twitter
 sudo pip install rainbowstream
+
+# Also, gcalcli for gcal on the CL.
+sudo pip install vobject parsedatetime
+git clone https://github.com/insanum/gcalcli.git /tmp/
+cd /tmp/gcalcli
+python setup.py install
+cd $DIR
 
 
 

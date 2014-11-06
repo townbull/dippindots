@@ -1,0 +1,20 @@
+# ~/.tmuxinator/session.yml
+
+name: session
+root: ~/
+
+# Startup bitlbee.
+pre: bitlbee -F
+
+windows:
+  - comms:
+      layout: e2d4,201x57,0,0[202x37,0,0{120x37,0,0,19,81x37,121,0,22},202x19,0,38{120x19,0,38,23,81x19,121,38,24}]
+      panes:
+          - mutt
+          - rainbowstream
+          - weechat
+          - gcalcli calw;while sleep 60;do tput sc;tput cup 0 0;gcalcli calw;tput rc;done
+  - notes: cd ~/notes/; vi todo.md
+  # symlink current project folder to current
+  # set this up by changing to that folder and running `setcurrent`.
+  - work: cd ~/.current; vi .

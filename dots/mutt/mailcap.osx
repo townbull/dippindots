@@ -2,6 +2,7 @@
 
 # HTML
 text/html;                          ~/.mutt/ext/view_attachment %s html
+application/json;                   ~/.mutt/ext/view_attachment %s json
 
 # Images
 image/jpg;                          ~/.mutt/ext/view_attachment %s jpg

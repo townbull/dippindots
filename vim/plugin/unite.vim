@@ -10,6 +10,7 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '\.svn/',
       \ '\.pyc/',
       \ '\.pyo/',
+      \ '\.meta/',
       \ 'node_modules/',
       \ ], '\|'))
 
