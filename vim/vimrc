@@ -32,6 +32,9 @@ set noeol
 " Disable bells in GUI vim.
 autocmd! GUIEnter * set vb t_vb=
 
+" Automatically trim trailing whitespace on save.
+autocmd BufWritePre * :%s/\s\+$//e
+
 
 " ----------------------------------------------------------------------------
 " Colors
@@ -159,21 +162,12 @@ endif
 " ----------------------------------------------------------------------------
 filetype plugin indent on " Turn on filetype plugins (:help filetype-plugin)
 
-" Some file types should wrap their text
-function! s:setupWrapping()
-  set wrap
-  set linebreak
-  set textwidth=88
-  set nolist
-endfunction
-
 if has("autocmd")
   " In Makefiles, use real tabs, not tabs expanded to spaces
   au FileType make setlocal noexpandtab
 
-  " Make sure all markdown files have the correct filetype set and setup wrapping
+  " Make sure all markdown files have the correct filetype set
   au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
-  au FileType markdown call s:setupWrapping()
 
   " Treat JSON files like JavaScript
   au BufNewFile,BufRead *.json set ft=javascript

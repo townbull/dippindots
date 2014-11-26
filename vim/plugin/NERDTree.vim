@@ -1,9 +1,8 @@
 " ----------------------------------------------------------------------------
 "  NERDTree
 " ----------------------------------------------------------------------------
-" From Janus
 
-let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o$', '\~$', '__pycache__', '\.DS_Store$', '\.meta$', '\.swp$', '\.swo$', '.sass-cache', 'node_modules', '\.rdb$', '.SyncArchive', '.SyncID', '.SyncIgnore', '.searchindex']
+let NERDTreeIgnore=['\.pyc$', '\.pyo$', '\.rbc$', '\.rbo$', '\.class$', '\.o$', '\~$', '__pycache__', '\.DS_Store$', '\.meta$', '\.swp$', '\.swo$', '.sass-cache', 'node_modules', '\.rdb$', '.SyncArchive', '.SyncID', '.SyncIgnore', '.searchindex', '.egg-info', '.git']
 let NERDTreeHijackNetrw = 0
 let NERDTreeShowHidden=1
 

@@ -7,6 +7,7 @@ set fast_reply                      # skip asking for address and subject when r
 set delete=yes                      # automatically purge deleted messages
 set sleep_time=0                    # quicker folder switching
 set wait_key=no                     # don't ask for "press any key to continue" for external commands
+set imap_idle=yes                   # don't disconnect
 mailboxes =INBOX                    # mailboxes to have notifications for
 
 # The next two settings are so we can see our own replies in a thread.
@@ -15,7 +16,7 @@ fcc-hook .* !                       # Fcc all sent mails to the inbox
 
 # Mailbox view
 set date_format="%m/%d %I:%M"
-set index_format="%4C %Z  %D  %-20.20F  %s %?M?(%M) ?"
+set index_format="%Z  %D  %-20.20F  %s %?M?(%M) ?"
 set status_format="%f ~ new: %n ~ total: %m"
 set compose_format="Compose ~ attachments: %a"
 set sort_aux="reverse-last-date-received"
@@ -30,7 +31,7 @@ set confirmappend=yes               # ask for confirmation before moving a messa
 # Message (page) view
 set pager_format="%-20.20n %s"
 set tilde                           # pad bottom blank lines with "~"
-set pager_index_lines=10            # Show 2 messages on either side of the message I'm reading.
+set pager_index_lines=0             # Show 0 messages on either side of the message I'm reading.
 set pager_context=5                 # Paging down a message leaves 5 lines of overlap, so you don't get lost.
 set pager_stop                      # don't go to next message automatically
 unset markers                       # remove plus signs for text wrapping

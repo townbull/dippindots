@@ -41,9 +41,3 @@ function phpserver() {
 function activate() {
     source ~/env/$1/bin/activate
 }
-
-# Sets the current directory as the current project.
-# This way you can just do `vi ~/.current` to immediately start editing in that folder.
-function setcurrent() {
-    ln -s `pwd` ~/.current
-}

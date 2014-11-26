@@ -40,6 +40,11 @@ alias killdsstores="find . -name '*.DS_Store' -type f -delete"
 # Easily clear Solr
 alias clearsolr="curl http://localhost:8983/solr/update --data '<delete><query>*:*</query></delete>' -H 'Content-type:text/xml; charset=utf-8'; curl http://localhost:8983/solr/update --data '<commit/>' -H 'Content-type:text/xml; charset=utf-8'"
 
+# gcalcli auto-refreshing (week view)
+# updates every 20min (1200sec)
+# has to be this long or we hit the daily api limits...
+alias gcalw="gcalcli calw 2;while sleep 1200;do tput sc;tput cup 0 0;gcalcli calw;tput rc;done;"
+
 # Quickly build and run a Processing sketch in the current directory.
 # You must have Processing and then do Tools > Install "processing-java" for this to work.
 alias p5="processing-java --sketch=\${PWD} --output=\${PWD}/temp --run --force"
@@ -55,7 +60,7 @@ fi
 alias l="ls -l ${colorflag}"
 
 # LIst all files colorized in a block
-alias la="ls -a ${colorflag}" 
+alias la="ls -a ${colorflag}"
 
 # List all files colorized in long format, including dot files
 alias ll="ls -la ${colorflag}"
