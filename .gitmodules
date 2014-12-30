@@ -91,3 +91,6 @@
 [submodule "vim/bundle/vimroom"]
 	path = vim/bundle/vimroom
 	url = https://github.com/mikewest/vimroom
+[submodule "vim/bundle/jedi-vim"]
+	path = vim/bundle/jedi-vim
+	url = https://github.com/davidhalter/jedi-vim

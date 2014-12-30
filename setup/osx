@@ -112,11 +112,17 @@ brew link --overwrite macvim
 cp "./assets/Inconsolata+for+Powerline.otf" ~/Library/Fonts
 cp "./assets/Inconsolata-dz.otf" ~/Library/Fonts
 
+# Jedi for jedi-vim (python completion)
+sudo pip install jedi
+
 # Build vimproc
 cd vim/bundle/vimproc/
 make
 cd $DIR
 
+# Note: you may need to re-install Homebrew MacVim by manually adding:
+#   args << "--enable-pythoninterp=dynamic" << "--enable-python3interp=dynamic"
+# so that it compiles with +python/dyn & +python3/dyn, which at the moment jedi-vim requires.
 
 # =============== XVIM =================================
 tput setaf 5
@@ -226,5 +232,5 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
 		tput setaf 4
     echo -e "\nOk, skipping..."
 		tput sgr0
-  fi 
+  fi
 fi

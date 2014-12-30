@@ -147,6 +147,9 @@ cp "./assets/Inconsolata-dz.otf" ~/.fonts
 # Rebuild font cache
 fc-cache -fv
 
+# Jedi for jedi-vim (python completion)
+sudo pip install jedi
+
 # Build vimproc
 cd vim/bundle/vimproc/
 make -s
