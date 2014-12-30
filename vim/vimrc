@@ -264,10 +264,6 @@ noremap <leader>W :w !sudo tee % > /dev/null<CR>
 nnoremap [b :bprevious<cr>
 nnoremap ]b :bnext<cr>
 
-" NERDComment toggle to Ctrl+x
-:vmap <silent> <C-x> :call NERDComment(0,"toggle")<CR>
-:nmap <silent> <C-x> :call NERDComment(0,"toggle")<CR>
-
 " ----------------------------------------------------------------------------
 "  Command flubs
 " ----------------------------------------------------------------------------
