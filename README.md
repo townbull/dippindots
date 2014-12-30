@@ -40,6 +40,41 @@ to GitHub repos, you may need to edit: `.git/config` and change the
 `[remote "origin"]` `url` value to the format:
 `git@github.com:username/repo.git`.
 
+## What's included
+
+### Vim
+I have several vim plugins, managed as git submodules and located in `vim/bundle/`.
+
+- language/framework support:
+    - `scala`
+    - `ruby`
+    - `rails`
+    - `python`
+    - `processing`,
+    - `play`
+    - `javascript`
+    - `jinja`
+    - `markdown`
+    - `haml`
+    - `jade`
+- some extras for python (I spend most of my time in Python):
+    - `cute-python`: eyecandy for python (conceals certain keywords as their mathematical symbols)
+    - `jedi-vim`: code completion and other IDE-like fanciness for python
+- `unite`: for searching through files via ctrl+p
+- `vimproc`: dependency for `unite`
+- `vim-airline`: nice status bar
+- `nerdtree`: file tree browsing
+- `vimroom`: for writing non-code text (prose, posts, etc)
+- `tagbar`: high-level understanding of a file
+- `syntastic`: syntax checking
+- `surround`: for handling surrounding elements (parens, quotes, brackets, etc)
+- `neocomplete`: code completion
+- `futora`: my custom colorscheme
+- `gitgutter`: for easily keeping track of changes b/w commits
+- `delimitmate`: auto-closing of parens, quotes, brackets, etc
+- `easymotion`: quick jumping through a file based on characters
+
+
 ## Credits
 Credit for the foundation of these dotfiles goes to:
 * [Mathias Bynen](http://mths.be/dotfiles)
