@@ -64,6 +64,7 @@ I have several vim plugins, managed as git submodules and located in `vim/bundle
 - `vimproc`: dependency for `unite`
 - `vim-airline`: nice status bar
 - `nerdtree`: file tree browsing
+- `nerdcommenter`: for easier commenting
 - `vimroom`: for writing non-code text (prose, posts, etc)
 - `tagbar`: high-level understanding of a file
 - `syntastic`: syntax checking
