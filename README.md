@@ -50,7 +50,7 @@ I have several vim plugins, managed as git submodules and located in `vim/bundle
     - `ruby`
     - `rails`
     - `python`
-    - `processing`,
+    - `processing`
     - `play`
     - `javascript`
     - `jinja`
