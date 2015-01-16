@@ -1,0 +1,19 @@
+#!/bin/sh
+
+MESSAGE=$(cat)
+
+from=$(echo "$MESSAGE" | grep ^"From: " | sed s/[\,\"\']//g)
+regex="From: (.+) <(.+)>"
+
+[[ "$from" =~ $regex ]]
+name="${BASH_REMATCH[1]}"
+email="${BASH_REMATCH[2]}"
+
+# Slugify the name to generate the nick.
+nick=$(echo "$name" | sed -e 's/[^[:alnum:]]/-/g' | tr -s '-' | tr A-Z a-z)
+
+if ! grep -Fq "$email" $HOME/.mutt/aliases; then
+    echo "alias $nick $name <$email>" >> $HOME/.mutt/aliases
+fi
+
+echo "${MESSAGE}"

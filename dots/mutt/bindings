@@ -16,6 +16,8 @@ macro pager O |urlview\n 'call urlview to extract URLs out of a message'
 # runs through mailcap via "m", then goes back with "q"
 macro pager V "<view-attachments>/html<enter>mq"
 
+# Reload/refresh the aliases file.
+macro index,pager \cr ":source $HOME/.mutt/aliases<enter>"
 
 bind pager k  previous-line
 bind pager j  next-line

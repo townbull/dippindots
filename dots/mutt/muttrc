@@ -12,6 +12,9 @@ set header_cache=~/.mutt/cache/headers
 set message_cachedir=~/.mutt/cache/bodies
 set certificate_file=~/.mutt/certificates
 
+# Auto-save new aliases when reading mail
+set display_filter=~/.mutt/ext/aliases
+
 source ~/.mutt/auth
 source ~/.mutt/folders
 source ~/.mutt/options
