@@ -112,8 +112,8 @@ set nofoldenable 				" No fold by default
 " Whitespace
 " ----------------------------------------------------------------------------
 set wrap                          " Wrap lines
-set tabstop=2                     " Set tab to two spaces
-set shiftwidth=2                  " Set autoindent (with <<) to two spaces
+set tabstop=4                     " Set tab spaces
+set shiftwidth=4                  " Set autoindent (with <<) spaces
 set expandtab                     " Use spaces, not tabs
 set list                          " Show invisible characters
 set backspace=indent,eol,start    " Backspace through everything in insert mode
