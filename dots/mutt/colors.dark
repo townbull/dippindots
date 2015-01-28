@@ -1,0 +1,50 @@
+color normal    white black
+color tree      cyan black
+color status    black green
+color indicator black white
+color tilde     blue black
+color signature default black
+color message   white black
+color error     white black
+color bold      red black
+color underline red black
+color search    black yellow
+
+
+# urls
+color body black yellow "(^|<| )mailto:[^ ]+@[^ ]( |>|$)"
+color body black yellow "(^|<| )(http|https|ftp|file|telnet|news|finger)://[^ ]+( |>|$)"
+
+# quote attribution
+color body green black "On.*wrote:"
+
+# mailbox colors
+color index   white               black     ~p      # i am to/cc
+color index   white               black     ~P      # from me
+color index   black               blue      ~N      # new
+color index   white               black     ~O      # old
+color index   yellow              black     ~F      # flagged
+color index   white               black     ~T      # tagged
+color index   white               black     ~Q      # replied
+color index   white               black     ~k      # GPG
+color index   default             black     ~D      # deleted
+color index   green               black     ~v      # collapsed thread
+
+# message headers
+color hdrdefault white black
+color header    green         black ^Date:
+color header    blue           black ^From:
+color header    white         black ^To:
+color header    white         black ^Reply-To:
+color header    blue           black ^Cc:
+color header    blue           black ^Subject:
+
+# quote blocks
+color quoted     magenta       black
+color quoted1    cyan          black
+color quoted2    green         black
+color quoted3    magenta       black
+color quoted4    cyan          black
+color quoted5    green         black
+color quoted6    magenta       black
+color quoted7    cyan          black

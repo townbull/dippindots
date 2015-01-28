@@ -52,11 +52,11 @@ color header     black         green  ^Cc:
 color header     white         magenta ^Subject:
 
 # quote blocks
-color quoted     magenta       color255
-color quoted1    cyan          color255
-color quoted2    blue          color255
-color quoted3    magenta       color255
-color quoted4    cyan          color255
-color quoted5    blue          color255
-color quoted6    magenta       color255
-color quoted7    cyan          color255
+color quoted     magenta       white
+color quoted1    cyan          white
+color quoted2    blue          white
+color quoted3    magenta       white
+color quoted4    cyan          white
+color quoted5    blue          white
+color quoted6    magenta       white
+color quoted7    cyan          white

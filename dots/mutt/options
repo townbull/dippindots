@@ -22,7 +22,7 @@ set compose_format="Compose ~ attachments: %a"
 set sort_aux="reverse-last-date-received"
 set sort_browser="date"             # sort by date
 set sort=threads                    # threaded view
-set strict_threads="yes"            # don't thread just based on same subjects, but using reply-tos
+set strict_threads=yes              # don't thread just based on same subjects, but using reply-tos
 unset collapse_unread               # uncollapse any threads with unread messages
 unset mark_old                      # don't mark unread messages as "old"
 set confirmappend=yes               # ask for confirmation before moving a message to another mailbox
