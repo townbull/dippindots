@@ -2,7 +2,10 @@
 
 MESSAGE=$(cat)
 
-from=$(echo "$MESSAGE" | grep ^"From: " | sed s/[\,\"\']//g)
+# To deal with forwaded emails,
+# which may have another "From" line,
+# we grep for only the first match.
+from=$(echo "$MESSAGE" | grep -m 1 ^"From: " | sed s/[\,\"\']//g)
 regex="From: (.+) <(.+)>"
 
 [[ "$from" =~ $regex ]]

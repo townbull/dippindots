@@ -3,7 +3,7 @@ macro index,pager d "<save-message>=[Gmail]/Trash<enter>" "Trash"
 macro index,pager u "<undelete-pattern>.*<enter>" "Undelete messages marked for deletion"
 macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
-macro index gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
+macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to sent messages"
 macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
 
 # Convert markdown to html in the composer. Select the attached plaintext and hit "M".
