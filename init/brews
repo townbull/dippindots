@@ -44,5 +44,8 @@ brew install urlview
 brew install pandoc
 brew install aspell
 
+# Fast searching with The Silver Searcher (ag)
+brew install the_silver_searcher
+
 # Remove outdated versions from the cellar
 brew cleanup
