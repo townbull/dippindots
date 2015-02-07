@@ -5,7 +5,8 @@ MESSAGE=$(cat)
 # To deal with forwaded emails,
 # which may have another "From" line,
 # we grep for only the first match.
-from=$(echo "$MESSAGE" | grep -m 1 ^"From: " | sed s/[\,\"\']//g)
+# The `tail +1` is a hack around broken pipe errors.
+from=$(echo "$MESSAGE" | tail +1 | grep -m 1 ^"From: " | sed s/[\,\"\']//g)
 regex="From: (.+) <(.+)>"
 
 [[ "$from" =~ $regex ]]
