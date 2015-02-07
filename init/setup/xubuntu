@@ -35,7 +35,8 @@ sudo apt-get install evolution-data-server
 # sc        -- spreadsheet calculator
 # gpick     -- colorpicker
 # alacarte  -- slingshot (app launcher) customization
-sudo apt-get install --no-install-recommends --yes chromium-browser deluge pidgin vlc blender gimp inkscape spotify-client btsync-gui netflix-desktop zeal sc gpick geary california silversearcher-ag
+# zathura   -- keyboard-driven pdf viewer
+sudo apt-get install --no-install-recommends --yes chromium-browser deluge pidgin vlc blender gimp inkscape spotify-client btsync-gui netflix-desktop zeal sc gpick geary california silversearcher-ag zathura
 
 # Mutt for email.
 sudo apt-get install --yes mutt w3m urlview pandoc
