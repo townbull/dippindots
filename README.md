@@ -50,17 +50,15 @@ I have several vim plugins, managed as git submodules and located in `vim/bundle
     - `ruby`
     - `rails`
     - `python`
-    - `processing`
     - `play`
     - `javascript`
     - `jinja`
     - `markdown`
-    - `haml`
     - `jade`
 - some extras for python (I spend most of my time in Python):
     - `cute-python`: eyecandy for python (conceals certain keywords as their mathematical symbols)
     - `jedi-vim`: code completion and other IDE-like fanciness for python
-- `unite`: for searching through files via ctrl+p
+- `unite`: for searching through files
 - `vimproc`: dependency for `unite`
 - `vim-airline`: nice status bar
 - `nerdtree`: file tree browsing
