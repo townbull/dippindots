@@ -17,6 +17,10 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ '\.pyc',
       \ '\.pyo',
       \ '\.meta',
+      \ '\.asset',
+      \ '\.prefab',
+      \ '\.dll',
+      \ '\.png',
       \ 'node_modules/',
       \ ], '\|'))
 
@@ -24,10 +28,15 @@ call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 
 " Ctrlp replacement.
-nnoremap <C-p> :<C-u>Unite  -buffer-name=files   -start-insert buffer file_rec/async:!<cr>
+nnoremap <C-p> :<C-u>Unite  -buffer-name=files   -start-insert buffer file_rec/async:! -auto-resize -marked-icon="~>"<cr>
 
 " Content searching.
 nnoremap <C-c> :Unite grep:.<cr>
+
+" Cycle through results from previous search.
+nnoremap <C-n> :UniteNext<cr>
+nnoremap <C-b> :UnitePrevious<cr>
+
 
 " Yank history
 let g:unite_source_history_yank_enable = 1
@@ -37,6 +46,7 @@ autocmd FileType unite call s:unite_settings()
 
 function! s:unite_settings()
   let b:SuperTabDisabled=1
+  " Navigation in the Unite buffer.
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
   imap <silent><buffer><expr> <C-x> unite#do_action('split')
