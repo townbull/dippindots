@@ -6,8 +6,5 @@ export TERM=xterm-256color
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-# Force colors in ElementaryOS.
-force_color_prompt=yes
-
 PERL_MB_OPT="--install_base \"/Users/ftseng/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/ftseng/perl5"; export PERL_MM_OPT;
