@@ -35,6 +35,3 @@ else
   echo "Yeoman found! Moving on..."
   tput sgr0
 fi
-
-# For vim-instant-markdown
-sudo npm -g install git+https://github.com/ftzeng/instant-markdown-d.git
