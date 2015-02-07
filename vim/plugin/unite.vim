@@ -9,14 +9,14 @@ if executable('ag')
     let g:unite_source_grep_recursive_opt = ''
 endif
 
-call unite#custom#source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
       \ 'ignore_pattern', join([
       \ '\.git/',
       \ '\.hg/',
       \ '\.svn/',
-      \ '\.pyc/',
-      \ '\.pyo/',
-      \ '\.meta/',
+      \ '\.pyc',
+      \ '\.pyo',
+      \ '\.meta',
       \ 'node_modules/',
       \ ], '\|'))
 
