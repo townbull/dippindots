@@ -6,4 +6,5 @@ set imap_user="me@somegoogleapps.com"
 set imap_keepalive=900
 
 set smtp_url="smtp://me@somegoogleapps.com@smtp.gmail.com:587"
+set smtp_authenticators = 'gssapi:login'
 #set smtp_pass="mypassword" # optional password. I suggest leaving it out.
