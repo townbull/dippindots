@@ -1,6 +1,6 @@
 # DippinDots
 
-These are my personal dotfiles for OSX and Linux (in particular, Xubuntu, with iffy Crunchbang/ElementaryOS settings).
+These are my personal dotfiles for OSX and Linux (Xubuntu).
 Please feel free to use/modify them as you like!
 
 If you're on OSX, you should have XCode and the XCode Command Line Tools
@@ -31,7 +31,7 @@ $ git clone https://github.com/ftzeng/dippindots.git ~/.dippindots && cd ~/.dipp
 
 To update the git submodules:
 ```bash
-$ git submodule foreach git pull origin master
+$ ./update
 ```
 
 ## Notes
