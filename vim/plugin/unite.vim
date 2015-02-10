@@ -34,8 +34,8 @@ nnoremap <C-p> :<C-u>Unite  -buffer-name=files   -start-insert buffer file_rec/a
 nnoremap <C-c> :Unite grep:.<cr>
 
 " Cycle through results from previous search.
-nnoremap <C-n> :UniteNext<cr>
-nnoremap <C-b> :UnitePrevious<cr>
+nnoremap <Leader>m :UniteNext<cr>
+nnoremap <Leader>n :UnitePrevious<cr>
 
 
 " Yank history
