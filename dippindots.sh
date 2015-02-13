@@ -88,6 +88,15 @@ else
 fi
 
 
+# =============== BASHMARKS =================================
+# For "bookmarks" in the shell
+cd /tmp
+git clone git://github.com/huyng/bashmarks.git
+cd bashmarks
+make install
+source ~/.local/bin/bashmarks.sh
+cd $DIR
+
 
 # ===============  SYMLINK  =================================
 tput setaf 5
