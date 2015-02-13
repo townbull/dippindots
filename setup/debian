@@ -180,6 +180,9 @@ if [[ $(cat /etc/*-release) == *"elementary OS"* ]]; then
     ./init/setup/elementaryos
 else
     ./init/setup/xubuntu
+
+    # Set to "no" to use bash as sh instead of dash.
+    sudo dpkg-reconfigure dash
 fi
 
 
