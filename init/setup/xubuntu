@@ -36,7 +36,14 @@ sudo apt-get install evolution-data-server
 # gpick     -- colorpicker
 # alacarte  -- slingshot (app launcher) customization
 # zathura   -- keyboard-driven pdf viewer
-sudo apt-get install --no-install-recommends --yes chromium-browser deluge pidgin vlc blender gimp inkscape spotify-client btsync-gui netflix-desktop zeal sc gpick geary california silversearcher-ag zathura
+sudo apt-get install --no-install-recommends --yes chromium-browser deluge pidgin vlc blender gimp inkscape spotify-client btsync-gui netflix-desktop zeal gpick geary california silversearcher-ag zathura
+
+# scim, a modern version of sc (spreadsheet calculator)
+cd /tmp
+git clone git@github.com:andmarti1424/scim.git
+cd scim/src
+make && sudo make install
+cd $DIR
 
 # Mutt for email.
 sudo apt-get install --yes mutt w3m urlview pandoc
