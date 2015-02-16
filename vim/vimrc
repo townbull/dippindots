@@ -80,8 +80,11 @@ set statusline+=%{SyntaxItem()}
 set incsearch   " Search as pattern is typed
 set ignorecase  " Case insensitive searches...
 set smartcase   " Unless they contain 1+ capital letters
-set nohlsearch  " Don't highlight search matches
+set hlsearch    " Highlight search matches
 set gdefault 	" Global search/replace by default
+
+" Bind return to clear last search highlight.
+nnoremap <CR> :noh<CR><CR>
 
 
 " ----------------------------------------------------------------------------
