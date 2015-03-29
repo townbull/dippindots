@@ -29,10 +29,6 @@ alias v="vim ."
 alias o="open"
 alias oo="open ."
 
-# Nomadic
-alias n="nomadic"
-
-
 # Clear all DS_Stores from the current directory and its subdirectories.
 alias killdsstores="find . -name '*.DS_Store' -type f -delete"
 

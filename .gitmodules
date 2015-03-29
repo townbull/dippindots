@@ -73,3 +73,6 @@
 [submodule "vim/bundle/ultisnips"]
 	path = vim/bundle/ultisnips
 	url = https://github.com/sirver/ultisnips
+[submodule "vim/bundle/purescript"]
+	path = vim/bundle/purescript
+	url = https://github.com/raichoo/purescript-vim

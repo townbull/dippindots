@@ -39,7 +39,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 " ----------------------------------------------------------------------------
 " Colors
 " ----------------------------------------------------------------------------
-set background=light
+set background=dark
 colorscheme futora
 
 

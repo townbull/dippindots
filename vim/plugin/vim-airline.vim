@@ -1,4 +1,4 @@
-let g:airline_theme = "sol"
+let g:airline_theme = "tomorrow"
 
 let g:airline_symbols = {}
 let g:airline_left_sep = ''
