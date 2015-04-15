@@ -47,5 +47,8 @@ brew install aspell
 # Fast searching with The Silver Searcher (ag)
 brew install the_silver_searcher
 
+# For fast computer maths
+brew install openblas
+
 # Remove outdated versions from the cellar
 brew cleanup

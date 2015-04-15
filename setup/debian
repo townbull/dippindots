@@ -173,6 +173,9 @@ python setup.py install
 cd $DIR
 
 
+# FAST MATHS
+sudo apt-get install libatlas-base-dev liblapack-dev libopenblas-dev libopenblas-base libatlas3gf-base -y
+
 
 # =============== DISTRO-SPECIFIC SETUP =================================
 

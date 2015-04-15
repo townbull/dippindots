@@ -157,6 +157,9 @@ set backupdir^=~/.vim/.backup// 	" Backup files
 set directory^=~/.vim/.temp// 		" Swap files
 if exists("&undodir")
 	set undodir=~/.vim/.undo 				" Undo files
+    set undofile
+    set undolevels=500
+    set undoreload=500
 endif
 
 
