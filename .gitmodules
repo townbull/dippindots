@@ -73,3 +73,9 @@
 [submodule "vim/bundle/purescript"]
 	path = vim/bundle/purescript
 	url = https://github.com/raichoo/purescript-vim
+[submodule "vim/bundle/python-mode"]
+	path = vim/bundle/python-mode
+	url = https://github.com/klen/python-mode
+[submodule "vim/bundle/vim-go"]
+	path = vim/bundle/vim-go
+	url = git@github.com:fatih/vim-go.git

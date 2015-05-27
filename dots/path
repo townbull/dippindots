@@ -25,3 +25,6 @@ export PATH="$PATH:/usr/sbin:/usr/bin:/sbin:/bin"
 
 # Cabal (Haskell)
 export PATH="$HOME/.cabal/bin/:$PATH"
+
+# Go
+export PATH=$PATH:$GOPATH/bin
