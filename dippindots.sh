@@ -33,11 +33,31 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     echo "Running setup for OSX ~"
     ./setup/osx
 	tput sgr0
+
 elif [[ -f /etc/debian_version ]]; then
-  tput setaf 2
-	echo "Running setup for Debian ~"
-    ./setup/debian
+  tput setaf 3
+  read -p "Is this for a server or desktop? (server/desktop) "
   tput sgr0
+
+  if [[ "$REPLY" = "server" ]]; then
+    tput setaf 2
+	echo "Running setup for Ubuntu Server ~"
+      ./setup/ubuntu_server
+    tput sgr0
+
+  elif [[ "$REPLY" = "desktop" ]]; then
+    tput setaf 2
+	echo "Running setup for Debian ~"
+      ./setup/debian
+    tput sgr0
+
+  else
+  tput setaf 1
+    echo "Please enter either 'server' or 'desktop'!"
+  tput sgr0
+    exit 1
+  fi
+
 else
   tput setaf 1
 	echo "DippinDots is meant for use with OSX or Debian-based Linux distros. Goodbye!"
