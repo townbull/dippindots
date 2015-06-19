@@ -44,8 +44,8 @@ elif [[ -f /etc/debian_version ]]; then
         DESKTOP=false
         tput setaf 2
         echo "Running setup for Ubuntu Server ~"
-        ./setup/ubuntu_server
         tput sgr0
+        ./setup/ubuntu_server
 
     elif [[ "$REPLY" = "desktop" ]]; then
         tput setaf 2
