@@ -16,3 +16,6 @@ syn region markdownEqn matchgroup=markdownEqnDelimiter start="\$" end="\$" keepe
 syn region markdownEqn matchgroup=markdownEqnDelimiter start="\$\$" end="\$\$" keepend contains=markdownEqnIn
 syn match markdownEqnIn ".*" contained
 hi def link markdownEqnDelimiter Comment
+
+" YAML front matter highlighting
+syntax match Comment /\%^---\_.\{-}---$/ contains=@Spell
