@@ -250,6 +250,9 @@ map gr gT
 nnoremap [t :tabprevious<cr>
 nnoremap ]t :tabnext<cr>
 
+" Easily paste in current datetime
+nnoremap <leader>, "=strftime("%m.%d.%Y %H:%M")<CR>P
+
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
 	let save_cursor = getpos(".")
