@@ -1,4 +1,5 @@
 #!/bin/bash
+DESKTOP=true
 
 # =============== WELCOME =================================
 tput setaf 6
@@ -33,69 +34,92 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
     echo "Running setup for OSX ~"
     ./setup/osx
 	tput sgr0
+
 elif [[ -f /etc/debian_version ]]; then
-  tput setaf 2
-	echo "Running setup for Debian ~"
-    ./setup/debian
-  tput sgr0
+    tput setaf 3
+    read -p "Is this for a server or desktop? (server/desktop) "
+    tput sgr0
+
+    if [[ "$REPLY" = "server" ]]; then
+        DESKTOP=false
+        tput setaf 2
+        echo "Running setup for Ubuntu Server ~"
+        tput sgr0
+        ./setup/ubuntu_server
+
+    elif [[ "$REPLY" = "desktop" ]]; then
+        tput setaf 2
+        echo "Running setup for Debian ~"
+        ./setup/debian
+        tput sgr0
+
+    else
+        tput setaf 1
+        echo "Please enter either 'server' or 'desktop'!"
+        tput sgr0
+        exit 1
+    fi
+
 else
-  tput setaf 1
+    tput setaf 1
 	echo "DippinDots is meant for use with OSX or Debian-based Linux distros. Goodbye!"
-  tput sgr0
-  exit 1
+    tput sgr0
+    exit 1
 fi
 
 # =============== RVM & RUBY =================================
-if [[ ! "$(type -P rvm)" ]]; then
-	tput setaf 5
-    echo "RVM not found. Will try to install..."
-	echo "Installing RVM, Ruby, and RubyGems..."
-	tput sgr0
+if [ "$DESKTOP" = true ]; then
+    if [[ ! "$(type -P rvm)" ]]; then
+        tput setaf 5
+        echo "RVM not found. Will try to install..."
+        echo "Installing RVM, Ruby, and RubyGems..."
+        tput sgr0
 
-	# Install RVM w/ Ruby
-	curl -L https://get.rvm.io | bash -s stable --ruby
+        # Install RVM w/ Ruby
+        curl -L https://get.rvm.io | bash -s stable --ruby
 
-	source ~/.rvm/scripts/rvm
-else
-	tput setaf 2
-    echo "RVM found! Moving on..."
-	tput sgr0
+        source ~/.rvm/scripts/rvm
+    else
+        tput setaf 2
+        echo "RVM found! Moving on..."
+        tput sgr0
+    fi
+
+    # Need to ensure RVM was installed properly
+    if [[ ! "$(type -P rvm)" ]]; then
+      tput setaf 1
+      echo "RVM should be installed. It isn't. Aborting."
+      tput sgr0
+      exit 1
+    fi
+
+
+    # =============== GEMS =================================
+    tput setaf 5
+    read -p "Do you want install some gems? (y/n) " -n 1
+    tput sgr0
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        tput setaf 5
+        echo "Installing some gems..."
+        tput sgr0
+
+        bash ./init/gems
+    else
+        tput setaf 3
+        echo -e "\nSkipping gems...\n"
+        tput sgr0
+    fi
+
+
+    # =============== BASHMARKS =================================
+    # For "bookmarks" in the shell
+    cd /tmp
+    git clone git://github.com/huyng/bashmarks.git
+    cd bashmarks
+    make install
+    source ~/.local/bin/bashmarks.sh
+    cd $DIR
 fi
-
-# Need to ensure RVM was installed properly
-if [[ ! "$(type -P rvm)" ]]; then
-  tput setaf 1
-  echo "RVM should be installed. It isn't. Aborting."
-  tput sgr0
-  exit 1
-fi
-
-
-# =============== GEMS =================================
-tput setaf 5
-read -p "Do you want install some gems? (y/n) " -n 1
-tput sgr0
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-	tput setaf 5
-	echo "Installing some gems..."
-	tput sgr0
-
-	bash ./init/gems
-else
-	tput setaf 3
-	echo -e "\nSkipping gems...\n"
-	tput sgr0
-fi
-
-
-# =============== BASHMARKS =================================
-# For "bookmarks" in the shell
-cd /tmp
-git clone git://github.com/huyng/bashmarks.git
-cd bashmarks
-make install
-source ~/.local/bin/bashmarks.sh
-cd $DIR
 
 
 # ===============  SYMLINK  =================================
@@ -117,16 +141,18 @@ ln -sf $pwd/dots/inputrc ~/.inputrc
 ln -sf $pwd/bin ~/.bin
 ln -sf $pwd/dots/tmux.conf ~/.tmux.conf
 
-cp $pwd/dots/mutt/_aliases $pwd/dots/mutt/aliases
-cp $pwd/dots/mutt/_auth $pwd/dots/mutt/auth
-cp $pwd/dots/mutt/_signature $pwd/dots/mutt/signature
-sudo ln -s $pwd/dots/mutt ~/.mutt
-echo "Setup ~/.mutt/aliases, ~/.mutt/auth, and ~/.mutt/signature as needed!"
+if [ "$DESKTOP" = true ]; then
+    cp $pwd/dots/mutt/_aliases $pwd/dots/mutt/aliases
+    cp $pwd/dots/mutt/_auth $pwd/dots/mutt/auth
+    cp $pwd/dots/mutt/_signature $pwd/dots/mutt/signature
+    sudo ln -s $pwd/dots/mutt ~/.mutt
+    echo "Setup ~/.mutt/aliases, ~/.mutt/auth, and ~/.mutt/signature as needed!"
 
-sudo ln -s $pwd/dots/weechat ~/.weechat
+    sudo ln -s $pwd/dots/weechat ~/.weechat
 
-# rainbowstream for twitter
-sudo ln -sf $pwd/dots/rainbow_config.json ~/.rainbow_config.json
+    # rainbowstream for twitter
+    sudo ln -sf $pwd/dots/rainbow_config.json ~/.rainbow_config.json
+fi
 
 if [ ! -f /etc/environment ]; then
     # Create an empty env file.

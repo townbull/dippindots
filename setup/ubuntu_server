@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# this script's directory and up one.
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/.."
+
+# =============== DEPENDENCIES =================================
+sudo apt-get update
+sudo apt-get upgrade -y
+sudo apt-get install --no-install-recommends python g++ make wget git openssh-server libncurses5-dev tmux -y
+
+
+# =============== GIT =================================
+bash ./init/git
+
+# If Git isn't installed by now, something messed up...here's the contigency plan.
+if [[ ! "$(type -P git)" ]]; then
+  tput setaf 1
+  echo "Git should be installed. It isn't. Aborting."
+  tput sgr0
+  exit 1
+fi
+
+
+# =============== PYTHON & PIP =================================
+tput setaf 5
+echo "Installing Python2, Python3, pip, and virtualenv...."
+tput sgr0
+
+sudo apt-get install python3 python-pip -y
+sudo pip install virtualenv
+
+sudo apt-get install python3-setuptools -y
+sudo easy_install3 pip
+sudo pip3 install virtualenv
+
+
+# =============== VIM =================================
+tput setaf 5
+echo "Installing Vim..."
+tput sgr0
+
+# Lua
+sudo apt-get install lua5.1 liblua5.1-dev -y
+
+# X11, allows using system clipboard with vim.
+sudo apt-get install libx11-dev libxtst-dev libxt-dev libsm-dev libxpm-dev
+
+mkdir /tmp/vim && cd $_
+wget ftp://ftp.ca.vim.org/pub/vim/unix/vim-7.4.tar.bz2
+tar xvjf vim-7.4.tar.bz2
+cd vim*
+./configure --with-features=huge --enable-luainterp=yes --enable-pythoninterp=yes --enable-python3interp=yes --enable-gui=gtk2 --with-x --with-lua-prefix=/usr
+make -s && sudo make install
+cd $DIR
+
+# Overwrite vi
+sudo rm /usr/bin/vi
+sudo ln -s /usr/local/bin/vim /usr/bin/vi
+
+# Jedi for jedi-vim (python completion)
+sudo pip install jedi
+
+# Build vimproc
+cd vim/bundle/vimproc/
+make -s
+cd $DIR
+
+
+# =============== FAST MATHS ======================================
+sudo apt-get install libatlas-base-dev liblapack-dev libopenblas-dev libopenblas-base libatlas3gf-base -y
+
+
+# =============== CLEANUP ===============================================
+sudo apt-get autoremove -y
+
+
