@@ -15,6 +15,7 @@ brew install bash
 
 # Install wget with IRI support
 brew install wget --enable-iri
+brew install httpie
 
 brew install tree
 brew install nmap

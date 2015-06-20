@@ -32,7 +32,7 @@ tput sgr0
 sudo add-apt-repository ppa:jon-severinsson/ffmpeg -y
 sudo apt-get update
 
-sudo apt-get install --no-install-recommends dos2unix ffmpeg tmux curl dnsutils -y
+sudo apt-get install --no-install-recommends dos2unix ffmpeg tmux curl dnsutils httpie -y
 
 # Note: For raster image previews (NOT ascii previews) with w3m-image to work,
 # you have to use xterm, not xfce terminal.
