@@ -64,15 +64,9 @@
 [submodule "vim/bundle/vimproc"]
 	path = vim/bundle/vimproc
 	url = https://github.com/Shougo/vimproc.vim
-[submodule "vim/bundle/vimroom"]
-	path = vim/bundle/vimroom
-	url = https://github.com/mikewest/vimroom
 [submodule "vim/bundle/ultisnips"]
 	path = vim/bundle/ultisnips
 	url = https://github.com/sirver/ultisnips
-[submodule "vim/bundle/purescript"]
-	path = vim/bundle/purescript
-	url = https://github.com/raichoo/purescript-vim
 [submodule "vim/bundle/python-mode"]
 	path = vim/bundle/python-mode
 	url = https://github.com/klen/python-mode
@@ -82,3 +76,6 @@
 [submodule "vim/bundle/vim-table-mode"]
 	path = vim/bundle/vim-table-mode
 	url = git@github.com:dhruvasagar/vim-table-mode.git
+[submodule "vim/bundle/goyo.vim"]
+	path = vim/bundle/goyo.vim
+	url = git@github.com:junegunn/goyo.vim.git
