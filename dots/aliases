@@ -29,6 +29,9 @@ alias v="vim ."
 alias o="open"
 alias oo="open ."
 
+# Symlink the data directory to this folder
+alias lndata="ln -s ~/data data"
+
 # Clear all DS_Stores from the current directory and its subdirectories.
 alias killdsstores="find . -name '*.DS_Store' -type f -delete"
 
