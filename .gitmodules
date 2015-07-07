@@ -52,9 +52,6 @@
 [submodule "vim/bundle/easymotion"]
 	path = vim/bundle/easymotion
 	url = https://github.com/Lokaltog/vim-easymotion.git
-[submodule "vim/bundle/play2vim"]
-	path = vim/bundle/play2vim
-	url = https://github.com/gre/play2vim.git
 [submodule "vim/bundle/unite"]
 	path = vim/bundle/unite
 	url = https://github.com/Shougo/unite.vim
