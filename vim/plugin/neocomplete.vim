@@ -51,6 +51,7 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType text,markdown let g:neocomplete#disable_auto_complete=1
 
 " Enable heavy omni completion.
 call neocomplete#custom#source('_', 'sorters', [])
