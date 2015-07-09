@@ -66,10 +66,10 @@
 	url = https://github.com/klen/python-mode
 [submodule "vim/bundle/vim-go"]
 	path = vim/bundle/vim-go
-	url = git@github.com:fatih/vim-go.git
+	url = https://github.com:fatih/vim-go.git
 [submodule "vim/bundle/vim-table-mode"]
 	path = vim/bundle/vim-table-mode
-	url = git@github.com:dhruvasagar/vim-table-mode.git
+	url = https://github.com:dhruvasagar/vim-table-mode.git
 [submodule "vim/bundle/goyo.vim"]
 	path = vim/bundle/goyo.vim
-	url = git@github.com:junegunn/goyo.vim.git
+	url = https://github.com:junegunn/goyo.vim.git
