@@ -28,14 +28,14 @@ if [ $OS = 'debian' ]; then
     sudo apt-get update
 
     # Required for netflix-desktop.
-    sudo apt-get install ttf-mscorefonts-installer
+    sudo apt-get install ttf-mscorefonts-installer -y
 
     # Flash player
-    sudo apt-get install pepperflashplugin-nonfree
+    sudo apt-get install pepperflashplugin-nonfree -y
     sudo update-pepperflashplugin-nonfree --install
 
     # Dependency for California calendar.
-    sudo apt-get install evolution-data-server
+    sudo apt-get install evolution-data-server -y
 
     # Install some cool apps :D
     # zeal      -- offline documentation
