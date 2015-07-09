@@ -50,7 +50,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	tput sgr0
 else
 	tput setaf 3
-	echo -e "\nNo SSH keys found, or user skipped, skipping Git config..."
-	echo "You can set this up later with init/git."
+	echo -e "\nNo SSH keys found, or user skipped, skipping git config..."
+	echo "You can set this up later with setup/git.sh <osx|debian>"
 	tput sgr0
 fi
