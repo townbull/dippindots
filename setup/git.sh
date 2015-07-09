@@ -17,7 +17,7 @@ fi
 # Configure Git
 # Requires your SSH keys!
 tput setaf 5
-read -p "Do you want to setup Github SSH access? This requires that your SSH keys are available in ~/.ssh. (y/n) " -n 1
+read -rep "Do you want to setup Github SSH access? This requires that your SSH keys are available in ~/.ssh. (y/n) " -n 1
 tput sgr0
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     # If gitconfig doesn't exist, set it up.
@@ -26,11 +26,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         tput setaf 5
         echo "What's your git email?"
         tput sgr0
-        read email
+        read -rep email
         tput setaf 5
         echo "What's your git name? Use your full name."
         tput sgr0
-        read name
+        read -rep name
         printf "\n[user]\n\temail = $email\n\tname = $name" >> ~/.gitconfig
     fi
 

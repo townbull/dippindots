@@ -39,7 +39,7 @@ fi
 
 
 tput setaf 5
-read -p "Do you want install some gems? (y/n) " -n 1
+read -rep "Do you want install some gems? (y/n) " -n 1
 tput sgr0
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     tput setaf 5

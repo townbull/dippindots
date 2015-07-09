@@ -9,7 +9,7 @@ echo "Starting up..."
 tput sgr0
 
 tput setaf 3
-read -p "This will overwrite your existing dotfiles. Do you want to continue?. (y/n) " -n 1
+read -rep "This will overwrite your existing dotfiles. Do you want to continue?. (y/n) " -n 1
 tput sgr0
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 	echo -e "\nExiting..."
@@ -41,7 +41,7 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
 elif [[ -f /etc/debian_version ]]; then
     OS=debian
     tput setaf 3
-    read -p "Running setup for Debian (or a derivative) ~"
+    echo "Running setup for Debian (or a derivative) ~"
     tput sgr0
 
 else
