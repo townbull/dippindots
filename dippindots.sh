@@ -1,5 +1,5 @@
 #!/bin/bash
-DESKTOP=true
+DIR=$(pwd)
 
 # =============== WELCOME =================================
 tput setaf 6
@@ -16,49 +16,33 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 	exit 1
 fi
 
-
-# =============== SUBMODULES =================================
-tput setaf 5
-echo "Installing and updating git submodules..."
+tput setaf 2
+echo "Select which setup scripts you want to include:"
 tput sgr0
-git submodule init && git submodule update
-git submodule foreach git pull origin master
+declare -a available=(python ruby npm vim util math mutt social apps)
+declare -a selections=()
+for s in "${available[@]}"; do
+    read -rep "Include ${s}? (y/n) " -n 1
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        selections=("${selections[@]}" "${s}")
+    fi
+done
 
-
-# ===============  OS SETUP  ================================
+# ===============  OS CHECK  ================================
 tput setaf 4
 echo -e "\nChecking OS..."
 tput sgr0
 if [[ "$OSTYPE" =~ ^darwin ]]; then
+    OS=osx
 	tput setaf 2
     echo "Running setup for OSX ~"
-    ./setup/osx
 	tput sgr0
 
 elif [[ -f /etc/debian_version ]]; then
+    OS=debian
     tput setaf 3
-    read -p "Is this for a server or desktop? (server/desktop) "
+    read -p "Running setup for Debian (or a derivative) ~"
     tput sgr0
-
-    if [[ "$REPLY" = "server" ]]; then
-        DESKTOP=false
-        tput setaf 2
-        echo "Running setup for Ubuntu Server ~"
-        tput sgr0
-        ./setup/ubuntu_server
-
-    elif [[ "$REPLY" = "desktop" ]]; then
-        tput setaf 2
-        echo "Running setup for Debian ~"
-        ./setup/debian
-        tput sgr0
-
-    else
-        tput setaf 1
-        echo "Please enter either 'server' or 'desktop'!"
-        tput sgr0
-        exit 1
-    fi
 
 else
     tput setaf 1
@@ -67,59 +51,33 @@ else
     exit 1
 fi
 
-# =============== RVM & RUBY =================================
-if [ "$DESKTOP" = true ]; then
-    if [[ ! "$(type -P rvm)" ]]; then
-        tput setaf 5
-        echo "RVM not found. Will try to install..."
-        echo "Installing RVM, Ruby, and RubyGems..."
-        tput sgr0
+# =============== GIT =================================
+bash setup/git.sh $OS $DIR
 
-        # Install RVM w/ Ruby
-        curl -L https://get.rvm.io | bash -s stable --ruby
-
-        source ~/.rvm/scripts/rvm
-    else
-        tput setaf 2
-        echo "RVM found! Moving on..."
-        tput sgr0
-    fi
-
-    # Need to ensure RVM was installed properly
-    if [[ ! "$(type -P rvm)" ]]; then
-      tput setaf 1
-      echo "RVM should be installed. It isn't. Aborting."
-      tput sgr0
-      exit 1
-    fi
-
-
-    # =============== GEMS =================================
-    tput setaf 5
-    read -p "Do you want install some gems? (y/n) " -n 1
-    tput sgr0
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        tput setaf 5
-        echo "Installing some gems..."
-        tput sgr0
-
-        bash ./init/gems
-    else
-        tput setaf 3
-        echo -e "\nSkipping gems...\n"
-        tput sgr0
-    fi
-
-
-    # =============== BASHMARKS =================================
-    # For "bookmarks" in the shell
-    cd /tmp
-    git clone git://github.com/huyng/bashmarks.git
-    cd bashmarks
-    make install
-    source ~/.local/bin/bashmarks.sh
-    cd $DIR
+# If Git isn't installed by now, something messed up
+if [[ ! "$(type -P git)" ]]; then
+  tput setaf 1
+  echo "Git should be installed. It isn't. Aborting."
+  tput sgr0
+  exit 1
 fi
+
+# =============== SUBMODULES =================================
+tput setaf 5
+echo "Installing and updating git submodules..."
+tput sgr0
+git submodule init && git submodule update
+git submodule foreach git pull origin master
+
+# ===============  SETUP  ===================================
+tput setaf 5
+echo "Running setup..."
+tput sgr0
+bash os/$OS/pre.sh
+for s in "${selections[@]}"; do
+    bash os/setup/${s}.sh $OS $DIR
+done
+bash os/$OS/post.sh
 
 
 # ===============  SYMLINK  =================================
@@ -127,32 +85,17 @@ tput setaf 5
 echo "Symlinking dotfiles..."
 tput sgr0
 
-pwd=$(pwd)
-
 # Clear out old files
 rm -rf ~/.vim
 
 # Symlink files
-ln -sf $pwd/vim ~/.vim
-ln -sf $pwd/vim/vimrc ~/.vimrc
-ln -sf $pwd/dots/bash_profile ~/.bash_profile
-ln -sf $pwd/dots/bashrc ~/.bashrc
-ln -sf $pwd/dots/inputrc ~/.inputrc
-ln -sf $pwd/bin ~/.bin
-ln -sf $pwd/dots/tmux.conf ~/.tmux.conf
-
-if [ "$DESKTOP" = true ]; then
-    cp $pwd/dots/mutt/_aliases $pwd/dots/mutt/aliases
-    cp $pwd/dots/mutt/_auth $pwd/dots/mutt/auth
-    cp $pwd/dots/mutt/_signature $pwd/dots/mutt/signature
-    sudo ln -s $pwd/dots/mutt ~/.mutt
-    echo "Setup ~/.mutt/aliases, ~/.mutt/auth, and ~/.mutt/signature as needed!"
-
-    sudo ln -s $pwd/dots/weechat ~/.weechat
-
-    # rainbowstream for twitter
-    sudo ln -sf $pwd/dots/rainbow_config.json ~/.rainbow_config.json
-fi
+ln -sf $DIR/vim ~/.vim
+ln -sf $DIR/vim/vimrc ~/.vimrc
+ln -sf $DIR/dots/bash_profile ~/.bash_profile
+ln -sf $DIR/dots/bashrc ~/.bashrc
+ln -sf $DIR/dots/inputrc ~/.inputrc
+ln -sf $DIR/bin ~/.bin
+ln -sf $DIR/dots/tmux.conf ~/.tmux.conf
 
 if [ ! -f /etc/environment ]; then
     # Create an empty env file.
@@ -160,13 +103,11 @@ if [ ! -f /etc/environment ]; then
     sudo touch /etc/environment
 fi
 
-
 if [ ! -f ~/.temp_aliases ]; then
     # Create an empty temporary alias file.
     echo "Creating an empty temporary alias file at ~/.temp_aliases"
     sudo touch ~/.temp_aliases
 fi
-
 
 # =============== FIN! =================================
 source ~/.bash_profile

@@ -1,6 +1,7 @@
-#!/bin/bash
-
 # ~/.osx — http://mths.be/osx
+
+# Remove outdated versions from the cellar
+brew cleanup
 
 # Ask for the administrator password upfront
 sudo -v

@@ -1,18 +1,14 @@
-#!/bin/bash
-
-# If Git is not installed...
-tput setaf 4
-echo "Checking for Git..."
-tput sgr0
+OS=$1
 
 tput setaf 5
-echo "Installing Git"
+echo "Installing Git..."
 tput sgr0
 
-if [[ "$OSTYPE" =~ ^darwin ]]; then
+if [ $OS = 'osx' ]; then
     brew install git
     brew link --overwrite git
-else
+
+elif [ $OS = 'debian' ]; then
     sudo add-apt-repository ppa:git-core/ppa -y
     sudo apt-get update
     sudo apt-get install git -y
@@ -38,7 +34,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         printf "\n[user]\n\temail = $email\n\tname = $name" >> ~/.gitconfig
     fi
 
-    if [[ "$OSTYPE" =~ ^darwin ]]; then
+    if [ $OS = 'osx' ]; then
         # To bypass some symlink issues. Maybe too brute.
         brew link --overwrite git
         git config --global credential.helper osxkeychain
