@@ -75,7 +75,7 @@ echo "Running setup..."
 tput sgr0
 bash os/$OS/pre.sh
 for s in "${selections[@]}"; do
-    bash os/setup/${s}.sh $OS $DIR
+    bash setup/${s}.sh $OS $DIR
 done
 bash os/$OS/post.sh
 
