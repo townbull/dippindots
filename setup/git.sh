@@ -9,6 +9,8 @@ if [ $OS = 'osx' ]; then
     brew link --overwrite git
 
 elif [ $OS = 'debian' ]; then
+    # For `add-apt-repository`
+    sudo apt-get install --no-install-recommends python-software-properties software-properties-common -y
     sudo add-apt-repository ppa:git-core/ppa -y
     sudo apt-get update
     sudo apt-get install git -y
