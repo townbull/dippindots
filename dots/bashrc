@@ -8,6 +8,3 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 PERL_MB_OPT="--install_base \"/Users/ftseng/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/ftseng/perl5"; export PERL_MM_OPT;
-
-# Bashmarks
-source ~/.local/bin/bashmarks.sh
