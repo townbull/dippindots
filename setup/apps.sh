@@ -143,6 +143,11 @@ if [ $OS = 'debian' ]; then
     make && sudo make install
     cd $DIR
 
+    # Scudcloud (Slack)
+    sudo apt-add-repository -y ppa:rael-gc/scudcloud
+    sudo apt-get update
+    sudo apt-get install scudcloud
+
     # TrueCrypt 7.1a.
     cd /tmp
     wget https://github.com/AuditProject/truecrypt-verified-mirror/blob/master/Linux/truecrypt-7.1a-linux-x64.tar.gz?raw=true
