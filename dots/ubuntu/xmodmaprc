@@ -1,0 +1,10 @@
+keycode 76 = XF86AudioRaiseVolume
+keycode 75 = XF86AudioLowerVolume
+keycode 74 = XF86AudioMute
+keycode 73 = XF86MonBrightnessUp
+keycode 72 = XF86MonBrightnessDown
+keycode 71 = XF86AudioPlay
+keycode 70 = XF86AudioStop
+!keycode 69 =
+keycode 68 = XF86AudioNext
+keycode 67 = XF86AudioPrev

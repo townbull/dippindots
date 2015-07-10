@@ -1,0 +1,41 @@
+! https://wiki.archlinux.org/index.php/Rxvt-unicode
+URxvt.scrollBar: false
+URxvt.font: xft:Inconsolata:style=semibold:pixelsize=14:antialias=true:hinting=slight
+URxvt.boldFont: xft:Inconsolata:style=bold:pixelsize=14:antialias=true:hinting=slight
+
+! special
+*.foreground:   #AFB2AF
+*.background:   #282B2E
+*.cursorColor:  #FFE230
+
+! black
+*.color0:       #212d32
+*.color8:       #37474f
+
+! red
+*.color1:       #FC2D51
+*.color9:       #FC2D51
+
+! green
+*.color2:       #64D68A
+*.color10:      #4CD1A8
+
+! yellow
+*.color3:       #f1e655
+*.color11:      #f8e71c
+
+! blue
+*.color4:       #65D7FD
+*.color12:      #3AA3ED
+
+! magenta
+*.color5:       #8765FB
+*.color13:      #FFFE90
+
+! cyan
+*.color6:       #65D7FD
+*.color14:      #8FF8FC
+
+! white
+*.color7:       #707880
+*.color15:      #cdd3de
