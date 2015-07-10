@@ -20,7 +20,7 @@ floating_modifier $mod
 bindsym $mod+Return exec urxvt
 
 # start other apps
-bindsym $mod+c exec chromium-browser
+bindsym $mod+b exec chromium-browser
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -122,8 +122,8 @@ mode "resize" {
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
@@ -145,13 +145,16 @@ bar {
     position top
     status_command $HOME/.i3/conky-wrapper
     font pango:DejaVu Sans Mono, FontAwesome 8
+    #tray_output none
 
     colors {
         background #262626
         statusline #bcbcbc
-        focused_workspace #11aaff #005500
-        active_workspace #11aaff #005500
-        urgent_workspace #11aaff #005500
+        separator #666666
+        focused_workspace #262626 #262626 #65D7FD
+        active_workspace #262626 #262626 #666666
+        inactive_workspace #262626 #262626 #666666
+        urgent_workspace #262626 #262626 #FC2D51
     }
 }
 
@@ -160,16 +163,19 @@ new_window pixel 1
 new_float pixel 1
 hide_edge_borders both
 
-# border background indicator
-client.focused #ff0000 #ff0000 #111111
-client.unfocused #ff0000 #222222 #111111
-client.focused_inactive #ff0000 #222222 #111111
-client.urgent #ff0000 #222222 #111111
+# don't follow the mouse
+focus_follows_mouse no
+
+# border background text indicator
+client.focused #0000ff #22D689 #ffffff #22D689
+client.unfocused #222222 #222222 #111111 #222222
+client.focused_inactive #222222 #222222 #111111 #222222
+client.urgent #FC2D51 #222222 #111111 #FC2D51
 
 # load wallpaper
 exec --no-startup-id feh --bg-scale /usr/share/lubuntu/wallpapers/lubuntu-default-wallpaper.png &
 
-# load network manager
+# load network manager applet
 exec --no-startup-id nm-applet
 
 # additional keybindings
