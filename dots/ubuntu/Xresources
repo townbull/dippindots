@@ -1,9 +1,11 @@
 ! https://wiki.archlinux.org/index.php/Rxvt-unicode
 URxvt.scrollBar: false
-URxvt.font: xft:terminus:style=semibold:pixelsize=12:antialias=true:hinting=slight
+URxvt.font: xft:terminus:style=semi-bold:pixelsize=12:antialias=true:hinting=slight
 URxvt.boldFont: xft:terminus:style=bold:pixelsize=12:antialias=true:hinting=slight
 URxvt.perl-ext-common: default,keyboard-select,clipboard
+URxvt.saveLines: 1000000
 URxvt*iso14755: false
+!URxvt.letterSpace: -1
 
 ! Meta key is "alt" by default, so "alt+esc" to activate keyboard selection.
 ! Use hjkl to navigate (other vim movement commands supported too)

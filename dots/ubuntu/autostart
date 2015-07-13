@@ -1,3 +1,0 @@
-unclutter -root -visible &
-xmodmap ~/.xmodmaprc
-@/usr/bin/i3

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+read -rep "shutdown, sleep, or restart? `echo $'\n> '`"
+
+if [[ $REPLY = shutdown ]]; then
+    echo "Shutting down"
+    sudo shutdown now
+elif [[ $REPLY = restart ]]; then
+    echo "Restarting"
+    sudo reboot
+elif [[ $REPLY = sleep ]]; then
+    echo "Sleeping"
+    sudo pm-suspend-hybrid
+fi

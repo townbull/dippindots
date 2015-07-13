@@ -8,14 +8,60 @@ if [ $OS = 'debian' ]; then
     # Note: Some of this is tailored for my Lubuntu 14.04 (HugeGreenBug's distro) C720 laptop, beware!
 
     # urxvt - terminal
-    # i3 - window manager
     # feh - image viewer/wallpaper manager
     # dmenu - application launcher
     # cmus - music player
     # xsel - clipboard
     sudo apt-get update
-    sudo apt-get install rxvt-unicode-256color i3 openssh-server lightdm-webkit-greeter feh xsel dmenu cmus wget curl -y
+    sudo apt-get install rxvt-unicode-256color openssh-server lightdm-webkit-greeter feh xsel dmenu cmus wget curl -y
     sudo apt-get install fonts-inconsolata xfonts-terminus -y
+
+    # Setup fonts
+    ln -sf $DIR/assets/fonts ~/.fonts
+
+    # siji is preloaded in the fonts folder
+    #git clone https://github.com/gstk/siji /tmp/siji
+    #cp /tmp/siji/siji.pcf ~/.fonts/
+
+    mkfontdir ~/.fonts
+    mkfontscale ~/.fonts
+    xset +fp ~/.fonts/
+    xset fp rehash
+    fc-cache
+    fc-cache -fv
+
+    # nmcli_dmenu for managing network connections via dmenu
+    # the lubuntu image I'm using for my C720 has networkmanager 0.9.8.8 so we used an older version of nmcli_dmenu.
+    # git clone -b networkmanager-0.9.8 https://github.com/firecat53/nmcli-dmenu /tmp/nmcli-dmenu
+    # sudo mv /tmp/nmcli-dmenu/nmcli-dmenu /usr/bin/
+    # No need to install b/c a copy is symlinked to in $DIR/bin/
+
+    # bspwm - window manager
+    sudo apt-get install xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev -y
+    git clone https://github.com/baskerville/bspwm.git /tmp/bspwm
+    git clone https://github.com/baskerville/sxhkd.git /tmp/sxhkd
+    cd /tmp/bspwm && make && sudo make install
+    cd /tmp/sxhkd && make && sudo make install
+    cd $DIR
+
+    # bspwm config
+    sudo ln -sf $DIR/dots/bspwm  ~/.config/bspwm
+    sudo ln -sf $DIR/dots/sxhkd  ~/.config/sxhkd
+    sudo ln -sf ~/.config/bspwm/panel/panel /usr/bin/panel
+    sudo ln -sf ~/.config/bspwm/panel/panel_bar /usr/bin/panel_bar
+
+    # bspwm lightdm stuff
+    sudo cp /tmp/bspwm/contrib/freedesktop/bspwm-session /usr/bin/
+    sudo cp /tmp/bspwm/contrib/freedesktop/bspwm.desktop /usr/bin/xsessions/
+
+    # bspwm-related goodies
+    git clone https://github.com/baskerville/sutils.git /tmp/sutils
+    git clone https://github.com/baskerville/xtitle.git /tmp/xtitle
+    git clone https://github.com/LemonBoy/bar.git /tmp/bar
+    cd /tmp/sutils && make && sudo make install
+    cd /tmp/xtitle && make && sudo make install
+    cd /tmp/bar && make && sudo make install
+    echo 'export PANEL_FIFO="/tmp/panel-fifo"' | sudo tee -a /etc/profile
 
     # fim/fimgs - terminal image/pdf viewer
     # http://www.nongnu.org/fbi-improved/
@@ -24,8 +70,7 @@ if [ $OS = 'debian' ]; then
     tar -xzf /tmp/fim.tar.gz
     cd /tmp/fim
     ./configure
-    make
-    sudo make install
+    make && sudo make install
     cd $DIR
 
     # urxvt perls
@@ -42,6 +87,9 @@ if [ $OS = 'debian' ]; then
 
     # Remove openbox window manager
     sudo apt-get autoremove openbox -y
+
+    # xinitrc (not used by lightdm, but here for reference)
+    ln -sf $DIR/dots/ubuntu/xinitrc ~/.xinitrc
 
     # Wallpaper
     sudo ln -sf $DIR/assets/background.png /usr/share/lubuntu/wallpapers/lubuntu-default-wallpaper.png
@@ -79,18 +127,15 @@ if [ $OS = 'debian' ]; then
     ln -sf $DIR/dots/ubuntu/xmodmaprc ~/.xmodmaprc
 
     # Other defaults
-    ln $DIR/dots/ubuntu/autostart ~/.config/lxsession/Lubuntu/autostart
     ln $DIR/dots/ubuntu/desktop.conf ~/.config/lxsession/Lubuntu/desktop.conf
     ln $DIR/dots/ubuntu/Xresources ~/.Xresources
+    ln $DIR/dots/ubuntu/xsessionrc ~/.xsessionrc
 
     # Hide cursor after inactivity
     sudo apt-get install unclutter -y
 
-    # Conky (for the i3bar)
+    # Conky (for the lemonbar)
     sudo apt-get install --no-install-recommends conky-all -y
-
-    # i3 configs
-    ln $DIR/dots/i3 ~/.i3
 
     # Remove unwanted stuff
     sudo apt-get purge mtpaint pidgin xchat* sylpheed* abiword* gnumeric* transmission* audacious* -y
@@ -132,9 +177,11 @@ if [ $OS = 'debian' ]; then
     # zeal      -- offline documentation
     # sc        -- spreadsheet calculator
     # gpick     -- colorpicker
-    # alacarte  -- slingshot (app launcher) customization
     # zathura   -- keyboard-driven pdf viewer
     sudo apt-get install --no-install-recommends --yes chromium-browser deluge vlc gimp inkscape spotify-client btsync-gui netflix-desktop zeal gpick geary california silversearcher-ag zathura
+
+    # zathura config
+    ln -sf $DIR/dots/zathura ~/.config/zathura
 
     # scim, a modern version of sc (spreadsheet calculator)
     cd /tmp
@@ -160,3 +207,8 @@ if [ $OS = 'debian' ]; then
     # sudo mount -t hfsplus -o remount,force,rw /mount/point
     sudo apt-get install hfsprogs -y
 fi
+
+
+# Symlink notes and sites
+ln -sf $DIR/dots/config/nomadic ~/.nomadic
+ln -sf $DIR/dots/port ~/.port

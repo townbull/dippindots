@@ -1,0 +1,154 @@
+#
+# bspwm hotkeys
+#
+
+super + alt + Escape
+	pkill -x panel; bspc quit
+
+super + q
+	bspc window -c
+
+super + t
+	bspc desktop -l next
+
+super + b
+	bspc desktop -B
+
+super + {s,f}
+	bspc window -t {floating,fullscreen}
+
+super + {grave,Tab}
+	bspc {window,desktop} -f last
+
+super + apostrophe
+	bspc window -s last
+
+super + {o,i}
+	bspc control --record-history off; \
+	bspc window {older,newer} -f; \
+	bspc control --record-history on
+
+super + y
+	bspc window -w last.manual
+
+super + m
+	bspc window -s biggest
+
+super + {_,shift + }{h,j,k,l}
+	bspc window -{f,s} {left,down,up,right}
+
+super + {_,shift + }c
+	bspc window -f {next,prev}
+
+super + {comma,period}
+	bspc desktop -C {backward,forward}
+
+super + bracket{left,right}
+	bspc desktop -f {prev,next}
+
+super + ctrl + {h,j,k,l}
+	bspc window -p {left,down,up,right}
+
+super + ctrl + {_,shift + }space
+	bspc {window -p cancel,desktop -c}
+
+super + alt + {h,j,k,l}
+	bspc window -e {left -10,down +10,up -10,right +10}
+
+super + alt + shift + {h,j,k,l}
+	bspc window -e {right -10,up +10,down -10,left +10}
+
+super + ctrl + {1-9}
+	bspc window -r 0.{1-9}
+
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,window -d} ^{1-9,10}
+
+~button1
+	bspc pointer -g focus
+
+super + button{1-3}
+	; bspc pointer -g {move,resize_side,resize_corner}
+
+super + @button{1-3}
+	bspc pointer -u
+
+#
+# wm independent hotkeys
+#
+
+super + Return
+	urxvt
+
+super + n
+    nmcli_dmenu
+
+super + space
+	dmenu_run
+
+super + alt + w
+    chromium-browser
+
+super + alt + z
+    zathura
+
+super + alt + f
+    urxvt -e ranger
+
+super + alt + m
+    geary
+
+super + alt + d
+    deluge
+
+super + alt + t
+    urxvt -e cmus
+
+super + alt + c
+    california
+
+super + alt + b
+    btsync-gui
+
+super + alt + s
+    scudcloud # slack
+
+super + alt + p
+    spotify
+
+#
+# media buttons
+#
+XF86AudioLowerVolume
+    amixer set -M Master 5%-
+
+XF86AudioRaiseVolume
+    amixer set -M Master 5%+
+
+XF86AudioMute
+    amixer -D pulse set -M Master toggle
+
+XF86MonBrightnessDown
+    /usr/bin/xbacklight -dec 10
+
+XF86MonBrightnessUp
+    /usr/bin/xbacklight -inc 10
+
+XF86AudioPlay
+    cmus-remote -u
+
+XF86AudioStop
+    cmus-remote -s
+
+XF86AudioPrev
+    cmus-remote -r
+
+XF86AudioNext
+    cmus-remote -n
+
+XF86PowerOff
+    bspc rule -a urxvt -o floating=on && urxvt -e ~/.bin/pwr # custom script
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
