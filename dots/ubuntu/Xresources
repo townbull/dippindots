@@ -1,6 +1,6 @@
 ! https://wiki.archlinux.org/index.php/Rxvt-unicode
 URxvt.scrollBar: false
-URxvt.font: xft:terminus:style=semi-bold:pixelsize=12:antialias=true:hinting=slight
+URxvt.font: xft:terminus:style=semibold:pixelsize=12:antialias=true:hinting=slight
 URxvt.boldFont: xft:terminus:style=bold:pixelsize=12:antialias=true:hinting=slight
 URxvt.perl-ext-common: default,keyboard-select,clipboard
 URxvt.saveLines: 1000000
