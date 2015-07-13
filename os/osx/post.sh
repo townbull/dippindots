@@ -249,8 +249,8 @@ defaults write com.apple.finder FXPreferredViewStyle -string "clmv"
 # Enable AirDrop over Ethernet and on unsupported Macs running Lion
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
-# Empty Trash securely by default
-defaults write com.apple.finder EmptyTrashSecurely -bool true
+# Empty Trash securely by default (disabled since it kills the cpu)
+# defaults write com.apple.finder EmptyTrashSecurely -bool false
 
 # Remove Dropbox’s green checkmark icons in Finder
 file=/Applications/Dropbox.app/Contents/Resources/check.icns
