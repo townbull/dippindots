@@ -13,7 +13,7 @@ if [ $OS = 'debian' ]; then
     # cmus - music player
     # xsel - clipboard
     sudo apt-get update
-    sudo apt-get install rxvt-unicode-256color openssh-server lightdm-webkit-greeter feh xsel dmenu cmus wget curl -y
+    sudo apt-get install rxvt-unicode-256color openssh-server lightdm-webkit-greeter feh xsel dmenu cmus wget curl xdotool -y
     sudo apt-get install fonts-inconsolata xfonts-terminus -y
 
     # Setup fonts

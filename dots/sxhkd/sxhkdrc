@@ -86,6 +86,9 @@ super + n
 super + space
 	dmenu_run
 
+super + a
+    app_switch
+
 super + alt + w
     chromium-browser
 
