@@ -1,0 +1,60 @@
+! https://wiki.archlinux.org/index.php/Rxvt-unicode
+URxvt.scrollBar: false
+URxvt.font: xft:terminus:style=semibold:pixelsize=12:antialias=true:hinting=slight
+URxvt.boldFont: xft:terminus:style=bold:pixelsize=12:antialias=true:hinting=slight
+URxvt.perl-ext-common: default,keyboard-select,clipboard
+URxvt.saveLines: 1000000
+URxvt*iso14755: false
+!URxvt.letterSpace: -1
+
+! Meta key is "alt" by default, so "alt+esc" to activate keyboard selection.
+! Use hjkl to navigate (other vim movement commands supported too)
+! v to select, y or enter to copy selection, q or esc to cancel.
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+
+! alt+c to copy selected text (using the keyboard-select method from above)
+! alt-p to paste.
+! Note: the keyboard-select method pastes into the PRIMARY buffer,
+! the clipboard copy/paste works off of the CLIPBOARD buffer. The
+! CLIPBOARD buffer is what the desktop ctrl+c/ctrl+v works off of.
+! Also note that this uses xsel, so install that first, and set it to be
+! your system clipboard manager.
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-p: perl:clipboard:paste
+
+! special
+*.foreground:   #AFB2AF
+*.background:   #282B2E
+*.cursorColor:  #FFE230
+
+! black
+*.color0:       #212d32
+*.color8:       #37474f
+
+! red
+*.color1:       #FC2D51
+*.color9:       #FC2D51
+
+! green
+*.color2:       #64D68A
+*.color10:      #4CD1A8
+
+! yellow
+*.color3:       #f1e655
+*.color11:      #f8e71c
+
+! blue
+*.color4:       #65D7FD
+*.color12:      #3AA3ED
+
+! magenta
+*.color5:       #8765FB
+*.color13:      #FFFE90
+
+! cyan
+*.color6:       #65D7FD
+*.color14:      #8FF8FC
+
+! white
+*.color7:       #707880
+*.color15:      #cdd3de

@@ -1,0 +1,50 @@
+background        no
+out_to_console    yes
+out_to_x      no
+update_interval   1.5
+total_run_times   0
+short_units   yes
+pad_percents      3
+
+override_utf8_locale yes
+
+TEXT
+#
+# CPU/MEM
+#
+C %{F\#FFFC6064}$cpu%%%{F-} \
+%{F\#FF65D7FD}$memperc%%%{F-} \
+#
+# NETWORKING
+#
+${if_up wlan0}\
+%{F\#FF22D689}\
+${if_match ${wireless_link_qual_perc wlan0} >= 90}\
+\
+$else${if_match ${wireless_link_qual_perc wlan0} >= 60}\
+\
+$else\
+\
+$endif$endif\
+${wireless_essid wlan0} \
+$else${if_up ppp0}\
+%{F\#FF22D689} ppp0%{F-} \
+$else${if_up eth0}\
+%{F\#FF22D689} eth0%{F-} \
+$else\
+%{F\#FF22D689}offline%{F-} \
+$endif$endif$endif\
+#
+# BATTERY
+#
+%{F\#FF8765FB}\
+${if_empty $battery_time}\
+\
+$else\
+$battery_time\
+$endif\
+$battery_percent%%%{F-} \
+#
+# AUDIO
+#
+%{F\#FFFED530}${execi 1 ~/.config/bspwm/panel/panel_audio}%{F-}

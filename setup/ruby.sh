@@ -34,7 +34,7 @@ if [ $OS = 'osx' ]; then
     fi
 
 elif [ $OS = 'debian' ]; then
-    sudo apt-get install ruby rubygems ruby-dev -y
+    sudo apt-get install ruby ruby-dev -y
 fi
 
 

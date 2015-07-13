@@ -1,0 +1,6 @@
+set default-bg="#30303a"
+set default-fg="#d6d6d6"
+set statusbar-bg="#30303a"
+set statusbar-fg="#d6d6d6"
+set inputbar-fg="#aaaaaa"
+set adjust-open width

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+LEVEL=`amixer get -M Master | sed -n 's/^.*\[\([0-9]\+\)%.*$/\1/p' | uniq`
+STATE=`amixer get -M Master | sed -n 's/^.*\[\(o[nf]\+\)]$/\1/p' | uniq`
+
+if [[ $STATE != "on" ]]; then
+    ICON=""
+elif [[ $LEVEL -lt 40 ]]; then
+    ICON=""
+elif [[ $LEVEL == 0 ]]; then
+    ICON=""
+else
+    ICON=""
+fi
+
+echo "$ICON"

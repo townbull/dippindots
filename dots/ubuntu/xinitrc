@@ -1,0 +1,9 @@
+xrdb -merge ~/.Xresources
+xmodmap ~/.xmodmaprc
+xset +fp ~/.fonts/
+xset fp rehash
+unclutter -root -visible &
+feh --bg-scale /usr/share/lubuntu/wallpapers/lubuntu-default-wallpaper.png &
+sxhkd &
+urxvt &
+exec bspwm
