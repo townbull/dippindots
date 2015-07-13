@@ -62,6 +62,7 @@ if [ $OS = 'debian' ]; then
     cd /tmp/xtitle && make && sudo make install
     cd /tmp/bar && make && sudo make install
     echo 'export PANEL_FIFO="/tmp/panel-fifo"' | sudo tee -a /etc/profile
+    cd $DIR
 
     # fim/fimgs - terminal image/pdf viewer
     # http://www.nongnu.org/fbi-improved/
