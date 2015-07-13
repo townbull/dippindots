@@ -186,7 +186,7 @@ if [ $OS = 'debian' ]; then
 
     # scim, a modern version of sc (spreadsheet calculator)
     cd /tmp
-    git clone git@github.com:andmarti1424/scim.git
+    git clone https://github.com/andmarti1424/scim.git
     cd scim/src
     make && sudo make install
     cd $DIR
