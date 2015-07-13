@@ -12,7 +12,7 @@ application=$(
     cut -d' ' -f5- |\
 
     # Pipe to dmenu ($@ to include font settings from dwm/config.h)
-    dmenu -b -i -p 'Switch to' -fn 'lucidasans-8' -nf '#666666' -nb '#000000' -sf '#ffffff' -sb '#000000' $@
+    dmenu -i -p 'Switch to' $@
 )
 
 # remove special characters that mess up with xdotool search ([]~)
