@@ -66,7 +66,7 @@ if [ $OS = 'debian' ]; then
 
     # fim/fimgs - terminal image/pdf viewer
     # http://www.nongnu.org/fbi-improved/
-    sudo apt-get install libjpeg-dev libexif-dev
+    sudo apt-get install libjpeg-dev libexif-dev -y
     wget http://download.savannah.nongnu.org/releases/fbi-improved/fim-0.5-trunk.tar.gz -O /tmp/fim.tar.gz
     tar -xzf /tmp/fim.tar.gz
     cd /tmp/fim
@@ -140,7 +140,7 @@ if [ $OS = 'debian' ]; then
 
     # Remove unwanted stuff
     sudo apt-get purge mtpaint pidgin xchat* sylpheed* abiword* gnumeric* transmission* audacious* -y
-    sudo apt-get autoremove
+    sudo apt-get autoremove -y
     rm -rf ~/.sylpheed*
 
     # Add the Spotify repository.
@@ -194,7 +194,7 @@ if [ $OS = 'debian' ]; then
     # Scudcloud (Slack)
     sudo apt-add-repository -y ppa:rael-gc/scudcloud
     sudo apt-get update
-    sudo apt-get install scudcloud
+    sudo apt-get install scudcloud -y
 
     # TrueCrypt 7.1a.
     cd /tmp
