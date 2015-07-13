@@ -128,9 +128,9 @@ if [ $OS = 'debian' ]; then
     ln -sf $DIR/dots/ubuntu/xmodmaprc ~/.xmodmaprc
 
     # Other defaults
-    ln $DIR/dots/ubuntu/desktop.conf ~/.config/lxsession/Lubuntu/desktop.conf
-    ln $DIR/dots/ubuntu/Xresources ~/.Xresources
-    ln $DIR/dots/ubuntu/xsessionrc ~/.xsessionrc
+    ln -sf $DIR/dots/ubuntu/desktop.conf ~/.config/lxsession/Lubuntu/desktop.conf
+    ln -sf $DIR/dots/ubuntu/Xresources ~/.Xresources
+    ln -sf $DIR/dots/ubuntu/xsessionrc ~/.xsessionrc
 
     # Hide cursor after inactivity
     sudo apt-get install unclutter -y
