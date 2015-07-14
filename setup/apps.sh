@@ -48,10 +48,10 @@ if [ $OS = 'debian' ]; then
     cd $DIR
 
     # bspwm config
-    sudo ln -sf $DIR/dots/bspwm  ~/.config/bspwm
-    sudo ln -sf $DIR/dots/sxhkd  ~/.config/sxhkd
-    sudo ln -sf ~/.config/bspwm/panel/panel /usr/bin/panel
-    sudo ln -sf ~/.config/bspwm/panel/panel_bar /usr/bin/panel_bar
+    ln -sf $DIR/dots/bspwm  ~/.config/bspwm
+    ln -sf $DIR/dots/sxhkd  ~/.config/sxhkd
+    ln -sf ~/.config/bspwm/panel/panel /usr/bin/panel
+    ln -sf ~/.config/bspwm/panel/panel_bar /usr/bin/panel_bar
 
     # bspwm lightdm stuff
     sudo cp /tmp/bspwm/contrib/freedesktop/bspwm-session /usr/bin/
@@ -124,8 +124,7 @@ if [ $OS = 'debian' ]; then
     ln $DIR/dots/ubuntu/gtkrc-2.0 ~/.gtkrc-2.0
 
     # Dunst (notifications) config
-    mkdir ~/.config/dunst
-    ln -sf $DIR/dots/ubuntu/dunstrc ~/.config/dunst/dunstrc
+    ln -sf $DIR/dots/dunst  ~/.config/dunst
 
     # Setup C720's function keys
     ln -sf $DIR/dots/ubuntu/xmodmaprc ~/.xmodmaprc
