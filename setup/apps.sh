@@ -15,6 +15,7 @@ if [ $OS = 'debian' ]; then
     # xdotool - simulating interactions with the GUI
     # compton - shadows
     # slock - locking the screen
+    # libnotify-bin - for `notify-send` to create notifications
     sudo apt-get update
     sudo apt-get install rxvt-unicode-256color openssh-server lightdm-webkit-greeter feh xsel dmenu cmus wget curl xdotool compton slock -y
     sudo apt-get install fonts-inconsolata xfonts-terminus -y
