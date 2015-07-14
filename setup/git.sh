@@ -21,13 +21,11 @@ fi
 if [ ! -f ~/.gitconfig ]; then
     echo -e "\nNow we need to configure git a bit."
     tput setaf 5
-    echo "What's your git email?"
+    read -rep "What's your git email?" email
     tput sgr0
-    read -rep email
     tput setaf 5
-    echo "What's your git name? Use your full name."
+    read -rep "What's your git name? Use your full name." name
     tput sgr0
-    read -rep name
     printf "\n[user]\n\temail = $email\n\tname = $name" >> ~/.gitconfig
 fi
 
