@@ -29,6 +29,9 @@ elif [ $OS = 'debian' ]; then
     # X11, allows using system clipboard with vim.
     sudo apt-get install libx11-dev libxtst-dev libxt-dev libsm-dev libxpm-dev -y
 
+    # Python for the python interps
+    sudo apt-get install python-dev python3-dev -y
+
     mkdir /tmp/vim && cd $_
     wget ftp://ftp.ca.vim.org/pub/vim/unix/vim-7.4.tar.bz2
     tar xvjf vim-7.4.tar.bz2
@@ -38,8 +41,8 @@ elif [ $OS = 'debian' ]; then
     cd $DIR
 
     # Overwrite vi
-    sudo rm /usr/bin/vi
-    sudo ln -s /usr/local/bin/vim /usr/bin/vi
+    sudo ln -sf /usr/local/bin/vim /usr/bin/vi
+    sudo ln -sf /usr/local/bin/vim /usr/bin/vim
 fi
 
 # Jedi for jedi-vim (python completion)
