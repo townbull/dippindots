@@ -96,16 +96,17 @@ if [ $OS = 'debian' ]; then
     # xinitrc (not used by lightdm, but here for reference)
     ln -sf $DIR/dots/ubuntu/xinitrc ~/.xinitrc
 
-    # Wallpaper
-    sudo ln -sf $DIR/assets/background.png /usr/share/lubuntu/wallpapers/lubuntu-default-wallpaper.png
+    # Wallpapers
+    ln -sf $DIR/assets/wallpapers ~/.wallpapers
+    ln -sf ~/.wallpapers/0.jpg ~/.wallpaper.jpg
+    chmod 644 ~/.wallpaper.jpg
 
     # User profile pic
     sudo ln -sf $DIR/assets/face.png ~/.face
 
     # LightDM greeter
     sudo git clone https://github.com/omgmog/lightdm-webkit-google.git /usr/share/lightdm-webkit/themes/lightdm-webkit-google
-    sudo ln -sf $DIR/assets/background.jpg /usr/share/lightdm-webkit/themes/lightdm-webkit-google/assets/ui/wallpaper.jpg
-    sudo chmod 644 /usr/share/lightdm-webkit/themes/lightdm-webkit-google/assets/ui/wallpaper.jpg
+    sudo ln -sf ~/.wallpaper.jpg /usr/share/lightdm-webkit/themes/lightdm-webkit-google/assets/ui/wallpaper.jpg
     sudo ln -sf $DIR/dots/ubuntu/lightdm-webkit-greeter.conf /etc/lightdm/lightdm-webkit-greeter.conf
 
     # Ranger
