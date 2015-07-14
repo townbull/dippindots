@@ -102,7 +102,7 @@ if [ $OS = 'debian' ]; then
     chmod 644 ~/.wallpaper.jpg
 
     # User profile pic
-    sudo ln -sf $DIR/assets/face.png ~/.face
+    ln -sf $DIR/assets/face.png ~/.face
 
     # LightDM greeter
     sudo git clone https://github.com/omgmog/lightdm-webkit-google.git /usr/share/lightdm-webkit/themes/lightdm-webkit-google
@@ -142,7 +142,7 @@ if [ $OS = 'debian' ]; then
     # Conky (for the lemonbar)
     sudo apt-get install --no-install-recommends conky-all -y
 
-    # Remove unwanted stuff
+    # Remove unwanted stuff (Lubuntu 14.04)
     sudo apt-get purge mtpaint pidgin xchat* sylpheed* abiword* gnumeric* transmission* audacious* -y
     sudo apt-get autoremove -y
     rm -rf ~/.sylpheed*
