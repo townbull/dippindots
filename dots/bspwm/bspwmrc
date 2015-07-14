@@ -27,6 +27,7 @@ bspc rule -a Spotify pseudo_tiled=on
 bspc rule -a Geary desktop=^3
 bspc rule -a California desktop=^4
 bspc rule -a Scudcloud desktop=^5
+bspc rule -a feh floating=on
 
 compton -cb &
 panel &

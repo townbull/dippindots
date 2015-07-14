@@ -12,7 +12,7 @@ if tput setaf 1 &> /dev/null; then
 	tput sgr0
 	if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
 		RED=$(tput setaf 9)
-		YELLOW=$(tput setaf 226)
+		YELLOW=$(tput setaf 227)
 		GREEN=$(tput setaf 10)
 		BLUE=$(tput setaf 12)
 		PURPLE=$(tput setaf 27)
@@ -61,5 +61,5 @@ function parse_git_branch() {
 # \h = host
 # \w = cwd (full path)
 # \W = cwd (current dir only)
-export PS1="\[${BOLD}${RED}\]\u \[$FORE\]at \[$BLUE\]\h \[$FORE\]in \[$GREEN\]\w\[$FORE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$PURPLE\]\$(parse_git_branch)\[$YELLOW\] > \[$RESET\]"
+export PS1="\[${BOLD}${RED}\]\u \[$FORE\]at \[$BLUE\]\h \[$FORE\]in \[$GREEN\]\w\[$FORE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$YELLOW\]\$(parse_git_branch)\[$BLUE\] > \[$RESET\]"
 export PS2="\[$YELLOW\]→ \[$RESET\]"
