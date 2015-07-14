@@ -18,6 +18,9 @@ bspc config presel_border_color "#528ef3"
 bspc config urgent_border_color "#fc6063"
 bspc config focused_locked_border_color "#65d7fd"
 
+# Get a window name by running
+# xprop | grep WM_CLASS
+# and click on the window in question
 bspc rule -a Gimp desktop=^8 follow=on floating=on
 bspc rule -a Chromium-browser desktop=^2
 bspc rule -a Spotify pseudo_tiled=on
@@ -25,5 +28,6 @@ bspc rule -a Geary desktop=^3
 bspc rule -a California desktop=^4
 bspc rule -a Scudcloud desktop=^5
 
+compton -cb &
 panel &
 urxvt &
