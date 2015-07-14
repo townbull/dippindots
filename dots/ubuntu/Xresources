@@ -4,7 +4,7 @@ URxvt.font: xft:terminus:style=semibold:pixelsize=12:antialias=true:hinting=slig
 URxvt.boldFont: xft:terminus:style=bold:pixelsize=12:antialias=true:hinting=slight
 URxvt.perl-ext-common: default,keyboard-select,clipboard
 URxvt.saveLines: 1000000
-URxvt*.iso14755: false
+URxvt.iso14755: false
 URxvt*.transparent: true
 URxvt*.shading: 12
 !URxvt.letterSpace: -1
