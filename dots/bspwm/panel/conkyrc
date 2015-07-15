@@ -12,8 +12,8 @@ TEXT
 #
 # CPU/MEM
 #
-C %{F\#FFFC6064}$cpu%%%{F-} \
-%{F\#FF65D7FD}$memperc%%%{F-} \
+C %{F\#FFFC6064}$cpu%%%{F-} \
+%{F\#FF65D7FD}$memperc%%%{F-} \
 #
 # NETWORKING
 #

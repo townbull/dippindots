@@ -183,7 +183,7 @@ if [ $OS = 'debian' ]; then
     # sc        -- spreadsheet calculator
     # gpick     -- colorpicker
     # zathura   -- keyboard-driven pdf viewer
-    sudo apt-get install --no-install-recommends --yes chromium-browser deluge vlc gimp inkscape spotify-client btsync-gui netflix-desktop zeal gpick geary california silversearcher-ag zathura
+    sudo apt-get install --no-install-recommends --yes chromium-browser deluge vlc gimp inkscape spotify-client btsync-gui btsync netflix-desktop zeal gpick geary california silversearcher-ag zathura
 
     # zathura config
     ln -sf $DIR/dots/zathura ~/.config/zathura
