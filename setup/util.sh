@@ -20,6 +20,7 @@ if [ $OS = 'osx' ]; then
     brew insstall jq
     brew install pandoc
     brew install imagemagick
+    brew install htop
     brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-frei0r --with-libass --with-libvo-aacenc --with-libvorbis --with-libvpx --with-opencore-amr --with-openjpeg --with-opus --with-rtmpdump --with-schroedinger --with-speex --with-theora --with-tools
 
     # tmux (with vim copy paste support)
@@ -38,7 +39,7 @@ elif [ $OS = 'debian' ]; then
     sudo add-apt-repository ppa:jon-severinsson/ffmpeg -y
     sudo apt-get update
 
-    sudo apt-get install --no-install-recommends dos2unix tmux curl jq gpg wget dnsutils imagemagick nmap httpie silversearcher-ag -y
+    sudo apt-get install --no-install-recommends dos2unix tmux curl jq gpg htop wget dnsutils imagemagick nmap httpie silversearcher-ag -y
 
     # ffmpeg
     sudo apt-get -y --force-yes install autoconf automake build-essential libass-dev libfreetype6-dev libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texi2html zlib1g-dev libx264-dev libmp3lame-dev libfdk-aac-dev libvpx-dev libopus-dev yasm
