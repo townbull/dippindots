@@ -17,7 +17,7 @@ if [ $OS = 'debian' ]; then
     # slock - locking the screen
     # libnotify-bin - for `notify-send` to create notifications
     sudo apt-get update
-    sudo apt-get install rxvt-unicode-256color openssh-server lightdm-webkit-greeter feh xsel dmenu cmus wget curl xdotool compton slock -y
+    sudo apt-get install rxvt-unicode-256color openssh-server feh xsel dmenu cmus wget curl xdotool compton slock -y
     sudo apt-get install fonts-inconsolata xfonts-terminus -y
 
     # Setup fonts
@@ -54,10 +54,6 @@ if [ $OS = 'debian' ]; then
     ln -sf ~/.config/bspwm/panel/panel /usr/bin/panel
     ln -sf ~/.config/bspwm/panel/panel_bar /usr/bin/panel_bar
 
-    # bspwm lightdm stuff
-    sudo cp /tmp/bspwm/contrib/freedesktop/bspwm-session /usr/bin/
-    sudo cp /tmp/bspwm/contrib/freedesktop/bspwm.desktop /usr/bin/xsessions/
-
     # bspwm-related goodies
     git clone https://github.com/baskerville/sutils.git /tmp/sutils
     git clone https://github.com/baskerville/xtitle.git /tmp/xtitle
@@ -93,7 +89,7 @@ if [ $OS = 'debian' ]; then
     # Remove openbox window manager
     sudo apt-get autoremove openbox -y
 
-    # xinitrc (not used by lightdm, but here for reference)
+    # xinitrc
     ln -sf $DIR/dots/ubuntu/xinitrc ~/.xinitrc
 
     # Wallpapers
@@ -104,19 +100,11 @@ if [ $OS = 'debian' ]; then
     # User profile pic
     ln -sf $DIR/assets/face.png ~/.face
 
-    # LightDM greeter
-    sudo git clone https://github.com/omgmog/lightdm-webkit-google.git /usr/share/lightdm-webkit/themes/lightdm-webkit-google
-    sudo ln -sf ~/.wallpaper.jpg /usr/share/lightdm-webkit/themes/lightdm-webkit-google/assets/ui/wallpaper.jpg
-    sudo ln -sf $DIR/dots/ubuntu/lightdm-webkit-greeter.conf /etc/lightdm/lightdm-webkit-greeter.conf
-
     # Ranger
     ranger --copy-config=scope
     mkdir ~/.config/ranger/colorschemes
     ln -sf $DIR/dots/ranger/euphrasia.py ~/.config/ranger/colorschemes/euphrasia.py
     ln -sf $DIR/dots/ranger/rc.conf ~/.config/ranger/rc.conf
-
-    # LightDM config
-    sudo ln -sf $DIR/dots/ubuntu/lightdm.conf /etc/lightdm/lightdm.conf.d/20-lubuntu.conf
 
     # lxappearance for managing GTK themeing
     sudo apt-get install lxappearance -y
@@ -132,7 +120,6 @@ if [ $OS = 'debian' ]; then
     ln -sf $DIR/dots/ubuntu/xmodmaprc ~/.xmodmaprc
 
     # Other defaults
-    ln -sf $DIR/dots/ubuntu/desktop.conf ~/.config/lxsession/Lubuntu/desktop.conf
     ln -sf $DIR/dots/ubuntu/Xresources ~/.Xresources
     ln -sf $DIR/dots/ubuntu/xsessionrc ~/.xsessionrc
 
@@ -143,7 +130,7 @@ if [ $OS = 'debian' ]; then
     sudo apt-get install --no-install-recommends conky-all -y
 
     # Remove unwanted stuff (Lubuntu 14.04)
-    sudo apt-get purge mtpaint pidgin xchat* sylpheed* abiword* gnumeric* transmission* audacious* -y
+    sudo apt-get purge mtpaint pidgin xchat* sylpheed* abiword* gnumeric* transmission* audacious* lightdm -y
     sudo apt-get autoremove -y
     rm -rf ~/.sylpheed*
 
@@ -183,7 +170,11 @@ if [ $OS = 'debian' ]; then
     # sc        -- spreadsheet calculator
     # gpick     -- colorpicker
     # zathura   -- keyboard-driven pdf viewer
-    sudo apt-get install --no-install-recommends --yes chromium-browser deluge vlc gimp inkscape spotify-client btsync-gui btsync netflix-desktop zeal gpick geary california silversearcher-ag zathura
+    sudo apt-get install --no-install-recommends --yes chromium-browser deluge vlc gimp inkscape spotify-client netflix-desktop zeal gpick geary california silversearcher-ag zathura
+
+    # btsync
+    # accessible via localhost:8888 (or whatever you configure)
+    sudo apt-get install btsync -y
 
     # zathura config
     ln -sf $DIR/dots/zathura ~/.config/zathura
