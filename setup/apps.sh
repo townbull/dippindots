@@ -175,6 +175,12 @@ if [ $OS = 'debian' ]; then
     # btsync
     # accessible via localhost:8888 (or whatever you configure)
     sudo apt-get install btsync -y
+    sudo ln -sf $DIR/dots/btsync/btsync /etc/default/btsync
+
+    # Copy this config so it can have different permission
+    sudo cp $DIR/dots/btsync/main.conf /etc/btsync/main.conf
+    sudo chown $USER:$USER /etc/btsync/main.conf
+    chmod 600 /etc/btsync/main.conf
 
     # zathura config
     ln -sf $DIR/dots/zathura ~/.config/zathura
@@ -202,6 +208,12 @@ if [ $OS = 'debian' ]; then
     # You can re-mount the HFS+ drives with writable access:
     # sudo mount -t hfsplus -o remount,force,rw /mount/point
     sudo apt-get install hfsprogs -y
+
+    # Power management stuff
+    # Note:
+    # /etc/systemd/logind.conf
+    #   HandleLidSwitch=suspend
+    #   HandlePowerKey=ignore
 fi
 
 
