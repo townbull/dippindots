@@ -38,25 +38,6 @@ else
 	tput sgr0
 fi
 
-# =============== XVIM =================================
-tput setaf 5
-read -p "Do you want install Vim bindings for XCode (XVim)? (y/n) " -n 1
-tput sgr0
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-	tput setaf 5
-	echo "Installing XVim (Vim for XCode)..."
-	tput sgr0
-
-	# Install XVim (Vim for XCode)
-	git clone https://github.com/JugglerShu/XVim.git
-	xcodebuild -project XVim/XVim.xcodeproj
-	rm -rf XVim
-else
-	tput setaf 3
-	echo -e "\nSkipping XVim...\n"
-	tput sgr0
-fi
-
 # =============== TERMINAL =================================
 tput setaf 5
 echo -e "\nConfiguring Terminal..."

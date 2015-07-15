@@ -87,7 +87,7 @@ super + Return
 	urxvt
 
 super + n
-    nmcli_dmenu
+    urxvt -e wicd-curses
 
 super + space
 	dmenu_run

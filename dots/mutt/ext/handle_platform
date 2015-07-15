@@ -1,8 +1,0 @@
-#!/bin/bash
-
-# Load a different mailcap depending on the platform.
-if [ "$(uname)" == "Darwin" ]; then
-    echo 'set mailcap_path=~/.mutt/mailcap.osx'
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    echo 'set mailcap_path=~/.mutt/mailcap'
-fi

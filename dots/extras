@@ -1,6 +1,4 @@
 alias p="cd ~/projects; ll"
-alias work="cd ~/work; ll"
+alias w="cd ~/work; ll"
+alias todo="vi ~/notes/todo.md"
 alias pi="ssh pi@raspberrypi.local"
-
-alias todo="vi ~/STUFF/common/to_do.txt"
-alias common="vi -p ~/STUFF/common/*.txt"

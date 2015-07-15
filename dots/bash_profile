@@ -15,11 +15,6 @@ unset file
 # So tmux uses proper vim colors.
 export TERM=screen-256color
 
-# You can store temporary aliases in ~/.temp_aliases.
-if [ -f ~/.temp_aliases ]; then
-    source ~/.temp_aliases
-fi
-
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
 

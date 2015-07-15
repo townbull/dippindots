@@ -1,5 +1,0 @@
-set crypt_replyencrypt            # auto-encrypt replies to encrypted messages
-set crypt_replysign               # auto-sign replies to signed messages
-set crypt_replysignencrypted      # auto-sign-&-encrypt replies to signed & encrypted messages
-set crypt_verify_sig=yes          # auto verify signed message when opened
-set pgp_show_unusable=no          # hide expired/revoked/unusable pgp keys

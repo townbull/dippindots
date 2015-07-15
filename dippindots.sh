@@ -19,7 +19,7 @@ fi
 tput setaf 2
 echo "Select which setup scripts you want to include:"
 tput sgr0
-declare -a available=(python ruby npm vim nvim util math mutt social apps)
+declare -a available=(python ruby npm vim nvim util math mutt apps)
 declare -a selections=()
 for s in "${available[@]}"; do
     read -rep "Include ${s}? (y/n) " -n 1
@@ -101,12 +101,6 @@ if [ ! -f /etc/environment ]; then
     # Create an empty env file.
     echo "Creating an empty environment variables file at /etc/environment..."
     sudo touch /etc/environment
-fi
-
-if [ ! -f ~/.temp_aliases ]; then
-    # Create an empty temporary alias file.
-    echo "Creating an empty temporary alias file at ~/.temp_aliases"
-    sudo touch ~/.temp_aliases
 fi
 
 # =============== FIN! =================================
