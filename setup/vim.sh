@@ -15,8 +15,8 @@ if [ $OS = 'osx' ]; then
     brew link --overwrite macvim
 
     # Copy over necessary fonts
-    cp "./assets/Inconsolata+for+Powerline.otf" ~/Library/Fonts
-    cp "./assets/Inconsolata-dz.otf" ~/Library/Fonts
+    cp "./assets/osx/Inconsolata+for+Powerline.otf" ~/Library/Fonts
+    cp "./assets/osx/Inconsolata-dz.otf" ~/Library/Fonts
 
     # Note: you may need to re-install Homebrew MacVim by manually adding:
     #   args << "--enable-pythoninterp=dynamic" << "--enable-python3interp=dynamic"

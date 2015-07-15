@@ -410,7 +410,7 @@ sudo mdutil -E / > /dev/null
 defaults write com.apple.terminal StringEncodings -array 4
 
 # Use a theme by default in Terminal.app
-open "./assets/Futora.terminal"
+open "./assets/osx/Futora.terminal"
 sleep 1 # Wait a bit to make sure the theme is loaded
 defaults write com.apple.terminal "Default Window Settings" -string "Futora"
 defaults write com.apple.terminal "Startup Window Settings" -string "Futora"

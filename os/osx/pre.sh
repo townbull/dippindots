@@ -43,4 +43,4 @@ tput setaf 5
 echo -e "\nConfiguring Terminal..."
 tput sgr0
 
-cp ./assets/com.apple.Terminal.plist ~/Library/Preferences/
+cp ./assets/osx/com.apple.Terminal.plist ~/Library/Preferences/

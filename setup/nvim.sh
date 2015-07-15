@@ -17,8 +17,8 @@ if [ $OS = 'osx' ]; then
     pip install neovim
 
     # Copy over necessary fonts
-    cp "./assets/Inconsolata+for+Powerline.otf" ~/Library/Fonts
-    cp "./assets/Inconsolata-dz.otf" ~/Library/Fonts
+    cp "./assets/osx/Inconsolata+for+Powerline.otf" ~/Library/Fonts
+    cp "./assets/osx/Inconsolata-dz.otf" ~/Library/Fonts
 
 elif [ $OS = 'debian' ]; then
     sudo add-apt-repository ppa:neovim-ppa/unstable
