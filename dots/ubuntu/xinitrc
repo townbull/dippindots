@@ -1,3 +1,7 @@
+export BSPWM_TREE=/tmp/bspwm.tree
+export BSPWM_HISTORY=/tmp/bspwm.history
+export BSPWM_STACK=/tmp/bspwm.stack
+
 xrdb -merge ~/.Xresources
 xmodmap ~/.xmodmaprc
 xset +fp ~/.fonts/
@@ -6,4 +10,5 @@ unclutter -root -visible &
 feh --bg-scale ~/.wallpaper.jpg &
 sxhkd &
 urxvt &
-exec bspwm
+compton -cb &
+exec ~/.config/bspwm/wm

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Convenient access to network-manager
+# Convenient access to wicd-cli
 
 if [ -z $1 ]
 then
@@ -7,13 +7,52 @@ then
 
 elif [ $1 == 'con' ]
 then
-    nmcli dev wifi connect "$2" password "$3"
+
+    # First scan networks and find one with the specified SSID. Get the number wicd assigns it.
+    SSID=$2
+    NET=`wicd-cli --wireless --scan --list-networks | grep $SSID | cut -f1`
+
+    if [ -z "$NET" ]; then
+        echo "Network with SSID ${SSID} was not found."
+        exit 0
+    fi
+
+    # Figure out encryption the network is using.
+    ENC=`wicd-cli --wireless -n $NET -d | grep "Encryption Method" | cut -d' ' -f3`
+
+    # Ask for the input needed for the identified encryption type.
+    # This doesn't cover all encryption types wicd can handle.
+    # You can run `wifi enc` to list available encryption types,
+    # look at the value under the `name` column, and use that.
+    # Also listed are the required properties for that encryption type, after `Req:`.
+    # Each of those property keys must be specified (see below for an example).
+    case "$ENC" in
+        WPA|WPA2)
+            ENCTYPE=wpa
+            read -sp "Enter network password: " KEY
+            AUTH="--network-property key --set-to $KEY"
+            ;;
+        *)
+            echo "Encryption method ${ENC} isn't setup in this script."
+            echo "Run 'wifi enc' to list available encryption types and find the appropriate value in the 'Name' column."
+            exit 0
+            ;;
+    esac
+
+    # Connect
+    wicd-cli --wireless -n $NET \
+        --network-property enctype --set-to $ENCTYPE $AUTH \
+        --connect
 
 elif [ $1 == 'ls' ]
 then
-    nmcli d list | grep -F ".SSID"
+    wicd-cli --wireless --scan --list-networks
 
-    # More verbose:
-    # nmcli dev wifi list
+elif [ $1 == 'enc' ]
+then
+    wicd-cli --wireless --e
 
+elif [ $1 == 'dcon' ]
+then
+    wicd-cli --wireless --disconnect
 fi

@@ -8,3 +8,4 @@ xset +fp ~/.fonts
 xset fp rehash
 unclutter -root -visible &
 feh --bg-scale ~/.wallpaper.jpg &
+compton -cb &

@@ -41,7 +41,7 @@ $endif$endif$endif\
 ${if_empty $battery_time}\
 \
 $else\
-$battery_time\
+$battery_time \
 $endif\
 $battery_percent%%%{F-} \
 #

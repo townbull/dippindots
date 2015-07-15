@@ -18,9 +18,9 @@ if [ $OS = 'debian' ]; then
     # libnotify-bin - for `notify-send` to create notifications
     sudo apt-get update
     sudo apt-get install rxvt-unicode-256color openssh-server feh xsel dmenu cmus wget curl xdotool compton slock -y
-    sudo apt-get install fonts-inconsolata xfonts-terminus -y
 
     # Setup fonts
+    sudo apt-get install fonts-inconsolata xfonts-terminus -y
     ln -sf $DIR/assets/fonts ~/.fonts
 
     # siji is preloaded in the fonts folder
@@ -82,6 +82,11 @@ if [ $OS = 'debian' ]; then
     # Note: For raster image previews (NOT ascii previews) with w3m-image to work,
     # you have to use xterm or urxvt
     sudo apt-get install ranger highlight atool caca-utils w3m w3m-img poppler-utils -y
+
+    # wicd instead of network-manager
+    sudo apt-get install wicd wicd-cli wicd-curses -y
+    sudo apt-get purge network-manager -y
+    sudo ln -sf /run/resolvconf/resolv.conf /var/lib/wicd/resolv.conf.orig
 
     # For controlling the screen brightness
     sudo apt-get xbacklight -y

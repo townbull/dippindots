@@ -2,8 +2,14 @@
 # bspwm hotkeys
 #
 
-super + alt + Escape
-	pkill -x panel; bspc quit
+#super + alt + Escape
+	#pkill -x panel; bspc quit
+super + alt + {_,shift + }Escape
+	{bspc query -T > "$BSPWM_TREE"; \
+		bspc query -H > "$BSPWM_HISTORY"; \
+		bspc query -S > "$BSPWM_STACK"; \
+		pkill -x panel; bspc quit,\
+	 pkill -x panel; bspc quit 1}
 
 super + q
 	bspc window -c
@@ -154,4 +160,4 @@ XF86PowerOff
 
 # make sxhkd reload its configuration files:
 super + Escape
-	pkill -USR1 -x sxhkd
+	pkill -USR1 -x sxhkd; notify-send "sxhkd config reloaded"

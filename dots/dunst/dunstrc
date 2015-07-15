@@ -184,12 +184,12 @@
     # Otherwise the "#" and following would be interpreted as a comment.
     background = "#222222"
     foreground = "#888888"
-    timeout = 10
+    timeout = 2
 
 [urgency_normal]
     background = "#4e4e4e"
     foreground = "#ffffff"
-    timeout = 10
+    timeout = 2
 
 [urgency_critical]
     background = "#ef3838"

@@ -1,0 +1,8 @@
+# Place the HDMI1 monitor to the right
+xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1
+
+bspc query -T > "$BSPWM_TREE"
+bspc query -H > "$BSPWM_HISTORY"
+bspc query -S > "$BSPWM_STACK"
+pkill -x panel
+bspc quit
