@@ -129,10 +129,10 @@ super + alt + p
 # media buttons
 #
 XF86AudioLowerVolume
-    amixer set -M Master 5%-
+    amixer -D pulse set -M Master 5%-
 
 XF86AudioRaiseVolume
-    amixer set -M Master 5%+
+    amixer -D pulse set -M Master 5%+
 
 XF86AudioMute
     amixer -D pulse set -M Master toggle
