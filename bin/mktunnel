@@ -1,0 +1,18 @@
+#!/bin/bash
+# Creates an SSH tunnel via $BRIDGE
+
+BRIDGE=$1
+
+createTunnel() {
+    /usr/bin/ssh -f -N -R 10022:localhost:22 -L19922:${BRIDGE}:22 ${BRIDGE}
+    if [[ $? -eq 0 ]]; then
+        echo "Tunnel to ${BRIDGE} created successfully"
+    else
+        echo "An error occurred creating a tunnel to ${BRIDGE}. Return code: ${?}"
+    fi
+}
+/usr/bin/ssh -p 19922 localhost ls > /dev/null
+if [[ $? -ne 0 ]]; then
+    echo "Creating new tunnel connection to ${BRIDGE}"
+    createTunnel
+fi

@@ -27,6 +27,7 @@ if [ ! -f ~/.gitconfig ]; then
     read -rep "What's your git name? Use your full name." name
     tput sgr0
     printf "\n[user]\n\temail = $email\n\tname = $name" >> ~/.gitconfig
+    git config --global push.default simple
 fi
 
 # Requires your SSH keys!
@@ -40,8 +41,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
         brew link --overwrite git
         git config --global credential.helper osxkeychain
     fi
-
-    git config --global push.default simple
 
 	# So we can push without logging in
 	ssh -vT git@github.com
