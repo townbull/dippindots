@@ -1,2 +1,2 @@
-" Map Ctrl+t to toggle goyo
+" Map to toggle goyo
 :nmap <silent> <Leader>z :Goyo<CR>

@@ -16,7 +16,7 @@ set showmode 					" Show the current mode
 set timeoutlen=100 				" Set timeoutlen to be sort, avoiding a lag
 set showcmd 					" Show the command as it's typed
 set shortmess=atI 				" Hide Vim intro message
-let mapleader=";" 				" Change mapleader
+let mapleader=" " 		        " Change mapleader
 set wrap
 set textwidth=0 wrapmargin=0 formatoptions=cq
 
@@ -251,7 +251,7 @@ nnoremap [t :tabprevious<cr>
 nnoremap ]t :tabnext<cr>
 
 " Easily paste in current datetime
-nnoremap <leader>, "=strftime("%m.%d.%Y %H:%M")<CR>P
+nnoremap <leader>t "=strftime("%m.%d.%Y %H:%M")<CR>P
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
