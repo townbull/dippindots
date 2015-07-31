@@ -28,3 +28,7 @@ export PATH="$HOME/.cabal/bin/:$PATH"
 
 # Go
 export PATH=$PATH:$GOPATH/bin
+
+# CUDA (only available on boxes w/ nvidia gfx)
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64
