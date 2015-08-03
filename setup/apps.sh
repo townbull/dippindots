@@ -19,6 +19,7 @@ if [ $OS = 'debian' ]; then
     # xbacklight - control screen brightness
     # hfsprogs - hfs+ file system support
     sudo apt-get update
+    sudo apt-get install xorg --no-install-recommends -y
     sudo apt-get install feh xsel dmenu cmus xdotool compton slock libnotify-bin unclutter xbacklight hfsprogs -y
 
     # bspwm - window manager
