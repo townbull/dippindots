@@ -3,4 +3,10 @@
 
 BRIDGE=$1
 PORT=$2
-ssh -t ${BRIDGE} 'ssh localhost -p '${PORT}
+
+if [ "$#" -ne 3 ]; then
+    ssh -t ${BRIDGE} 'ssh localhost -p '${PORT}
+else
+    REMOTE_CMD=$3
+    ssh -t ${BRIDGE} 'ssh localhost -p '${PORT} ${REMOTE_CMD}
+fi

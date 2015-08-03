@@ -1,0 +1,21 @@
+#!/bin/bash
+# Launch an ipynb on a remote server.
+# Pass in the user@host for the remote server as an argument.
+
+REMOTE=$1
+
+function finish {
+    pkill -f localhost:8889
+    ssh $REMOTE 'pkill -f "ipython notebook"'
+    exit 0
+}
+trap finish INT
+trap finish EXIT
+
+echo "~Visit localhost:8888~"
+ssh -N -f -L localhost:8888:localhost:8889 $REMOTE
+ssh $REMOTE 'mkdir -p ~/notebooks; cd ~/notebooks; source ~/env/data/bin/activate; ipython notebook --no-browser --port 8889'
+
+while true; do
+	sleep 1
+done
