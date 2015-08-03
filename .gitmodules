@@ -75,4 +75,4 @@
 	url = https://github.com/junegunn/goyo.vim.git
 [submodule "vim/bundle/rainbow_parentheses"]
 	path = vim/bundle/rainbow_parentheses
-	url = git@github.com:junegunn/rainbow_parentheses.vim.git
+	url = https://github.com/junegunn/rainbow_parentheses.vim.git
