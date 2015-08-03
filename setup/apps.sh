@@ -30,8 +30,8 @@ if [ $OS = 'debian' ]; then
     cd $DIR
     ln -sf $DIR/dots/bspwm  ~/.config/bspwm
     ln -sf $DIR/dots/sxhkd  ~/.config/sxhkd
-    ln -sf ~/.config/bspwm/panel/panel /usr/bin/panel
-    ln -sf ~/.config/bspwm/panel/panel_bar /usr/bin/panel_bar
+    sudo ln -sf ~/.config/bspwm/panel/panel /usr/bin/panel
+    sudo ln -sf ~/.config/bspwm/panel/panel_bar /usr/bin/panel_bar
 
     # lemonbar - status bar/panel
     git clone https://github.com/baskerville/sutils.git /tmp/sutils
