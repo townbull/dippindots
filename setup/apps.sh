@@ -10,7 +10,7 @@ if [ $OS = 'debian' ]; then
     # feh - image viewer/wallpaper manager
     # xsel - clipboard
     # dmenu - application launcher
-    # cmus - music player
+    # mpd/ncmpcpp/mpc - music player
     # xdotool - simulating interactions with the GUI
     # compton - shadows
     # slock - locking the screen
@@ -20,7 +20,7 @@ if [ $OS = 'debian' ]; then
     # hfsprogs - hfs+ file system support
     sudo apt-get update
     sudo apt-get install xorg --no-install-recommends -y
-    sudo apt-get install feh xsel dmenu cmus xdotool compton slock libnotify-bin unclutter xbacklight hfsprogs -y
+    sudo apt-get install feh xsel dmenu mpd mpc ncmpcpp xdotool compton slock libnotify-bin unclutter xbacklight hfsprogs -y
 
     # bspwm - window manager
     sudo apt-get install xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev -y
@@ -188,8 +188,16 @@ if [ $OS = 'debian' ]; then
     # /etc/systemd/logind.conf
     #   HandleLidSwitch=suspend
     #   HandlePowerKey=ignore
+if [ $OS = 'osx' ]; then
+    brew install mpd mpc ncmpcpp
 fi
 
+# mpd/ncmpcpp configs
+mkdir ~/.mpd/
+mkdir ~/.mpd/playlists
+touch ~/.mpd/{mpd.db,mpd.log,mpd.pid,mpd.state}
+ln -sf $DIR/dots/mpd/mpd.conf ~/.mpd/mpd.conf
+ln -sf $DIR/dots/ncmpcpp ~/.ncmpcpp
 
 # Symlink notes and sites
 ln -sf $DIR/dots/config/nomadic ~/.nomadic

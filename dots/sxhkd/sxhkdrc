@@ -111,7 +111,7 @@ super + alt + d
     deluge
 
 super + alt + t
-    urxvt -e cmus
+    urxvt -e ncmpcpp
 
 super + alt + c
     california
@@ -144,16 +144,16 @@ XF86MonBrightnessUp
     /usr/bin/xbacklight -inc 10
 
 XF86AudioPlay
-    cmus-remote -u
+    mpc toggle
 
 XF86AudioStop
-    cmus-remote -s
+    mpc stop
 
 XF86AudioPrev
-    cmus-remote -r
+    mpc prev
 
 XF86AudioNext
-    cmus-remote -n
+    mpc next
 
 XF86PowerOff
     bspc rule -a urxvt -o floating=on && urxvt -e ~/.bin/pwr # custom script
