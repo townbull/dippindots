@@ -17,7 +17,7 @@ visualizer_color = "red"
 visualizer_look = "●▋"
 visualizer_in_stereo = "no"
 
-song_status_format = "$2{%a} {$7• $4%t} {$7• $3%b} {$7• $5%y}$7"
+song_status_format = "$2{%a} {$7• $4%t}{ $7• $3%b}{ $7• $5%y}$7"
 song_columns_list_format = "(25)[cyan]{a}  (55)[white]{t}"
 now_playing_prefix = "~>"
 now_playing_suffix = ""
