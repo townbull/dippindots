@@ -125,7 +125,7 @@ if [ $OS = 'debian' ]; then
     # california    -- calendar
     # geary         -- email
     # scudcloud     -- Slack
-    sudo apt-get install --no-install-recommends --yes chromium-browser deluge vlc gimp inkscape spotify-client netflix-desktop zeal gpick geary california silversearcher-ag zathura scudcloud
+    sudo apt-get install --no-install-recommends --yes chromium-browser vlc gimp inkscape spotify-client netflix-desktop zeal gpick geary california silversearcher-ag zathura scudcloud
 
     # btsync
     # Accessible via localhost:8888 (or whatever you configure)

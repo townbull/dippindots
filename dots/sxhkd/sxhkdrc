@@ -107,9 +107,6 @@ super + alt + f
 super + alt + m
     geary
 
-super + alt + d
-    deluge
-
 super + alt + t
     urxvt -e ncmpcpp
 
