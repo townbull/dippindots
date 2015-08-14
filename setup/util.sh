@@ -24,10 +24,6 @@ if [ $OS = 'osx' ]; then
     brew install fasd
     brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-frei0r --with-libass --with-libvo-aacenc --with-libvorbis --with-libvpx --with-opencore-amr --with-openjpeg --with-opus --with-rtmpdump --with-schroedinger --with-speex --with-theora --with-tools
 
-    # https://github.com/Homebrew/homebrew/issues/24132
-    brew install libtorrent --build-from-source
-    brew install rtorrent
-
     # tmux (with vim copy paste support)
     brew install tmux
     brew install reattach-to-user-namespace --wrap-pbcopy-pbpaste && brew link reattach-to-user-namespace
@@ -43,7 +39,7 @@ elif [ $OS = 'debian' ]; then
     sudo add-apt-repository ppa:jon-severinsson/ffmpeg -y
     sudo apt-get update
 
-    sudo apt-get install --no-install-recommends dos2unix tmux curl jq gpg htop wget dnsutils imagemagick nmap httpie silversearcher-ag fasd rtorrent -y
+    sudo apt-get install --no-install-recommends dos2unix tmux curl jq gpg htop wget dnsutils imagemagick nmap httpie silversearcher-ag fasd -y
 
     # ffmpeg
     sudo apt-get -y --force-yes install autoconf automake build-essential libass-dev libfreetype6-dev libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texi2html zlib1g-dev libx264-dev libmp3lame-dev libfdk-aac-dev libvpx-dev libopus-dev yasm
@@ -55,8 +51,3 @@ elif [ $OS = 'debian' ]; then
     cd $DIR
 
 fi
-
-# rtorrent setup
-mkdir ~/.watch
-mkdir ~/.session
-ln -s $DIR/dots/rtorrent/rtorrent.rc ~/.rtorrent.rc

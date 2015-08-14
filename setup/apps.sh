@@ -20,7 +20,7 @@ if [ $OS = 'debian' ]; then
     # hfsprogs - hfs+ file system support
     sudo apt-get update
     sudo apt-get install xorg --no-install-recommends -y
-    sudo apt-get install feh xsel dmenu mpd mpc ncmpcpp xdotool compton slock libnotify-bin unclutter xbacklight hfsprogs -y
+    sudo apt-get install feh xsel dmenu mpd mpc ncmpcpp xdotool compton slock libnotify-bin unclutter xbacklight hfsprogs syncthing rtorrent -y
 
     # bspwm - window manager
     sudo apt-get install xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev -y
@@ -90,9 +90,6 @@ if [ $OS = 'debian' ]; then
     # Scudcloud (Slack client)
     sudo apt-add-repository -y ppa:rael-gc/scudcloud
 
-    # BitTorrent Sync
-    sh -c "$(curl -fsSL http://debian.yeasoft.net/add-btsync-repository.sh)"
-
     # Zeal
     sudo add-apt-repository ppa:jerzy-kozera/zeal-ppa -y
     sudo add-apt-repository ppa:ubuntu-sdk-team/ppa -y
@@ -126,15 +123,6 @@ if [ $OS = 'debian' ]; then
     # geary         -- email
     # scudcloud     -- Slack
     sudo apt-get install --no-install-recommends --yes chromium-browser vlc gimp inkscape spotify-client netflix-desktop zeal gpick geary california silversearcher-ag zathura scudcloud
-
-    # btsync
-    # Accessible via localhost:8888 (or whatever you configure)
-    # Copy the config so it can have the proper permissions
-    sudo apt-get install btsync -y
-    sudo ln -sf $DIR/dots/btsync/btsync /etc/default/btsync
-    sudo cp $DIR/dots/btsync/main.conf /etc/btsync/main.conf
-    sudo chown $USER:$USER /etc/btsync/main.conf
-    chmod 600 /etc/btsync/main.conf
 
     # zathura config
     ln -sf $DIR/dots/zathura ~/.config/zathura
@@ -189,7 +177,11 @@ if [ $OS = 'debian' ]; then
     #   HandleLidSwitch=suspend
     #   HandlePowerKey=ignore
 if [ $OS = 'osx' ]; then
-    brew install mpd mpc ncmpcpp
+    brew install mpd mpc ncmpcpp syncthing
+
+    # https://github.com/Homebrew/homebrew/issues/24132
+    brew install libtorrent --build-from-source
+    brew install rtorrent
 fi
 
 # mpd/ncmpcpp configs
@@ -202,3 +194,8 @@ ln -sf $DIR/dots/ncmpcpp ~/.ncmpcpp
 # Symlink notes and sites
 ln -sf $DIR/dots/config/nomadic ~/.nomadic
 ln -sf $DIR/dots/port ~/.port
+
+# rtorrent setup
+mkdir ~/.watch
+mkdir ~/.session
+ln -s $DIR/dots/rtorrent/rtorrent.rc ~/.rtorrent.rc
