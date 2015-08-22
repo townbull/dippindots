@@ -20,7 +20,7 @@ if [ $OS = 'debian' ]; then
     # hfsprogs - hfs+ file system support
     sudo apt-get update
     sudo apt-get install xorg --no-install-recommends -y
-    sudo apt-get install feh xsel dmenu mpd mpc ncmpcpp xdotool compton slock libnotify-bin unclutter xbacklight hfsprogs syncthing rtorrent -y
+    sudo apt-get install feh xsel dmenu mpd mpc ncmpcpp xdotool compton slock libnotify-bin unclutter xbacklight hfsprogs rtorrent -y
 
     # bspwm - window manager
     sudo apt-get install xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev -y
@@ -83,10 +83,6 @@ if [ $OS = 'debian' ]; then
     ln -sf $DIR/dots/ubuntu/Xresources ~/.Xresources
     ln -sf $DIR/dots/ubuntu/xsessionrc ~/.xsessionrc
 
-    # Spotify
-    sudo add-apt-repository "deb http://repository.spotify.com stable non-free" -y
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 94558F59
-
     # Scudcloud (Slack client)
     sudo apt-add-repository -y ppa:rael-gc/scudcloud
 
@@ -100,6 +96,10 @@ if [ $OS = 'debian' ]; then
 
     # Netflix Desktop
     sudo add-apt-repository ppa:pipelight/stable -y
+
+    # Syncthing
+    curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
+    echo deb http://apt.syncthing.net/ syncthing release | sudo tee /etc/apt/sources.list.d/syncthing-release.list
 
     # Update the repositories
     sudo apt-get update
@@ -122,7 +122,7 @@ if [ $OS = 'debian' ]; then
     # california    -- calendar
     # geary         -- email
     # scudcloud     -- Slack
-    sudo apt-get install --no-install-recommends --yes chromium-browser vlc gimp inkscape spotify-client netflix-desktop zeal gpick geary california silversearcher-ag zathura scudcloud
+    sudo apt-get install --no-install-recommends --yes chromium-browser vlc gimp inkscape netflix-desktop zeal gpick geary california silversearcher-ag zathura scudcloud syncthing
 
     # zathura config
     ln -sf $DIR/dots/zathura ~/.config/zathura

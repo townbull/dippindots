@@ -116,9 +116,6 @@ super + alt + c
 super + alt + s
     scudcloud # slack
 
-super + alt + p
-    spotify
-
 #
 # media buttons
 #

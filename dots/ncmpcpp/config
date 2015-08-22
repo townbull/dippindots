@@ -1,7 +1,7 @@
 ##### connection settings #####
 mpd_host = "localhost"
 mpd_port = "6600"
-mpd_music_dir = "~/STUFF/music/_library"
+mpd_music_dir = "~/musics"
 
 ##### timeouts and delays #####
 mpd_crossfade_time = "2"
