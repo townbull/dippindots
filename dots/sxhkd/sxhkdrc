@@ -11,7 +11,14 @@ super + alt + {_,shift + }Escape
 		pkill -x panel; bspc quit,\
 	 pkill -x panel; bspc quit 1}
 
-super + q
+super + {q,w}
+    bspc monitor -f {L,R}
+
+super + {shift,alt} + {q,w}
+    bspc {window,desktop} -m {L,R}
+
+# Close current window
+super + shift + alt + q
 	bspc window -c
 
 super + t

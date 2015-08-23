@@ -1,8 +1,29 @@
-# Place the HDMI1 monitor to the right
-xrandr --output eDP1 --auto --output HDMI1 --auto --right-of eDP1
+# Note: run `xrandr -q` to list connected outputs (monitors). Set the appropriate monitor as EXMON.
 
-bspc query -T > "$BSPWM_TREE"
-bspc query -H > "$BSPWM_HISTORY"
-bspc query -S > "$BSPWM_STACK"
-pkill -x panel
-bspc quit
+PLACE=$1
+EXMON=HDMI1
+
+if [[ $PLACE == 'right' ]]; then
+    EXMON_PLACE=R
+    INMON_PLACE=L
+elif [[ $PLACE == 'left' ]]; then
+    EXMON_PLACE=L
+    INMON_PLACE=R
+else
+    echo "Please specify 'left' or 'right'."
+    exit 0
+fi
+
+# Place the external monitor to the specified position
+xrandr --output eDP1 --auto --output $EXMON --auto --$PLACE-of eDP1
+
+# Rename each monitor so sxhkd can use it with bspwm to move focus/windows/desktops across monitors
+bspc monitor $EXMON -n $EXMON_PLACE
+bspc monitor eDP1 -n $INMON_PLACE
+
+# Rename the desktop to match the other ones
+bspc desktop Desktop2 -n 
+
+# Kill the panel/lemonbar and restart
+kill $(ps aux | grep '/usr/bin/panel' | awk '{print $2}')
+panel &
