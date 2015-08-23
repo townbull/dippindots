@@ -176,6 +176,11 @@ if [ $OS = 'debian' ]; then
     # /etc/systemd/logind.conf
     #   HandleLidSwitch=suspend
     #   HandlePowerKey=ignore
+
+    # This was necessary to get sound working on the C720 (sound was only playable by root)
+    sudo adduser ftseng audio
+    sudo adduser ftseng pulse-access
+
 if [ $OS = 'osx' ]; then
     brew install mpd mpc ncmpcpp syncthing
 
