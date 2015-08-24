@@ -10,7 +10,7 @@ elif [ ! -f "$DIR/$1" ]; then
 fi
 
 ext="${1##*.}"
-if [ $ext == "jpg" ]; then
+if [ $ext != "jpg" ]; then
     echo "The file must be a jpg"
     exit 0
 fi

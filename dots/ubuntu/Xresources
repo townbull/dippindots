@@ -26,7 +26,7 @@ URxvt.keysym.M-p: perl:clipboard:paste
 
 ! special
 *.foreground:   #AFB2AF
-*.background:   #282B2E
+*.background:   #263238
 *.cursorColor:  #FFE230
 
 ! black
