@@ -29,7 +29,7 @@ then
     case "$ENC" in
         WPA|WPA2)
             ENCTYPE=wpa
-            read -sp "Enter network password: " KEY
+            read -sp "Enter $ENCTYPE network password: " KEY
             AUTH="--network-property key --set-to $KEY"
             ;;
         *)
@@ -50,7 +50,7 @@ then
 
 elif [ $1 == 'enc' ]
 then
-    wicd-cli --wireless --e
+    wicd-cli --wireless -e
 
 elif [ $1 == 'dcon' ]
 then
