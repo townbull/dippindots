@@ -125,32 +125,34 @@ super + alt + s
 
 #
 # media buttons
+# these are prefixed with `super`
+# so they also can work as regular function keys
 #
-XF86AudioLowerVolume
+super + XF86AudioLowerVolume
     amixer -D pulse set -M Master 5%-
 
-XF86AudioRaiseVolume
+super + XF86AudioRaiseVolume
     amixer -D pulse set -M Master 5%+
 
-XF86AudioMute
+super + XF86AudioMute
     amixer -D pulse set -M Master toggle
 
-XF86MonBrightnessDown
+super + XF86MonBrightnessDown
     /usr/bin/xbacklight -dec 10
 
-XF86MonBrightnessUp
+super + XF86MonBrightnessUp
     /usr/bin/xbacklight -inc 10
 
-XF86AudioPlay
+super + XF86AudioPlay
     mpc toggle
 
-XF86AudioStop
+super + XF86AudioStop
     mpc stop
 
-XF86AudioPrev
+super + XF86AudioPrev
     mpc prev
 
-XF86AudioNext
+super + XF86AudioNext
     mpc next
 
 XF86PowerOff

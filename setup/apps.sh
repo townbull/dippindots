@@ -75,9 +75,6 @@ if [ $OS = 'debian' ]; then
     # Dunst (notifications) config
     ln -sf $DIR/dots/dunst  ~/.config/dunst
 
-    # Setup C720's function keys
-    ln -sf $DIR/dots/ubuntu/xmodmaprc ~/.xmodmaprc
-
     # Other defaults
     ln -sf $DIR/dots/ubuntu/xinitrc ~/.xinitrc
     ln -sf $DIR/dots/ubuntu/Xresources ~/.Xresources

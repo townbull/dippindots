@@ -3,7 +3,6 @@ export BSPWM_HISTORY=/tmp/bspwm.history
 export BSPWM_STACK=/tmp/bspwm.stack
 
 xrdb -merge ~/.Xresources
-xmodmap ~/.xmodmaprc
 xset +fp ~/.fonts/
 xset fp rehash
 unclutter -root -visible &

@@ -3,7 +3,6 @@ xinput --set-float-prop 12 "Tap Drag Delay" 0.060000
 xinput set-int-prop 12 "Pointer Sensitivity" 32 4
 
 xrdb -merge ~/.Xresources
-xmodmap ~/.xmodmaprc
 xset +fp ~/.fonts
 xset fp rehash
 unclutter -root -visible &
