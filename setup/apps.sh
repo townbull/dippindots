@@ -18,9 +18,10 @@ if [ $OS = 'debian' ]; then
     # unclutter - hide cursor after inactivity
     # xbacklight - control screen brightness
     # hfsprogs - hfs+ file system support
+    # gdebi - easier installation of deb packages
     sudo apt-get update
     sudo apt-get install xorg --no-install-recommends -y
-    sudo apt-get install feh xsel dmenu mpd mpc ncmpcpp xdotool compton slock libnotify-bin unclutter xbacklight hfsprogs rtorrent -y
+    sudo apt-get install feh xsel dmenu mpd mpc ncmpcpp xdotool compton slock libnotify-bin unclutter xbacklight hfsprogs rtorrent gdebi -y
 
     # bspwm - window manager
     sudo apt-get install xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev -y
