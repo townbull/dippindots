@@ -128,32 +128,33 @@ super + alt + s
 # these are prefixed with `super`
 # so they also can work as regular function keys
 #
-super + XF86AudioLowerVolume
-    amixer -D pulse set -M Master 5%-
 
-super + XF86AudioRaiseVolume
+super + {F10, XF86AudioRaiseVolume}
     amixer -D pulse set -M Master 5%+
 
-super + XF86AudioMute
+super + {F9, XF86AudioLowerVolume}
+    amixer -D pulse set -M Master 5%-
+
+super + {F8, XF86AudioMute}
     amixer -D pulse set -M Master toggle
 
-super + XF86MonBrightnessDown
-    /usr/bin/xbacklight -dec 10
-
-super + XF86MonBrightnessUp
+super + {F7, XF86MonBrightnessUp}
     /usr/bin/xbacklight -inc 10
 
-super + XF86AudioPlay
+super + {F6, XF86MonBrightnessDown}
+    /usr/bin/xbacklight -dec 10
+
+super + {F5, XF86AudioPlay}
     mpc toggle
 
-super + XF86AudioStop
+super + {F4, XF86AudioStop}
     mpc stop
 
-super + XF86AudioPrev
-    mpc prev
-
-super + XF86AudioNext
+super + {F2, XF86AudioNext}
     mpc next
+
+super + {F1, XF86AudioPrev}
+    mpc prev
 
 XF86PowerOff
     bspc rule -a urxvt -o floating=on && urxvt -e ~/.bin/pwr # custom script
