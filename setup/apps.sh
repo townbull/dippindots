@@ -21,7 +21,23 @@ if [ $OS = 'debian' ]; then
     # gdebi - easier installation of deb packages
     sudo apt-get update
     sudo apt-get install xorg --no-install-recommends -y
-    sudo apt-get install feh xsel dmenu mpd mpc ncmpcpp xdotool compton slock libnotify-bin unclutter xbacklight hfsprogs rtorrent gdebi -y
+    sudo apt-get install feh xsel dmenu mpd mpc xdotool compton slock libnotify-bin unclutter xbacklight hfsprogs rtorrent gdebi -y
+
+    # build the latest ncmpcpp
+    sudo apt-get install libboost-all-dev libfft3-dev doxygen libncursesw5-dev libtag1-dev libcurl4-openssl-dev
+    git clone git://git.musicpd.org/master/libmpdclient.git /tmp/libmpdclient
+    cd /tmp/libmpdclient
+    ./autogen.sh
+    make
+    sudo make install
+    git clone git://repo.or.cz/ncmpcpp.git /tmp/ncmpcpp
+    cd /tmp/ncmpcpp
+    ./autogen.sh
+    autoreconf --force --install
+    BOOST_LIB_SUFFIX="" ./configure --enable-visualizer --enable-outputs --enable-clock --enable-unicode --with-taglib --with-fftw --with-curl
+    make
+    sudo make install
+    cd $DIR
 
     # bspwm - window manager
     sudo apt-get install xcb libxcb-util0-dev libxcb-ewmh-dev libxcb-randr0-dev libxcb-icccm4-dev libxcb-keysyms1-dev libxcb-xinerama0-dev libasound2-dev -y
@@ -178,6 +194,10 @@ if [ $OS = 'debian' ]; then
     # This was necessary to get sound working on the C720 (sound was only playable by root)
     sudo adduser ftseng audio
     sudo adduser ftseng pulse-access
+
+    # Change default browser
+    sudo update-alternatives --config x-www-browser
+    sudo update-alternatives --config gnome-www-browser
 
 if [ $OS = 'osx' ]; then
     brew install mpd mpc ncmpcpp syncthing

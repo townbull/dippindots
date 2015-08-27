@@ -28,10 +28,10 @@ done
 # and click on the window in question
 bspc rule -a Gimp desktop=^8 follow=on floating=on
 bspc rule -a Chromium-browser desktop=^2
-bspc rule -a Spotify pseudo_tiled=on
 bspc rule -a Geary desktop=^3
 bspc rule -a California desktop=^4
 bspc rule -a Scudcloud desktop=^5
+bspc rule -a VirtualBox desktop=^4
 bspc rule -a feh floating=on
 
 # This must go after the rest of the config!

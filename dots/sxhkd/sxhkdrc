@@ -65,11 +65,11 @@ super + ctrl + {h,j,k,l}
 super + ctrl + {_,shift + }space
 	bspc {window -p cancel,desktop -c}
 
-#super + alt + {h,j,k,l}
-#	bspc window -e {left -10,down +10,up -10,right +10}
+#super + alt + shift + {h,j,k,l}
+    #bspc window -e {left -10,down +10,up -10,right +10}
 
 #super + alt + shift + {h,j,k,l}
-#	bspc window -e {right -10,up +10,down -10,left +10}
+    #bspc window -e {right -10,up +10,down -10,left +10}
 
 super + ctrl + {1-9}
 	bspc window -r 0.{1-9}
@@ -122,6 +122,12 @@ super + alt + c
 
 super + alt + s
     scudcloud # slack
+
+super + alt + n
+    urxvt -e netflix-desktop
+
+super + alt + v
+    urxvt -e virtualbox # windows
 
 #
 # media buttons

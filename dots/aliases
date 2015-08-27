@@ -29,6 +29,7 @@ alias j="jobs"
 alias v="vim ."
 alias o="open"
 alias oo="open ."
+alias nb="jupyter notebook"
 
 # Symlink the data directory to this folder
 alias lndata="ln -s ~/data data"
