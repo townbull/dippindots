@@ -39,8 +39,7 @@ if [ $OS = 'debian' ]; then
     sudo make install
     cd $DIR
 
-    # build the latest mpv
-    # this requires ffmpeg!
+    # build latest libass for ffmpeg and mpv
     sudo apt-get install libfribidi-dev
     git clone --depth=1 https://github.com/libass/libass.git /tmp/libass
     cd /tmp/libass
@@ -48,6 +47,18 @@ if [ $OS = 'debian' ]; then
     ./configure
     make
     sudo make install
+
+    # ffmpeg
+    sudo apt-get -y --force-yes install autoconf automake build-essential libfreetype6-dev libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texi2html zlib1g-dev libx264-dev libmp3lame-dev libfdk-aac-dev libvpx-dev libopus-dev yasm
+    git clone --depth=1 git://source.ffmpeg.org/ffmpeg.git /tmp/ffmpeg
+    cd /tmp/ffmpeg
+    ./configure --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-nonfree
+    make
+    sudo make install
+    cd $DIR
+
+    # build the latest mpv
+    # this requires ffmpeg!
     git clone --depth=1 https://github.com/mpv-player/mpv.git /tmp/mpv
     cd /tmp/mpv
     ./bootstrap.py

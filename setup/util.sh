@@ -40,14 +40,4 @@ elif [ $OS = 'debian' ]; then
     sudo apt-get update
 
     sudo apt-get install --no-install-recommends dos2unix tmux curl jq gpg htop wget dnsutils imagemagick nmap httpie silversearcher-ag fasd -y
-
-    # ffmpeg
-    sudo apt-get -y --force-yes install autoconf automake build-essential libass-dev libfreetype6-dev libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texi2html zlib1g-dev libx264-dev libmp3lame-dev libfdk-aac-dev libvpx-dev libopus-dev yasm
-    git clone --depth=1 git://source.ffmpeg.org/ffmpeg.git /tmp/ffmpeg
-    cd /tmp/ffmpeg
-    ./configure --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-nonfree
-    make
-    sudo make install
-    cd $DIR
-
 fi
