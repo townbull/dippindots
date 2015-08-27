@@ -25,18 +25,35 @@ if [ $OS = 'debian' ]; then
 
     # build the latest ncmpcpp
     sudo apt-get install libboost-all-dev libfft3-dev doxygen libncursesw5-dev libtag1-dev libcurl4-openssl-dev
-    git clone git://git.musicpd.org/master/libmpdclient.git /tmp/libmpdclient
+    git clone --depth=1 git://git.musicpd.org/master/libmpdclient.git /tmp/libmpdclient
     cd /tmp/libmpdclient
     ./autogen.sh
     make
     sudo make install
-    git clone git://repo.or.cz/ncmpcpp.git /tmp/ncmpcpp
+    git clone --depth=1 git://repo.or.cz/ncmpcpp.git /tmp/ncmpcpp
     cd /tmp/ncmpcpp
     ./autogen.sh
     autoreconf --force --install
     BOOST_LIB_SUFFIX="" ./configure --enable-visualizer --enable-outputs --enable-clock --enable-unicode --with-taglib --with-fftw --with-curl
     make
     sudo make install
+    cd $DIR
+
+    # build the latest mpv
+    # this requires ffmpeg!
+    sudo apt-get install libfribidi-dev
+    git clone --depth=1 https://github.com/libass/libass.git /tmp/libass
+    cd /tmp/libass
+    ./autogen.sh
+    ./configure
+    make
+    sudo make install
+    git clone --depth=1 https://github.com/mpv-player/mpv.git /tmp/mpv
+    cd /tmp/mpv
+    ./bootstrap.py
+    ./waf configure
+    ./waf build
+    sudo ./waf install
     cd $DIR
 
     # bspwm - window manager
