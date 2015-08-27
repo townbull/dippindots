@@ -5,6 +5,7 @@ export BSPWM_STACK=/tmp/bspwm.stack
 xrdb -merge ~/.Xresources
 xset +fp ~/.fonts/
 xset fp rehash
+fc-cache -fv &
 unclutter -root -visible &
 feh --bg-scale ~/.wallpaper.jpg &
 sxhkd &

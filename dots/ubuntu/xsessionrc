@@ -5,6 +5,7 @@ xinput set-int-prop 12 "Pointer Sensitivity" 32 4
 xrdb -merge ~/.Xresources
 xset +fp ~/.fonts
 xset fp rehash
+fc-cache -fv &
 unclutter -root -visible &
 feh --bg-scale ~/.wallpaper.jpg &
 compton -cb &
