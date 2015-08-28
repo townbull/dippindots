@@ -227,6 +227,12 @@ if [ $OS = 'debian' ]; then
     sudo update-alternatives --config x-www-browser
     sudo update-alternatives --config gnome-www-browser
 
+    # For easily updating system time to current time zone
+    # To preview, run `tzupdate -p`
+    # To make the change, run `sudo tzupdate`
+    # TO DO update this to proper repo after PR is accepted
+    sudo pip2 install https://github.com/ftzeng/tzupdate/archive/develop.zip
+
 if [ $OS = 'osx' ]; then
     brew install mpd mpc ncmpcpp syncthing
 
