@@ -3,14 +3,31 @@
 PLACE=$1
 EXMON=HDMI1
 
+function restart_panel {
+    # Kill the panel/lemonbar and restart
+    ps aux | grep '/usr/bin/panel' | awk '{print $2}' | xargs kill
+    panel &
+}
+
 if [[ $PLACE == 'right' ]]; then
     EXMON_PLACE=R
     INMON_PLACE=L
 elif [[ $PLACE == 'left' ]]; then
     EXMON_PLACE=L
     INMON_PLACE=R
+elif [[ $PLACE == 'reset' ]]; then
+    xrandr --output $EXMON --off
+
+    # Remove unplugged monitors
+    # (should this be a permanent config option?)
+    bspc config remove_unplugged_monitors true
+    bspc monitor $(bspc query -M) -n eDP1
+    bspc config remove_unplugged_monitors false
+
+    restart_panel
+    exit 0
 else
-    echo "Please specify 'left' or 'right'."
+    echo "Please specify 'left', 'right', or 'reset'."
     exit 0
 fi
 
@@ -24,6 +41,4 @@ bspc monitor eDP1 -n $INMON_PLACE
 # Rename the desktop to match the other ones
 bspc desktop Desktop2 -n 
 
-# Kill the panel/lemonbar and restart
-kill $(ps aux | grep '/usr/bin/panel' | awk '{print $2}')
-panel &
+restart_panel
