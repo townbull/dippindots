@@ -5,7 +5,9 @@
 # but for folders you can just end it with a '.', e.g. ~/foo/bar/.
 
 # usage:
-# fetch <user@tunnelhost> <port> <user> </path/to/file>
+# pull <user@bridgehost> <port> <user> </path/to/file>
+# where <port> is the port used for the SSH tunnel on <bridgehost>
+# and <user> is the user used for the remote host
 
 BRIDGE=$1
 PORT=$2
@@ -13,4 +15,8 @@ USER=$3
 FILEPATH=$4
 DIR=`dirname ${FILEPATH}`
 FILE=`basename ${FILEPATH}`
+
+# ssh into the bridge,
+# on the bridge, ssh into the remote,
+# the stream the tar of the file back
 ssh $BRIDGE 'ssh -p '${PORT}' '${USER}'@localhost "cd '${DIR}'; tar cj '${FILE}'"' | tar xj
