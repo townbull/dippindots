@@ -124,6 +124,7 @@ if [ $OS = 'debian' ]; then
     ln -sf $DIR/dots/ubuntu/xinitrc ~/.xinitrc
     ln -sf $DIR/dots/ubuntu/Xresources ~/.Xresources
     ln -sf $DIR/dots/ubuntu/xsessionrc ~/.xsessionrc
+    ln -sf $DIR/dots/ubuntu/colors ~/.colors
 
     # Scudcloud (Slack client)
     sudo apt-add-repository -y ppa:rael-gc/scudcloud

@@ -1,3 +1,5 @@
+#include "~/.colors/hamsterslayer"
+
 ! https://wiki.archlinux.org/index.php/Rxvt-unicode
 URxvt.scrollBar: false
 URxvt.font: xft:terminus:style=semibold:pixelsize=12:antialias=true:hinting=slight
@@ -23,80 +25,3 @@ URxvt.keysym.M-Escape: perl:keyboard-select:activate
 ! your system clipboard manager.
 URxvt.keysym.M-c: perl:clipboard:copy
 URxvt.keysym.M-p: perl:clipboard:paste
-
-!! DARK
-! special
-*.foreground:   #ddd5cd
-*.background:   #222222
-*.cursorColor:  #f35656
-
-! black
-*.color0:       #212d32
-*.color8:       #5c5855
-
-! red
-*.color1:       #ff7784
-*.color9:       #ef5578
-
-! green
-*.color2:       #9ad0aa
-*.color10:      #7cbf9e
-
-! yellow
-*.color3:       #cbbd96
-*.color11:      #e9e1d6
-
-! blue
-*.color4:       #34aadd
-*.color12:      #81d9ff
-
-! magenta
-*.color5:       #dc95ff
-*.color13:      #ad96f2
-
-! cyan
-*.color6:       #b5e4f4
-*.color14:      #9ED9D8
-
-! white
-*.color7:       #F2F1B9
-*.color15:      #F6F6C9
-
-
-!! LIGHT VERSION
-!*.foreground:   #383838
-!*.background:   #e4efee
-!*.cursorColor:  #f35656
-
-!! black
-!*.color0:       #212d32
-!*.color8:       #5c5855
-
-!! red
-!*.color1:       #ff7784
-!*.color9:       #ef5578
-
-!! green
-!*.color2:       #9ad0aa
-!*.color10:      #50a667
-
-!! yellow
-!*.color3:       #cbbd96
-!*.color11:      #e9e1d6
-
-!! blue
-!*.color4:       #34aadd
-!*.color12:      #0e9ce6
-
-!! magenta
-!*.color5:       #dc95ff
-!*.color13:      #ad96f2
-
-!! cyan
-!*.color6:       #0ee6d6
-!*.color14:      #06b6a9
-
-!! white
-!*.color7:       #F2F1B9
-!*.color15:      #F6F6C9
-
