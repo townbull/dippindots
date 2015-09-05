@@ -165,7 +165,7 @@ if [ $OS = 'debian' ]; then
     # california    -- calendar
     # geary         -- email
     # scudcloud     -- Slack
-    sudo apt-get install --no-install-recommends --yes chromium-browser vlc gimp inkscape netflix-desktop zeal gpick geary california silversearcher-ag zathura scudcloud syncthing
+    sudo apt-get install --no-install-recommends --yes chromium-browser vlc gimp inkscape netflix-desktop zeal gpick geary california silversearcher-ag zathura scudcloud syncthing android-tools-adb
 
     # zathura config
     ln -sf $DIR/dots/zathura ~/.config/zathura
