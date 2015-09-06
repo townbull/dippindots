@@ -20,7 +20,7 @@ if [ $OS = 'debian' ]; then
     # gdebi - easier installation of deb packages
     sudo apt-get update
     sudo apt-get install xorg --no-install-recommends -y
-    sudo apt-get install feh xsel dmenu xdotool compton slock libnotify-bin unclutter xbacklight hfsprogs rtorrent gdebi -y
+    sudo apt-get install feh xsel dmenu xdotool compton conky slock libnotify-bin unclutter xbacklight hfsprogs rtorrent gdebi -y
 
     # mpd/ncmpcpp/mpc - music player
     sudo apt-get install mpd mpc -y
