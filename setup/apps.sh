@@ -202,10 +202,11 @@ if [ $OS = 'debian' ]; then
     # User profile pic
     ln -sf $DIR/assets/face.png ~/.face
 
-    # Remove unwanted stuff (Lubuntu 14.04)
-    rm -rf ~/.sylpheed*
-    sudo apt-get purge mtpaint pidgin xchat* sylpheed* abiword* gnumeric* transmission* audacious* lightdm openbox network-manager -y
-    sudo apt-get autoremove -y
+    # For easily updating system time to current time zone
+    # To preview, run `tzupdate -p`
+    # To make the change, run `sudo tzupdate`
+    # TO DO update this to proper repo after PR is accepted
+    sudo pip2 install https://github.com/ftzeng/tzupdate/archive/develop.zip
 
     # Power management stuff
     # Note:
@@ -221,11 +222,11 @@ if [ $OS = 'debian' ]; then
     sudo update-alternatives --config x-www-browser
     sudo update-alternatives --config gnome-www-browser
 
-    # For easily updating system time to current time zone
-    # To preview, run `tzupdate -p`
-    # To make the change, run `sudo tzupdate`
-    # TO DO update this to proper repo after PR is accepted
-    sudo pip2 install https://github.com/ftzeng/tzupdate/archive/develop.zip
+    # Remove unwanted stuff (Lubuntu 14.04)
+    # Run this last as it will remove `network-manager` and we'll lose the internet connection
+    rm -rf ~/.sylpheed*
+    sudo apt-get purge mtpaint pidgin xchat* sylpheed* abiword* gnumeric* transmission* audacious* lightdm openbox network-manager -y
+    sudo apt-get autoremove -y
 
 elif [ $OS = 'osx' ]; then
     brew install mpd mpc ncmpcpp syncthing

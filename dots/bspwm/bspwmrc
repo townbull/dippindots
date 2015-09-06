@@ -2,7 +2,6 @@
 
 bspc config border_width        1
 bspc config window_gap          12
-bspc config top_padding         18
 
 #bspc monitor -d 1 2 3 4 5
 #bspc monitor -d     
