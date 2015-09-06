@@ -7,7 +7,7 @@ die () {
 }
 
 [ "$#" -eq 3 ] || die "Specify a remote host, a remote port, and a local port"
-echo $1 | grep -E -q '^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-z]+$' || die "Hostname should be of the format user@remote.com, not $1"
+echo $1 | grep -E -q '^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+$' || die "Hostname should be of the format user@remote.com, not $1"
 echo $2 | grep -E -q '^[0-9]+$' || die "Numeric argument required, $2 provided"
 echo $3 | grep -E -q '^[0-9]+$' || die "Numeric argument required, $3 provided"
 
@@ -22,7 +22,7 @@ function finish {
 trap finish INT
 trap finish EXIT
 
-ssh -N -f -L localhost:$REMOTE_PORT:localhost:$LOCAL_PORT $REMOTE
+ssh -N -f -L localhost:$LOCAL_PORT:localhost:$REMOTE_PORT $REMOTE
 echo "Running on localhost:$LOCAL_PORT"
 echo "Hit ctrl+c to exit"
 
