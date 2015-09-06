@@ -26,7 +26,7 @@ if [ $OS = 'debian' ]; then
     sudo apt-get install mpd mpc -y
 
     # build the latest ncmpcpp
-    sudo apt-get install libboost-all-dev libfft3-dev doxygen libncursesw5-dev libtag1-dev libcurl4-openssl-dev
+    sudo apt-get install libboost-all-dev libfftw3-dev doxygen libncursesw5-dev libtag1-dev libcurl4-openssl-dev
     git clone --depth=1 git://git.musicpd.org/master/libmpdclient.git /tmp/libmpdclient
     cd /tmp/libmpdclient
     ./autogen.sh
@@ -158,7 +158,7 @@ if [ $OS = 'debian' ]; then
     # zathura       -- keyboard-driven pdf viewer
     # california    -- calendar
     # geary         -- email
-    sudo apt-get install --no-install-recommends --yes chromium-browser vlc netflix-desktop gpick geary california silversearcher-ag zathura syncthing android-tools-adb openvpn
+    sudo apt-get install --no-install-recommends --yes chromium-browser netflix-desktop gpick geary california silversearcher-ag zathura syncthing android-tools-adb openvpn
 
     # zathura config
     ln -sf $DIR/dots/zathura ~/.config/zathura
