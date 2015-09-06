@@ -1,0 +1,27 @@
+! FAMICOM
+URxvt.background: #010101
+URxvt.foreground: #F8D8F8
+! Black + DarkGrey
+URxvt.color0:     #010101
+URxvt.color8:     #787878
+! DarkRed + Red
+URxvt.color1:     #F85898
+URxvt.color9:     #F8A4C0
+! DarkGreen + Green
+URxvt.color2:     #58F898
+URxvt.color10:    #B8F8D8
+! DarkYellow + Yellow
+URxvt.color3:     #9878F8
+URxvt.color11:    #D8B8F8
+! DarkBlue + Blue
+URxvt.color4:     #6888FC
+URxvt.color12:    #B8B8F8
+! DarkMagenta + Magenta
+URxvt.color5:     #F878F8
+URxvt.color13:    #F8B8F8
+!DarkCyan + Cyan
+URxvt.color6:     #00E8D8
+URxvt.color14:    #00FCFC
+! LightGrey + White
+URxvt.color7:     #BCBCBC
+URxvt.color15:    #FCFCFC
