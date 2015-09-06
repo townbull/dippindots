@@ -1,0 +1,31 @@
+# Bind a remote port to a local port
+# Usage: moor user@remote.com
+
+die () {
+    echo >&2 "$@"
+    exit 1
+}
+
+[ "$#" -eq 3 ] || die "Specify a remote host, a remote port, and a local port"
+echo $1 | grep -E -q '^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+\.[a-z]+$' || die "Hostname should be of the format user@remote.com, not $1"
+echo $2 | grep -E -q '^[0-9]+$' || die "Numeric argument required, $2 provided"
+echo $3 | grep -E -q '^[0-9]+$' || die "Numeric argument required, $3 provided"
+
+REMOTE=$1
+REMOTE_PORT=$2
+LOCAL_PORT=$3
+
+function finish {
+    pkill -f localhost:$LOCAL_PORT
+    exit 0
+}
+trap finish INT
+trap finish EXIT
+
+ssh -N -f -L localhost:$REMOTE_PORT:localhost:$LOCAL_PORT $REMOTE
+echo "Running on localhost:$LOCAL_PORT"
+echo "Hit ctrl+c to exit"
+
+while true; do
+    sleep 1
+done
