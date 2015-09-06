@@ -35,8 +35,5 @@ if [ $OS = 'osx' ]; then
     brew install the_silver_searcher
 
 elif [ $OS = 'debian' ]; then
-    sudo add-apt-repository ppa:jon-severinsson/ffmpeg -y
-    sudo apt-get update
-
-    sudo apt-get install --no-install-recommends dos2unix tmux curl jq gpg htop wget dnsutils imagemagick nmap httpie silversearcher-ag -y
+    sudo apt-get install --no-install-recommends dos2unix tmux curl jq gnupg htop wget dnsutils imagemagick nmap httpie silversearcher-ag -y
 fi
