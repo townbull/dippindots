@@ -227,7 +227,7 @@ if [ $OS = 'debian' ]; then
     # TO DO update this to proper repo after PR is accepted
     sudo pip2 install https://github.com/ftzeng/tzupdate/archive/develop.zip
 
-if [ $OS = 'osx' ]; then
+elif [ $OS = 'osx' ]; then
     brew install mpd mpc ncmpcpp syncthing
 
     # https://github.com/Homebrew/homebrew/issues/24132
