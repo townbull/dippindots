@@ -10,7 +10,6 @@ if [ $OS = 'debian' ]; then
     # feh - image viewer/wallpaper manager
     # xsel - clipboard
     # dmenu - application launcher
-    # mpd/ncmpcpp/mpc - music player
     # xdotool - simulating interactions with the GUI
     # compton - shadows
     # slock - locking the screen
@@ -21,7 +20,10 @@ if [ $OS = 'debian' ]; then
     # gdebi - easier installation of deb packages
     sudo apt-get update
     sudo apt-get install xorg --no-install-recommends -y
-    sudo apt-get install feh xsel dmenu mpd mpc xdotool compton slock libnotify-bin unclutter xbacklight hfsprogs rtorrent gdebi -y
+    sudo apt-get install feh xsel dmenu xdotool compton slock libnotify-bin unclutter xbacklight hfsprogs rtorrent gdebi -y
+
+    # mpd/ncmpcpp/mpc - music player
+    sudo apt-get install mpd mpc -y
 
     # build the latest ncmpcpp
     sudo apt-get install libboost-all-dev libfft3-dev doxygen libncursesw5-dev libtag1-dev libcurl4-openssl-dev
@@ -126,13 +128,6 @@ if [ $OS = 'debian' ]; then
     ln -sf $DIR/dots/ubuntu/xsessionrc ~/.xsessionrc
     ln -sf $DIR/dots/ubuntu/colors ~/.colors
 
-    # Scudcloud (Slack client)
-    sudo apt-add-repository -y ppa:rael-gc/scudcloud
-
-    # Zeal
-    sudo add-apt-repository ppa:jerzy-kozera/zeal-ppa -y
-    sudo add-apt-repository ppa:ubuntu-sdk-team/ppa -y
-
     # Geary/California
     sudo add-apt-repository ppa:yorba/daily-builds
     sudo add-apt-repository ppa:vala-team/ppa
@@ -158,14 +153,12 @@ if [ $OS = 'debian' ]; then
     sudo apt-get install evolution-data-server -y
 
     # Install some cool apps :D
-    # zeal          -- offline documentation
     # sc            -- spreadsheet calculator
     # gpick         -- colorpicker
     # zathura       -- keyboard-driven pdf viewer
     # california    -- calendar
     # geary         -- email
-    # scudcloud     -- Slack
-    sudo apt-get install --no-install-recommends --yes chromium-browser vlc gimp inkscape netflix-desktop zeal gpick geary california silversearcher-ag zathura scudcloud syncthing android-tools-adb
+    sudo apt-get install --no-install-recommends --yes chromium-browser vlc netflix-desktop gpick geary california silversearcher-ag zathura syncthing android-tools-adb openvpn
 
     # zathura config
     ln -sf $DIR/dots/zathura ~/.config/zathura
