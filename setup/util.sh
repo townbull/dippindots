@@ -21,7 +21,6 @@ if [ $OS = 'osx' ]; then
     brew install pandoc
     brew install imagemagick
     brew install htop
-    brew install fasd
     brew install ffmpeg --with-fdk-aac --with-ffplay --with-freetype --with-frei0r --with-libass --with-libvo-aacenc --with-libvorbis --with-libvpx --with-opencore-amr --with-openjpeg --with-opus --with-rtmpdump --with-schroedinger --with-speex --with-theora --with-tools
 
     # tmux (with vim copy paste support)
@@ -39,5 +38,5 @@ elif [ $OS = 'debian' ]; then
     sudo add-apt-repository ppa:jon-severinsson/ffmpeg -y
     sudo apt-get update
 
-    sudo apt-get install --no-install-recommends dos2unix tmux curl jq gpg htop wget dnsutils imagemagick nmap httpie silversearcher-ag fasd -y
+    sudo apt-get install --no-install-recommends dos2unix tmux curl jq gpg htop wget dnsutils imagemagick nmap httpie silversearcher-ag -y
 fi

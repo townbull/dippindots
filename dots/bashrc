@@ -5,8 +5,3 @@ export TERM=xterm-256color
 
 PERL_MB_OPT="--install_base \"/Users/ftseng/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/ftseng/perl5"; export PERL_MM_OPT;
-
-# Initialize fasd, if installed
-if hash fasd 2>/dev/null; then
-    eval "$(fasd --init auto)"
-fi
