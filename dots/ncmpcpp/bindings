@@ -13,10 +13,10 @@ def_key "h"
 def_key "."
     show_lyrics
 
-def_key "ctrl_j"
+def_key "ctrl-j"
   page_down
 
-def_key "ctrl_k"
+def_key "ctrl-k"
   page_up
 
 def_key "x"
