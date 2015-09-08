@@ -185,6 +185,9 @@ if [ $OS = 'debian' ]; then
     ln $DIR/dots/ubuntu/gtkrc-2.0 ~/.gtkrc-2.0
 
     # Setup fonts
+    # (necessary to allow bitmap fonts)
+    sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf
+    sudo ln -s /etc/fonts/conf.avail/70-yes-bitmaps.conf /etc/fonts/conf.d/70-yes-bitmaps.conf
     sudo apt-get install fonts-inconsolata xfonts-terminus -y
     ln -sf $DIR/assets/fonts ~/.fonts
     mkfontdir ~/.fonts
