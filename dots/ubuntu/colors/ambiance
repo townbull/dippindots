@@ -1,5 +1,5 @@
 !AMBIANCE
-*.background:       #ff0000
+*.background:        #282828
 *.foreground:        #F2F1F0
 *.cursorColor:       #F07746
 
