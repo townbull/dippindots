@@ -128,7 +128,7 @@ if [ $OS = 'debian' ]; then
     ln -sf $DIR/dots/ubuntu/xsessionrc ~/.xsessionrc
     ln -sf $DIR/dots/ubuntu/colors ~/.colors
 
-    # Geary/California
+    # California
     sudo add-apt-repository ppa:yorba/daily-builds
     sudo add-apt-repository ppa:vala-team/ppa
 
@@ -138,6 +138,9 @@ if [ $OS = 'debian' ]; then
     # Syncthing
     curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
     echo deb http://apt.syncthing.net/ syncthing release | sudo tee /etc/apt/sources.list.d/syncthing-release.list
+
+    # Scudcloud (Slack client)
+    sudo apt-add-repository -y ppa:rael-gc/scudcloud
 
     # Update the repositories
     sudo apt-get update
@@ -157,8 +160,8 @@ if [ $OS = 'debian' ]; then
     # gpick         -- colorpicker
     # zathura       -- keyboard-driven pdf viewer
     # california    -- calendar
-    # geary         -- email
-    sudo apt-get install --no-install-recommends --yes chromium-browser netflix-desktop gpick geary california silversearcher-ag zathura syncthing android-tools-adb openvpn
+    # scudcloud     -- slack
+    sudo apt-get install --no-install-recommends --yes chromium-browser netflix-desktop gpick california silversearcher-ag zathura syncthing android-tools-adb openvpn scudcloud
 
     # zathura config
     ln -sf $DIR/dots/zathura ~/.config/zathura

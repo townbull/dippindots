@@ -111,8 +111,8 @@ super + alt + z
 super + alt + f
     urxvt -e ranger
 
-super + alt + m
-    geary
+#super + alt + m
+    #sylpheed
 
 super + alt + t
     urxvt -e ncmpcpp
