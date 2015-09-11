@@ -220,9 +220,10 @@ if [ $OS = 'debian' ]; then
     #   HandleLidSwitch=suspend
     #   HandlePowerKey=ignore
 
-    # This was necessary to get sound working on the C720 (sound was only playable by root)
+    # This was necessary to get sound and video working on the C720 (sound and video was only playable by root)
     sudo adduser ftseng audio
     sudo adduser ftseng pulse-access
+    sudo adduser ftseng video
 
     # Change default browser
     sudo update-alternatives --config x-www-browser
