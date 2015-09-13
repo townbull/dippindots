@@ -7,5 +7,5 @@ xset +fp ~/.fonts
 xset fp rehash
 fc-cache -fv &
 unclutter -root -visible &
-feh --bg-scale ~/.wallpaper.jpg &
+feh --bg-fill ~/.wallpaper.jpg &
 compton -cb &

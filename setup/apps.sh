@@ -128,7 +128,7 @@ if [ $OS = 'debian' ]; then
     ln -sf $DIR/dots/ubuntu/xsessionrc ~/.xsessionrc
     ln -sf $DIR/dots/ubuntu/colors ~/.colors
 
-    # Geary/California
+    # California
     sudo add-apt-repository ppa:yorba/daily-builds
     sudo add-apt-repository ppa:vala-team/ppa
 
@@ -138,6 +138,9 @@ if [ $OS = 'debian' ]; then
     # Syncthing
     curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
     echo deb http://apt.syncthing.net/ syncthing release | sudo tee /etc/apt/sources.list.d/syncthing-release.list
+
+    # Scudcloud (Slack client)
+    sudo apt-add-repository -y ppa:rael-gc/scudcloud
 
     # Update the repositories
     sudo apt-get update
@@ -157,8 +160,8 @@ if [ $OS = 'debian' ]; then
     # gpick         -- colorpicker
     # zathura       -- keyboard-driven pdf viewer
     # california    -- calendar
-    # geary         -- email
-    sudo apt-get install --no-install-recommends --yes chromium-browser netflix-desktop gpick geary california silversearcher-ag zathura syncthing android-tools-adb openvpn
+    # scudcloud     -- slack
+    sudo apt-get install --no-install-recommends --yes chromium-browser netflix-desktop gpick california silversearcher-ag zathura syncthing android-tools-adb openvpn scudcloud
 
     # zathura config
     ln -sf $DIR/dots/zathura ~/.config/zathura
@@ -185,6 +188,9 @@ if [ $OS = 'debian' ]; then
     ln $DIR/dots/ubuntu/gtkrc-2.0 ~/.gtkrc-2.0
 
     # Setup fonts
+    # (necessary to allow bitmap fonts)
+    sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf
+    sudo ln -s /etc/fonts/conf.avail/70-yes-bitmaps.conf /etc/fonts/conf.d/70-yes-bitmaps.conf
     sudo apt-get install fonts-inconsolata xfonts-terminus -y
     ln -sf $DIR/assets/fonts ~/.fonts
     mkfontdir ~/.fonts
@@ -214,9 +220,10 @@ if [ $OS = 'debian' ]; then
     #   HandleLidSwitch=suspend
     #   HandlePowerKey=ignore
 
-    # This was necessary to get sound working on the C720 (sound was only playable by root)
+    # This was necessary to get sound and video working on the C720 (sound and video was only playable by root)
     sudo adduser ftseng audio
     sudo adduser ftseng pulse-access
+    sudo adduser ftseng video
 
     # Change default browser
     sudo update-alternatives --config x-www-browser

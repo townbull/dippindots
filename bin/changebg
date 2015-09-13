@@ -16,4 +16,4 @@ if [ $ext != "jpg" ]; then
 fi
 
 ln -sf $DIR/$1 ~/.wallpaper.jpg
-feh --bg-scale ~/.wallpaper.jpg &
+feh --bg-fill ~/.wallpaper.jpg &
