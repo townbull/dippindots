@@ -1,0 +1,9 @@
+#!/bin/bash
+
+while true; do
+    # don't directly write to file,
+    # since it temporarily makes it empty
+    WEATHER=$(weather)
+    echo $WEATHER > /tmp/weather
+    sleep 300 # every 5min
+done

@@ -126,7 +126,6 @@ if [ $OS = 'debian' ]; then
     # Other defaults
     ln -sf $DIR/dots/ubuntu/xinitrc ~/.xinitrc
     ln -sf $DIR/dots/ubuntu/Xresources ~/.Xresources
-    ln -sf $DIR/dots/ubuntu/xsessionrc ~/.xsessionrc
     ln -sf $DIR/dots/ubuntu/colors ~/.colors
 
     # California

@@ -6,6 +6,9 @@ total_run_times   0
 short_units   yes
 pad_percents      3
 
+# So we can display battery time without seconds
+times_in_seconds true
+
 override_utf8_locale yes
 
 TEXT
@@ -41,10 +44,14 @@ $endif$endif$endif\
 ${if_empty $battery_time}\
 \
 $else\
-$battery_time \
+${format_time $battery_time "\hh \mm"} \
 $endif\
 $battery_percent%%%{F-} \
 #
 # AUDIO
 #
-%{F\#FFFED530}${execi 1 ~/.config/bspwm/panel/panel_audio}%{F-}
+%{F\#FFFED530}${execi 1 ~/.config/bspwm/panel/panel_audio}%{F-} \
+#
+# WEATHER
+#
+%{F\#FFA3A6AB}${execi 1 cat /tmp/weather 2>/dev/null}%{F-}
