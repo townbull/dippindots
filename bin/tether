@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# First: plug in your android and enable usb tethering in it
+sudo ifconfig usb0 up
+sudo dhcpcd usb0
