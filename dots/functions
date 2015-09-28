@@ -38,7 +38,7 @@ function phpserver() {
 
 # Activate a Python virtualenv by name.
 # Assumes that envs are stored in ~/env/.
-function a() {
+function aa() {
     source ~/env/$1/bin/activate
 }
 
