@@ -55,9 +55,40 @@ if [ $OS = 'debian' ]; then
     sudo apt-get -y --force-yes install autoconf automake build-essential libfreetype6-dev libsdl1.2-dev libtheora-dev libtool libva-dev libvdpau-dev libvorbis-dev libxcb1-dev libxcb-shm0-dev libxcb-xfixes0-dev pkg-config texi2html zlib1g-dev libx264-dev libmp3lame-dev libfdk-aac-dev libvpx-dev libopus-dev yasm
     git clone --depth=1 git://source.ffmpeg.org/ffmpeg.git /tmp/ffmpeg
     cd /tmp/ffmpeg
-    ./configure --enable-gpl --enable-libass --enable-libfdk-aac --enable-libfreetype --enable-libmp3lame --enable-libopus --enable-libtheora --enable-libvorbis --enable-libvpx --enable-libx264 --enable-nonfree
+
+    # a detour for x265
+    sudo apt-get install cmake
+    wget https://bitbucket.org/multicoreware/x265/downloads/x265_1.7.tar.gz -O /tmp/ffmpeg/x265.tar.gz
+    cd /tmp/ffmpeg
+    tar -xzvf x265.tar.gz
+    cd x265_*/build/linux
+    PATH="$HOME/bin:$PATH" cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="$HOME/ffmpeg_build" -DENABLE_SHARED:bool=off ../../source
     make
     sudo make install
+
+    # compile ffmpeg
+    PATH="$HOME/bin:$PATH" PKG_CONFIG_PATH="$HOME/ffmpeg_build/lib/pkgconfig" ./configure \
+      --prefix="$HOME/ffmpeg_build" \
+      --pkg-config-flags="--static" \
+      --extra-cflags="-I$HOME/ffmpeg_build/include" \
+      --extra-ldflags="-L$HOME/ffmpeg_build/lib" \
+      #--bindir="$HOME/bin" \
+      --bindir="/usr/local/bin" \
+      --enable-gpl \
+      --enable-libass \
+      --enable-libfdk-aac \
+      --enable-libfreetype \
+      --enable-libmp3lame \
+      --enable-libopus \
+      --enable-libtheora \
+      --enable-libvorbis \
+      --enable-libvpx \
+      --enable-libx264 \
+      --enable-libx265 \
+      --enable-nonfree
+    make
+    sudo make install
+    rm -rf ~/ffmpeg_build
     cd $DIR
 
     # build the latest mpv
@@ -161,7 +192,8 @@ if [ $OS = 'debian' ]; then
     # zathura       -- keyboard-driven pdf viewer
     # california    -- calendar
     # scudcloud     -- slack
-    sudo apt-get install --no-install-recommends --yes chromium-browser netflix-desktop gpick california silversearcher-ag zathura syncthing android-tools-adb openvpn scudcloud
+    # ncdu          -- ncurses disk usage
+    sudo apt-get install --no-install-recommends --yes chromium-browser netflix-desktop gpick california silversearcher-ag zathura syncthing android-tools-adb openvpn scudcloud ncdu
 
     # zathura config
     ln -sf $DIR/dots/zathura ~/.config/zathura
