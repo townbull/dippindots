@@ -23,8 +23,10 @@ export PATH="/usr/local/sbin:$PATH"
 
 export PATH="$PATH:/usr/sbin:/usr/bin:/sbin:/bin"
 
-# Cabal (Haskell)
-export PATH="$HOME/.cabal/bin/:$PATH"
+# Spark
+export SPARK_HOME="/usr/local/share/spark"
+export PATH="$SPARK_HOME/bin:$PATH"
+export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
 
 # Go
 export PATH=$PATH:$GOPATH/bin
