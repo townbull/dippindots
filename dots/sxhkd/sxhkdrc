@@ -91,7 +91,7 @@ super + @button{1-3}
 #
 
 super + Return
-    urxvt
+    urxvt -e tmux
 
 super + n
     urxvt -e wicd-curses
@@ -103,7 +103,7 @@ super + d
     ~/.bin/app_switch
 
 super + alt + w
-    chromium-browser
+    chromium-browser --disable-gpu
 
 super + alt + z
     zathura
