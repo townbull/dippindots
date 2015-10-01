@@ -8,7 +8,7 @@ execute pathogen#infect()
 set nocompatible      			" Use vim, no vi defaults
 syntax enable         			" Turn on syntax highlighting
 set encoding=utf-8 nobomb       " Set default encoding to UTF-8
-set clipboard=unnamed           " Use OS clipboard (on +clipboard compiled Vim)
+set clipboard=unnamedplus       " Use OS clipboard (on +clipboard compiled Vim)
 set noerrorbells 				" Disable error bells
 set novisualbell                " Disable visual bells
 set title 						" Show filename in window titlebar
