@@ -91,7 +91,7 @@ super + @button{1-3}
 #
 
 super + Return
-    urxvt -e tmux
+    urxvt
 
 super + n
     urxvt -e wicd-curses
