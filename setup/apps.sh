@@ -290,3 +290,6 @@ ln -sf $DIR/dots/port ~/.port
 mkdir ~/.watch
 mkdir ~/.session
 ln -s $DIR/dots/rtorrent/rtorrent.rc ~/.rtorrent.rc
+
+# backup config
+ln -s $DIR/dots/bkup ~/.bkup
