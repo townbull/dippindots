@@ -123,9 +123,6 @@ super + alt + c
 super + alt + s
     scudcloud # slack
 
-super + alt + n
-    urxvt -e netflix-desktop
-
 super + alt + v
     urxvt -e virtualbox # windows
 

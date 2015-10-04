@@ -163,9 +163,6 @@ if [ $OS = 'debian' ]; then
     sudo add-apt-repository ppa:yorba/daily-builds
     sudo add-apt-repository ppa:vala-team/ppa
 
-    # Netflix Desktop
-    sudo add-apt-repository ppa:pipelight/stable -y
-
     # Syncthing
     curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
     echo deb http://apt.syncthing.net/ syncthing release | sudo tee /etc/apt/sources.list.d/syncthing-release.list
@@ -175,9 +172,6 @@ if [ $OS = 'debian' ]; then
 
     # Update the repositories
     sudo apt-get update
-
-    # Required for netflix-desktop
-    sudo apt-get install ttf-mscorefonts-installer -y
 
     # Flash player
     sudo apt-get install pepperflashplugin-nonfree -y
@@ -193,7 +187,11 @@ if [ $OS = 'debian' ]; then
     # california    -- calendar
     # scudcloud     -- slack
     # ncdu          -- ncurses disk usage
-    sudo apt-get install --no-install-recommends --yes chromium-browser netflix-desktop gpick california silversearcher-ag zathura syncthing android-tools-adb openvpn scudcloud ncdu
+    sudo apt-get install --no-install-recommends --yes chromium-browser gpick california silversearcher-ag zathura syncthing android-tools-adb openvpn scudcloud ncdu
+
+    # chromium for netflix
+    wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/chrome.deb
+    sudo gdebi /tmp/chrome.deb
 
     # zathura config
     ln -sf $DIR/dots/zathura ~/.config/zathura
