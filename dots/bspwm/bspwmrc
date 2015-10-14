@@ -22,10 +22,6 @@ done
 # Get a window name by running
 # xprop | grep WM_CLASS
 # and click on the window in question
-bspc rule -a Chromium-browser desktop=^2
-bspc rule -a Geary desktop=^3
-bspc rule -a California desktop=^4
-bspc rule -a VirtualBox desktop=^4
 bspc rule -a feh floating=on
 
 # This must go after the rest of the config!
