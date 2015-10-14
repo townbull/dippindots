@@ -11,6 +11,8 @@ let g:pymode_lint_checkers = ['pyflakes']
 " https://github.com/klen/python-mode/issues/525
 let g:pymode_rope = 0
 
+"let g:pymode_python = 'python3'
+
 " With multiple windows, PymodeLint doesn't seem to autorun
 " This is a temp fix, see https://github.com/klen/python-mode/issues/374
 au BufWriteCmd *.py write || :PymodeLint

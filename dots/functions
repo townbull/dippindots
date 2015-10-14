@@ -1,5 +1,16 @@
 function cs(){ cd $1; ls -l;}
 
+function wakehubble() {
+    # svalbard
+    gotunnel starbase.in 10023 'wakeonlan '$HUBBLE
+}
+
+function hubble() {
+    gotunnel starbase.in 10022
+}
+
+# ---
+
 # This will export your GPG public and private keys
 # Pass in the key ID (often just the username) of the
 # key you want to export.
@@ -38,7 +49,7 @@ function phpserver() {
 
 # Activate a Python virtualenv by name.
 # Assumes that envs are stored in ~/env/.
-function a() {
+function aa() {
     source ~/env/$1/bin/activate
 }
 

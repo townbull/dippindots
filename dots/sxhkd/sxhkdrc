@@ -103,7 +103,7 @@ super + d
     ~/.bin/app_switch
 
 super + alt + w
-    chromium-browser
+    chromium-browser --disable-gpu
 
 super + alt + z
     zathura
@@ -122,9 +122,6 @@ super + alt + c
 
 super + alt + s
     scudcloud # slack
-
-super + alt + n
-    urxvt -e netflix-desktop
 
 super + alt + v
     urxvt -e virtualbox # windows

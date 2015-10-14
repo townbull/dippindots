@@ -17,6 +17,7 @@ CUR_X_OFFSET=0
 bspc config bottom_padding $PANEL_HEIGHT
 
 . ~/.config/bspwm/panel/panel_colors
+bash ~/.config/bspwm/panel/panel_weather &
 
 # Adapted from:
 # https://github.com/neeasade/dotfiles/blob/master/bspwm/.config/bspwm/panel/panel
