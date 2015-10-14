@@ -12,3 +12,4 @@ dots/mutt/auth
 dots/mutt/signature
 logs/
 *.log
+*.spl
