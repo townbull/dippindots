@@ -35,6 +35,9 @@ autocmd! GUIEnter * set vb t_vb=
 " Automatically trim trailing whitespace on save.
 autocmd BufWritePre * :%s/\s\+$//e
 
+" Jump out of a set of delimiters and append with a space
+" Hit alt+shift+k to do it from insert mode
+nmap K %%a 
 
 " ----------------------------------------------------------------------------
 " Colors
