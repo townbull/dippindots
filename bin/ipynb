@@ -3,6 +3,15 @@
 # Pass in the user@host for the remote server as an argument.
 
 REMOTE=$1
+FOLDER=$2
+
+if [ -z $1 ]; then
+    echo "Tell me where to connect to"
+    exit 0
+elif [ -z $2 ]; then
+    echo "Tell me what directory to use"
+    exit 0
+fi
 
 function finish {
     pkill -f localhost:8889
@@ -14,7 +23,7 @@ trap finish EXIT
 
 echo "~Visit localhost:8888~"
 ssh -N -f -L localhost:8888:localhost:8889 $REMOTE
-ssh $REMOTE 'mkdir -p ~/notebooks; cd ~/notebooks; source ~/env/data/bin/activate; ipython notebook --no-browser --port 8889'
+ssh $REMOTE 'cd '"$2"'; source ~/env/data/bin/activate; ipython notebook --no-browser --port 8889'
 
 while true; do
 	sleep 1
