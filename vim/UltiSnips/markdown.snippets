@@ -61,7 +61,7 @@ snippet alnnn "Align without numbers" b
 endsnippet
 
 snippet frac "Fraction" w
-\frac{${1:${VISUAL:nom}}}{${2:denom}}
+\frac\{${1}\}\{${2}\}
 endsnippet
 
 snippet mat "Smart Matrix"
@@ -104,6 +104,10 @@ endsnippet
 
 snippet phi "\varphi" i
 \varphi
+endsnippet
+
+snippet drv "derivative" i
+\frac\{\partial ${1}\}\{\partial ${2}\}
 endsnippet
 
 # vim:ft=snippets:
