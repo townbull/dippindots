@@ -187,7 +187,8 @@ if [ $OS = 'debian' ]; then
     # california    -- calendar
     # scudcloud     -- slack
     # ncdu          -- ncurses disk usage
-    sudo apt-get install --no-install-recommends --yes chromium-browser gpick california silversearcher-ag zathura syncthing android-tools-adb openvpn scudcloud ncdu
+    # keepassx      -- password management
+    sudo apt-get install --no-install-recommends --yes chromium-browser gpick california silversearcher-ag zathura syncthing android-tools-adb openvpn scudcloud ncdu keepassx
 
     # chromium for netflix
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/chrome.deb
