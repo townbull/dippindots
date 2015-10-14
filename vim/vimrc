@@ -37,7 +37,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Jump out of a set of delimiters and append with a space
 " Hit alt+shift+k to do it from insert mode
-nmap K %%a 
+nmap K %%a
 
 " ----------------------------------------------------------------------------
 " Colors
