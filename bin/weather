@@ -2,7 +2,7 @@
 RESP=$(curl -s https://www.telize.com/geoip)
 LAT=$(echo "$RESP" | jq -r '{latitude} | .[]')
 LNG=$(echo "$RESP" | jq -r '{longitude} | .[]')
-TEMP=$(curl -s "api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LNG}&units=metric" | jq -r '{temp: .main.temp} | .[]')
+TEMP=$(curl -s "api.openweathermap.org/data/2.5/weather?lat=${LAT}&lon=${LNG}&units=metric&APPID=95f3713bae74f740f00b0c3483916b40" | jq -r '{temp: .main.temp} | .[]')
 
 if [ -z $TEMP ]; then
     TEMP=?
