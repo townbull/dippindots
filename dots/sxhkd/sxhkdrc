@@ -21,12 +21,15 @@ super + {shift,ctrl} + alt + {h,l}
 super + shift + alt + q
     bspc window -c
 
+# Cycle desktop layouts
 super + t
     bspc desktop -l next
 
+# Adjust windows so they each occupy the same area
 super + b
     bspc desktop -B
 
+# Toggle floating
 super + {s,f}
     bspc window -t {floating,fullscreen}
 
@@ -103,7 +106,7 @@ super + d
     ~/.bin/app_switch
 
 super + alt + w
-    chromium-browser --disable-gpu
+    chromium-browser
 
 super + alt + z
     zathura
