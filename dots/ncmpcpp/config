@@ -12,19 +12,19 @@ message_delay_time = "2"
 visualizer_fifo_path = "/tmp/mpd.fifo"
 visualizer_output_name = "visualizer"
 visualizer_sync_interval = "30"
-visualizer_type = "wave" # (spectrum/wave)
-visualizer_color = "blue"
-visualizer_look = ".."
+visualizer_type = "spectrum" # (spectrum/wave)
+visualizer_color = "red"
+visualizer_look = "■■"
 visualizer_in_stereo = "no"
 
-song_status_format = "$2{%a} {$7• $4%t}{ $7• $3%b}{ $7• $5%y}$7"
-song_columns_list_format = "(25)[cyan]{a}  (55)[white]{t}"
-now_playing_prefix = "~>"
-now_playing_suffix = ""
-playlist_display_mode = "columns" (classic/columns)
+song_list_format = "{$2%a $7- $5%t}|{%f}$8"
+song_status_format = "$2{%a} {$7• $5%t}{ $7• $8%b}{ $7• $8%y}$9"
+now_playing_prefix = "~> $b"
+now_playing_suffix = "$/b"
+playlist_display_mode = "classic" (classic/columns)
 autocenter_mode = "yes"
 progressbar_look = "━■"
-header_visibility = "yes"
+header_visibility = "no"
 statusbar_visibility = "yes"
 titles_visibility = "no"
 cyclic_scrolling = "yes"
@@ -36,7 +36,7 @@ display_bitrate = "yes"
 display_volume_level = "no"
 ignore_leading_the = "yes"
 mouse_support = "no"
-enable_window_title = "yes"
+enable_window_title = "no"
 external_editor = "vim"
 use_console_editor = "yes"
 
@@ -57,3 +57,50 @@ active_column_color = "blue"
 active_window_border = "green"
 main_window_color = "white"
 main_window_highlight_color = "cyan"
+
+##### song format #####
+##
+## for song format you can use:
+##
+## %l - length
+## %f - filename
+## %D - directory
+## %a - artist
+## %t - title
+## %b - album
+## %y - year
+## %n - track number (01/12 -> 01)
+## %N - full track info (01/12 -> 01/12)
+## %g - genre
+## %c - composer
+## %p - performer
+## %d - disc
+## %C - comment
+## $R - begin right alignment
+##
+## you can also put them in { } and then it will be displayed
+## only if all requested values are available and/or define alternate
+## value with { }|{ } eg. {%a - %t}|{%f}
+##
+## Note: Format that is similar to "%a - %t" (i.e. without any additional
+## braces) is equal to "{%a - %t}", so if one of the tags is missing,
+## you'll get nothing.
+##
+## text can also have different color than the main window has,
+## eg. if you want length to be green, write $3%l$9
+##
+## available values:
+##
+## - 0 - default window color (discards all other colors)
+## - 1 - black
+## - 2 - red
+## - 3 - green
+## - 4 - yellow
+## - 5 - blue
+## - 6 - magenta
+## - 7 - cyan
+## - 8 - white
+## - 9 - end of current color
+##
+## Note: colors can be nested.
+##
