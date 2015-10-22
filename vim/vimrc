@@ -35,10 +35,6 @@ autocmd! GUIEnter * set vb t_vb=
 " Automatically trim trailing whitespace on save.
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Jump out of a set of delimiters and append with a space
-" Hit alt+shift+k to do it from insert mode
-nmap K %%a
-
 " ----------------------------------------------------------------------------
 " Colors
 " ----------------------------------------------------------------------------
@@ -252,6 +248,13 @@ imap <leader>9 <Esc>9gt
 map gr gT
 nnoremap [t :tabprevious<cr>
 nnoremap ]t :tabnext<cr>
+
+" Jump out of a set of delimiters and append with a space
+" Hit alt+shift+k to do it from insert mode
+nmap K %%a
+
+" Open new line from insert mode
+imap <C-o> <esc>o
 
 " Easily paste in current datetime
 nnoremap <leader>t "=strftime("%m.%d.%Y %H:%M")<CR>P
