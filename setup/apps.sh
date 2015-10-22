@@ -72,7 +72,6 @@ if [ $OS = 'debian' ]; then
       --pkg-config-flags="--static" \
       --extra-cflags="-I$HOME/ffmpeg_build/include" \
       --extra-ldflags="-L$HOME/ffmpeg_build/lib" \
-      #--bindir="$HOME/bin" \
       --bindir="/usr/local/bin" \
       --enable-gpl \
       --enable-libass \
@@ -85,7 +84,8 @@ if [ $OS = 'debian' ]; then
       --enable-libvpx \
       --enable-libx264 \
       --enable-libx265 \
-      --enable-nonfree
+      --enable-nonfree \
+      --enable-openssl
     make
     sudo make install
     rm -rf ~/ffmpeg_build
@@ -159,16 +159,15 @@ if [ $OS = 'debian' ]; then
     ln -sf $DIR/dots/ubuntu/Xresources ~/.Xresources
     ln -sf $DIR/dots/ubuntu/colors ~/.colors
 
-    # California
-    sudo add-apt-repository ppa:yorba/daily-builds
-    sudo add-apt-repository ppa:vala-team/ppa
-
     # Syncthing
     curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
     echo deb http://apt.syncthing.net/ syncthing release | sudo tee /etc/apt/sources.list.d/syncthing-release.list
 
     # Scudcloud (Slack client)
     sudo apt-add-repository -y ppa:rael-gc/scudcloud
+
+    # Latest Chromium
+    sudo add-apt-repository ppa:canonical-chromium-builds/stage
 
     # Update the repositories
     sudo apt-get update
@@ -177,18 +176,14 @@ if [ $OS = 'debian' ]; then
     sudo apt-get install pepperflashplugin-nonfree -y
     sudo update-pepperflashplugin-nonfree --install
 
-    # Required for california
-    sudo apt-get install evolution-data-server -y
-
     # Install some cool apps :D
     # sc            -- spreadsheet calculator
     # gpick         -- colorpicker
     # zathura       -- keyboard-driven pdf viewer
-    # california    -- calendar
     # scudcloud     -- slack
     # ncdu          -- ncurses disk usage
     # keepassx      -- password management
-    sudo apt-get install --no-install-recommends --yes chromium-browser gpick california silversearcher-ag zathura syncthing android-tools-adb openvpn scudcloud ncdu keepassx
+    sudo apt-get install --no-install-recommends --yes chromium-browser gpick silversearcher-ag zathura syncthing android-tools-adb openvpn scudcloud ncdu keepassx
 
     # chromium for netflix
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O /tmp/chrome.deb
@@ -213,7 +208,9 @@ if [ $OS = 'debian' ]; then
 
     # lxappearance for managing GTK themeing
     sudo apt-get install lxappearance -y
-    sudo git clone https://github.com/aceat64/Numix-Blue.git /usr/share/themes/Numix-Blue
+    git clone https://github.com/horst3180/arc-theme --depth 1 /tmp/arc
+    cd /tmp/arc
+    ./autogen.sh --prefix=/usr
     git clone https://github.com/daniruiz/Super-Flat-Remix.git /tmp/Super-Flat-Remix
     sudo mv "/tmp/Super-Flat-Remix/Super Flat Remix" /usr/share/icons/
     ln $DIR/dots/ubuntu/gtkrc-2.0 ~/.gtkrc-2.0
