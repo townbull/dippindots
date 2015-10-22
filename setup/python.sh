@@ -1,4 +1,5 @@
 OS=$1
+DIR=$2
 
 tput setaf 5
 echo "Installing Python2, Python3, pip, and virtualenv..."
@@ -17,3 +18,5 @@ elif [ $OS = 'debian' ]; then
     sudo easy_install3 pip
     sudo pip3 install virtualenv
 fi
+
+ln -sf $DIR/dots/pystartup ~/.pystartup

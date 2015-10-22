@@ -21,3 +21,6 @@ export MANPAGER="less -X"
 
 # Go
 export GOPATH=$HOME/go
+
+# (i)Python startup file
+export PYTHONSTARTUP=~/.pystartup

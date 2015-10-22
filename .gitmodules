@@ -76,3 +76,6 @@
 [submodule "vim/bundle/rainbow_parentheses"]
 	path = vim/bundle/rainbow_parentheses
 	url = https://github.com/junegunn/rainbow_parentheses.vim.git
+[submodule "vim/bundle/julia"]
+	path = vim/bundle/julia
+	url = https://github.com/JuliaLang/julia-vim.git
