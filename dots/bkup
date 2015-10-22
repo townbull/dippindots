@@ -26,3 +26,12 @@ medias:
         - 'ftseng@svalbard:/mnt/outerspace/francis/medias/'
         - 'ftseng@anarres:/mnt/crust/francis/medias/'
         - '/Volumes/Dump/francis/medias/'
+archive:
+    never_delete: true
+    dirs:
+        - '~/archives/'
+    targets:
+        - 'ftseng@svalbard:/mnt/databank/francis/archives/'
+        - 'ftseng@svalbard:/mnt/outerspace/francis/archives/'
+        - 'ftseng@anarres:/mnt/crust/francis/archives/'
+        - '/Volumes/Dump/francis/archives/'
