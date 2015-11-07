@@ -15,6 +15,7 @@ trap finish EXIT
 # E.g. if you had a local web app running on port 8000, and wanted to map it to port 80 on your remote server, run:
 # portfwd 8000 user@remote.com 80
 ssh -f -N -R ${REMOTEPORT}:localhost:${LOCALPORT} $REMOTEHOST
+echo "Local port ${LOCALPORT} is mapped to ${REMOTEHOST}:${REMOTEPORT} (CTRL+C to stop)"
 
 while true; do
     sleep 1
