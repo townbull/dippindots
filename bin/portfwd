@@ -1,0 +1,21 @@
+#!/bin/bash
+
+$LOCALPORT=$1
+$REMOTEHOST=$2
+$REMOTEPORT=$3
+
+function finish {
+    pkill -f ${REMOTEPORT}:localhost:${LOCALPORT}
+    exit 0
+}
+trap finish INT
+trap finish EXIT
+
+# Map this host (localhost)'s $LOCALPORT to $REMOTEHOST's $REMOTEPORT.
+# E.g. if you had a local web app running on port 8000, and wanted to map it to port 80 on your remote server, run:
+# portfwd 8000 user@remote.com 80
+ssh -f -N -R ${REMOTEPORT}:localhost:${LOCALPORT} $REMOTEHOST
+
+while true; do
+    sleep 1
+done
