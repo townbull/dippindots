@@ -1,8 +1,8 @@
 #!/bin/bash
 
-$LOCALPORT=$1
-$REMOTEHOST=$2
-$REMOTEPORT=$3
+LOCALPORT=$1
+REMOTEHOST=$2
+REMOTEPORT=$3
 
 function finish {
     pkill -f ${REMOTEPORT}:localhost:${LOCALPORT}
