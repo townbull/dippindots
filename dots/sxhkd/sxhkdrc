@@ -106,7 +106,7 @@ super + d
     ~/.bin/app_switch
 
 super + alt + w
-    chromium-browser
+    chromium-browser --disable-gpu
 
 super + alt + z
     zathura

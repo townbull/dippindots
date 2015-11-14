@@ -1,6 +1,6 @@
 ! FAMICOM
-URxvt.background: #252a2c
-URxvt.foreground: #F8D8F8
+URxvt.background: #080808
+URxvt.foreground: #b2b2b2
 ! Black + DarkGrey
 URxvt.color0:     #010101
 URxvt.color8:     #787878

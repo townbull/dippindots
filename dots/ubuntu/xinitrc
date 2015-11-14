@@ -9,6 +9,6 @@ fc-cache -fv &
 unclutter -root -visible &
 feh --bg-fill ~/.wallpaper.jpg &
 sxhkd &
-urxvt &
 compton -cb &
+urxvt &
 exec ~/.config/bspwm/wm

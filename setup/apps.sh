@@ -253,6 +253,11 @@ if [ $OS = 'debian' ]; then
     sudo adduser ftseng pulse-access
     sudo adduser ftseng video
 
+    # Firefox config
+    # still deciding b/w firefox and chromium
+    mkdir -p ~/.mozilla/firefox/profile.default/chrome
+    ln -sf $DIR/dots/firefox/userChrome.css ~/.mozilla/firefox/profile.default/chrome/userChrome.css
+
     # Change default browser
     sudo update-alternatives --config x-www-browser
     sudo update-alternatives --config gnome-www-browser
