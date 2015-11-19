@@ -262,6 +262,18 @@ if [ $OS = 'debian' ]; then
     sudo update-alternatives --config x-www-browser
     sudo update-alternatives --config gnome-www-browser
 
+    # xrectsel for region selection (for recording regions)
+    git clone https://github.com/lolilolicon/xrectsel.git /tmp/xrectsel
+    cd /tmp/xrectsel
+    ./bootstrap
+    ./configure --prefix /usr
+    make
+    sudo make install
+    cd $DIR
+
+    # for screen recordings
+    sudo apt-get install imagemagick recordmydesktop gifsicle
+
     # Remove unwanted stuff (Lubuntu 14.04)
     # Run this last as it will remove `network-manager` and we'll lose the internet connection
     rm -rf ~/.sylpheed*
