@@ -3,20 +3,18 @@ backup:
         - '~/projects'
         - '~/graphics'
         - '~/stuff'
+        - '~/docs'
         - '~/notes'
-        - '~/work'
+        - '~/photos'
         - '~/spaceandtimes'
     targets:
         - 'ftseng@svalbard:/mnt/databank/francis/repos'
         - 'ftseng@svalbard:/mnt/outerspace/francis/repos'
-        - 'ftseng@anarres:/mnt/crust/francis/repos'
-        - '/Volumes/Dump/francis/repos'
 data:
     sync: true
     targets:
         - 'ftseng@svalbard:/mnt/databank/francis/repos/data/'
         - 'ftseng@svalbard:/mnt/outerspace/francis/repos/data/'
-        - 'ftseng@anarres:/mnt/crust/francis/repos/data/'
 medias:
     never_delete: true
     dirs:
@@ -24,8 +22,6 @@ medias:
     targets:
         - 'ftseng@svalbard:/mnt/databank/francis/medias/'
         - 'ftseng@svalbard:/mnt/outerspace/francis/medias/'
-        - 'ftseng@anarres:/mnt/crust/francis/medias/'
-        - '/Volumes/Dump/francis/medias/'
 archive:
     never_delete: true
     dirs:
@@ -33,5 +29,3 @@ archive:
     targets:
         - 'ftseng@svalbard:/mnt/databank/francis/archives/'
         - 'ftseng@svalbard:/mnt/outerspace/francis/archives/'
-        - 'ftseng@anarres:/mnt/crust/francis/archives/'
-        - '/Volumes/Dump/francis/archives/'

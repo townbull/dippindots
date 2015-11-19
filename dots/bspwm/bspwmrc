@@ -22,7 +22,8 @@ done
 # Get a window name by running
 # xprop | grep WM_CLASS
 # and click on the window in question
-bspc rule -a feh floating=on
+bspc rule -a feh state=floating
+bspc rule -a gimp state=floating
 
 # This must go after the rest of the config!
 if [ -e "$BSPWM_TREE" ] ; then
