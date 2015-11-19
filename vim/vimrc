@@ -249,10 +249,6 @@ map gr gT
 nnoremap [t :tabprevious<cr>
 nnoremap ]t :tabnext<cr>
 
-" Jump out of a set of delimiters and append with a space
-" Hit alt+shift+k to do it from insert mode
-nmap K %%a
-
 " Open new line from insert mode
 imap <C-o> <esc>o
 
