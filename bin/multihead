@@ -24,6 +24,10 @@ elif [[ $PLACE == 'reset' ]]; then
     # Remove unplugged monitors
     bspc monitor $(bspc query -M) -n eDP1
 
+    # Remove the desktop
+    # Assuming the 4th desktop is the external one
+    bspc desktop ^4 -r
+
     restart_panel
     exit 0
 else
@@ -38,8 +42,9 @@ xrandr --output eDP1 --auto --output $EXMON --auto --$PLACE-of eDP1
 bspc monitor $EXMON -n $EXMON_PLACE
 bspc monitor eDP1 -n $INMON_PLACE
 
-# Rename the desktop to match the other ones
-bspc desktop Desktop2 -n 
+# Setup desktops on external monitor
+bspc monitor $EXMON_PLACE -d   
+
 
 # Reset the wallpaper to render properly
 feh --bg-fill ~/.wallpaper.jpg &
