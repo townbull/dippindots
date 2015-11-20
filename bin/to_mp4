@@ -1,8 +1,0 @@
-# Converts video files of the specified extension to mp4.
-
-EXT=$1
-
-for a in *.${EXT}; do
-    out="${a[@]/%${EXT}/mp4}"
-    ffmpeg -i "${a}" -acodec libfdk_aac -c:v libx264  "$out"
-done

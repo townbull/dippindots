@@ -1,0 +1,22 @@
+#!/bin/bash
+# Converts files in the current folder of the specified extension to the specified extension.
+
+EXT=$1
+TO_EXT=$2
+
+if [ -z $TO_EXT ]; then
+    echo "Specify an extension to convert to: mp3, mp4."
+    exit 1
+
+elif [ $TO_EXT == 'mp4' ]; then
+    for a in *.${EXT}; do
+        out="${a[@]/%${EXT}/mp4}"
+        ffmpeg -i "${a}" -acodec libfdk_aac -c:v libx264  "$out"
+    done
+
+elif [ $TO_EXT == 'mp3' ]; then
+    for a in *.${EXT}; do
+        out="${a[@]/%${EXT}/mp3}"
+        ffmpeg -i "${a}" -qscale:a 0 -map_metadata 0 -id3v2_version 3 "$out"
+    done
+fi

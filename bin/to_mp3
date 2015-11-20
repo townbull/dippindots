@@ -1,8 +1,0 @@
-# Converts audio files of the specified extension to mp3.
-
-EXT=$1
-
-for a in *.${EXT}; do
-    out="${a[@]/%${EXT}/mp3}"
-    ffmpeg -i "${a}" -qscale:a 0 -map_metadata 0 -id3v2_version 3 "$out"
-done

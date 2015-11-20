@@ -2,11 +2,11 @@ function cs(){ cd $1; ls -l;}
 
 function wakehubble() {
     # svalbard
-    gotunnel starbase.in 10023 'wakeonlan '$HUBBLE
+    tunnel go starbase.in 10023 'wakeonlan '$HUBBLE
 }
 
 function hubble() {
-    gotunnel starbase.in 10022
+    tunnel go starbase.in 10022
 }
 
 # ---
