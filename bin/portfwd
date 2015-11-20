@@ -1,21 +1,74 @@
 #!/bin/bash
 
-LOCALPORT=$1
-REMOTEHOST=$2
-REMOTEPORT=$3
+# Imagine traffic is going from left to right:
+# --->$1--->$2
+# So if you want a remote host to forward to your local machine, do:
+# portfwd me@remote:80 8000
+# If you want a local host to forward to a remote host, do:
+# portfwd 8000 me@remote:8000
 
-function finish {
-    pkill -f ${REMOTEPORT}:localhost:${LOCALPORT}
-    exit 0
+LOCALRE='^[0-9]+$' # just check if looks like a port
+REMOTERE='^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+:[0-9]+$'
+
+is_local() {
+    if [[ $1 =~ $LOCALRE ]]; then
+        return 0 # true
+    else
+        return 1 # false
+    fi
 }
-trap finish INT
-trap finish EXIT
 
-# Map this host (localhost)'s $LOCALPORT to $REMOTEHOST's $REMOTEPORT.
-# E.g. if you had a local web app running on port 8000, and wanted to map it to port 80 on your remote server, run:
-# portfwd 8000 user@remote.com 80
-ssh -f -N -R ${REMOTEPORT}:localhost:${LOCALPORT} $REMOTEHOST
-echo "Local port ${LOCALPORT} is mapped to ${REMOTEHOST}:${REMOTEPORT} (CTRL+C to stop)"
+is_remote() {
+    if [[ $1 =~ $REMOTERE ]]; then
+        return 0 # true
+    else
+        return 1 # false
+    fi
+}
+
+
+if is_local $1; then
+    LOCAL=$1
+elif is_remote $1; then
+    REMOTE=$1
+fi
+
+if is_local $2; then
+    LOCAL=$2
+elif is_remote $2; then
+    REMOTE=$2
+fi
+
+if [ -z $LOCAL ]; then
+    echo >&2 "You must specify a local port"
+    exit 1
+elif [ -z $REMOTE ]; then
+    echo >&2 "You must specify a remote host and port"
+    exit 1
+fi
+
+IFS=':' read -ra ARR <<< "$REMOTE"
+REMOTEHOST=${ARR[0]}
+REMOTEPORT=${ARR[1]}
+LOCALPORT=$LOCAL
+
+if [ "$1" == "$LOCAL" ]; then
+    function finish {
+        pkill -f localhost:$LOCAL_PORT
+        exit 0
+    }
+    ssh -N -f -L localhost:$LOCALPORT:localhost:$REMOTEPORT $REMOTEHOST
+    echo "localhost:$LOCAL_PORT is forwarding traffic to ${REMOTEHOST}:${REMOTEPORT} (CTRL+C to stop)"
+else
+    function finish {
+        pkill -f ${REMOTEPORT}:localhost:${LOCALPORT}
+        exit 0
+    }
+    ssh -f -N -R ${REMOTEPORT}:localhost:${LOCALPORT} $REMOTEHOST
+    echo "${REMOTEHOST}:${REMOTEPORT} is forwarding traffic to ${LOCALPORT} (CTRL+C to stop)"
+fi
+
+trap finish INT
 
 while true; do
     sleep 1

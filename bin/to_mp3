@@ -1,4 +1,4 @@
-# Convert an audio file of the specified extension to mp3.
+# Converts audio files of the specified extension to mp3.
 
 EXT=$1
 
