@@ -1,0 +1,14 @@
+export BSPWM_TREE=/tmp/bspwm.tree
+export BSPWM_HISTORY=/tmp/bspwm.history
+export BSPWM_STACK=/tmp/bspwm.stack
+
+xrdb -merge -I$HOME ~/.Xresources
+xset +fp ~/.fonts/
+xset fp rehash
+fc-cache -fv &
+unclutter -root -visible &
+feh --bg-fill ~/.wallpaper.jpg &
+sxhkd &
+compton -cb &
+urxvt &
+exec ~/.config/bspwm/wm

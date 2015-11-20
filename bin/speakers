@@ -1,0 +1,3 @@
+#!/bin/bash
+
+ssh svalbard 'mplayer -playlist http://anarres:8000/mpd.m3u'

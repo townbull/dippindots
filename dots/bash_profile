@@ -1,3 +1,6 @@
+# Load env values.
+source /etc/environment
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
@@ -6,7 +9,9 @@ for file in ~/.dippindots/dots/{path,bash_prompt,exports,aliases,functions,extra
 done
 unset file
 
-source /etc/environment
+
+# So tmux uses proper vim colors.
+export TERM=screen-256color
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob
@@ -36,3 +41,8 @@ complete -W "NSGlobalDomain" defaults
 
 # vi keybindings for bash
 set -o vi
+
+# initialize fasd
+eval "$(fasd --init auto)"
+
+PATH=$PATH:~/Library/Python/2.7/bin

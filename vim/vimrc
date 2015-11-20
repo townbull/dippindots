@@ -8,14 +8,17 @@ execute pathogen#infect()
 set nocompatible      			" Use vim, no vi defaults
 syntax enable         			" Turn on syntax highlighting
 set encoding=utf-8 nobomb       " Set default encoding to UTF-8
-set clipboard=unnamed 			" Use OS clipboard (on +clipboard compiled Vim)
+set clipboard=unnamedplus       " Use OS clipboard (on +clipboard compiled Vim)
 set noerrorbells 				" Disable error bells
+set novisualbell                " Disable visual bells
 set title 						" Show filename in window titlebar
 set showmode 					" Show the current mode
 set timeoutlen=100 				" Set timeoutlen to be sort, avoiding a lag
 set showcmd 					" Show the command as it's typed
 set shortmess=atI 				" Hide Vim intro message
-let mapleader="," 				" Change mapleader
+let mapleader=";" 		        " Change mapleader
+set wrap
+set textwidth=0 wrapmargin=0 formatoptions=cq
 
 " Don’t add empty newlines at the end of files
 set binary
@@ -26,7 +29,11 @@ set noeol
 "set modelines=4
 "
 
+" Disable bells in GUI vim.
+autocmd! GUIEnter * set vb t_vb=
 
+" Automatically trim trailing whitespace on save.
+autocmd BufWritePre * :%s/\s\+$//e
 
 " ----------------------------------------------------------------------------
 " Colors
@@ -43,9 +50,11 @@ set number            			" Show line numbers
 set ruler             			" Show line and column number of cursor
 set nostartofline 				" Don't reset cursor to start of line when moving
 set cursorcolumn 				" Highlight current column
-set cursorline 					" Highlight current line
+set cursorline 				    " Highlight current line
+set colorcolumn=88              " Highlight column 88
 set scrolloff=3 				" Start scrolling three lines before border
 set showmatch 					" Show matching brackets
+let &showbreak='↪ '             " Show this at the start of wrapped lines
 if exists("&relativenumber")
 	set relativenumber 			" Use relative line numbering
 	au BufReadPost * set relativenumber
@@ -70,8 +79,11 @@ set statusline+=%{SyntaxItem()}
 set incsearch   " Search as pattern is typed
 set ignorecase  " Case insensitive searches...
 set smartcase   " Unless they contain 1+ capital letters
-set nohlsearch  " Don't highlight search matches
+set hlsearch    " Highlight search matches
 set gdefault 	" Global search/replace by default
+
+" Bind return to clear last search highlight.
+nnoremap <CR> :noh<CR><CR>
 
 
 " ----------------------------------------------------------------------------
@@ -102,8 +114,8 @@ set nofoldenable 				" No fold by default
 " Whitespace
 " ----------------------------------------------------------------------------
 set wrap                          " Wrap lines
-set tabstop=2                     " Set tab to two spaces
-set shiftwidth=2                  " Set autoindent (with <<) to two spaces
+set tabstop=4                     " Set tab spaces
+set shiftwidth=4                  " Set autoindent (with <<) spaces
 set expandtab                     " Use spaces, not tabs
 set list                          " Show invisible characters
 set backspace=indent,eol,start    " Backspace through everything in insert mode
@@ -144,6 +156,9 @@ set backupdir^=~/.vim/.backup// 	" Backup files
 set directory^=~/.vim/.temp// 		" Swap files
 if exists("&undodir")
 	set undodir=~/.vim/.undo 				" Undo files
+    set undofile
+    set undolevels=500
+    set undoreload=500
 endif
 
 
@@ -152,21 +167,12 @@ endif
 " ----------------------------------------------------------------------------
 filetype plugin indent on " Turn on filetype plugins (:help filetype-plugin)
 
-" Some file types should wrap their text
-function! s:setupWrapping()
-  set wrap
-  set linebreak
-  set textwidth=72
-  set nolist
-endfunction
-
 if has("autocmd")
   " In Makefiles, use real tabs, not tabs expanded to spaces
   au FileType make setlocal noexpandtab
 
-  " Make sure all markdown files have the correct filetype set and setup wrapping
-  au BufRead,BufNewFile *.{md,markdown,mdown,mkd,mkdn,txt} setf markdown
-  au FileType markdown call s:setupWrapping()
+  " Make sure all markdown files have the correct filetype set
+  au BufRead,BufNewFile,BufReadPost *.{md,markdown,mdown,mkd,mkdn,txt} set filetype=markdown
 
   " Treat JSON files like JavaScript
   au BufNewFile,BufRead *.json set ft=javascript
@@ -218,27 +224,36 @@ nmap <silent> <leader>ul :t.<CR>Vr=
 map <Down> gj
 map <Up> gk
 
-" Map Control-# to switch tabs
-map  <C-0> 0gt
-imap <C-0> <Esc>0gt
-map  <C-1> 1gt
-imap <C-1> <Esc>1gt
-map  <C-2> 2gt
-imap <C-2> <Esc>2gt
-map  <C-3> 3gt
-imap <C-3> <Esc>3gt
-map  <C-4> 4gt
-imap <C-4> <Esc>4gt
-map  <C-5> 5gt
-imap <C-5> <Esc>5gt
-map  <C-6> 6gt
-imap <C-6> <Esc>6gt
-map  <C-7> 7gt
-imap <C-7> <Esc>7gt
-map  <C-8> 8gt
-imap <C-8> <Esc>8gt
-map  <C-9> 9gt
-imap <C-9> <Esc>9gt
+" Map Leader-# to switch tabs
+map  <leader>0 0gt
+imap <leader>0 <Esc>0gt
+map  <leader>1 1gt
+imap <leader>1 <Esc>1gt
+map  <leader>2 2gt
+imap <leader>2 <Esc>2gt
+map  <leader>3 3gt
+imap <leader>3 <Esc>3gt
+map  <leader>4 4gt
+imap <leader>4 <Esc>4gt
+map  <leader>5 5gt
+imap <leader>5 <Esc>5gt
+map  <leader>6 6gt
+imap <leader>6 <Esc>6gt
+map  <leader>7 7gt
+imap <leader>7 <Esc>7gt
+map  <leader>8 8gt
+imap <leader>8 <Esc>8gt
+map  <leader>9 9gt
+imap <leader>9 <Esc>9gt
+map gr gT
+nnoremap [t :tabprevious<cr>
+nnoremap ]t :tabnext<cr>
+
+" Open new line from insert mode
+imap <C-o> <esc>o
+
+" Easily paste in current datetime
+nnoremap <leader>t "=strftime("%m.%d.%Y %H:%M")<CR>P
 
 " Strip trailing whitespace (,ss)
 function! StripWhitespace()
@@ -249,17 +264,22 @@ function! StripWhitespace()
 	call setreg('/', old_query)
 endfunction
 noremap <leader>ss :call StripWhitespace()<CR>
+:command CleanWhitespace :call StripWhitespace()
 
 " Save a file as root (,W)
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 " Buffers
-" Map Ctrl+l to toggle buffer list
-:nmap <silent> <C-l> :ls<CR>
+nnoremap [b :bprevious<cr>
+nnoremap ]b :bnext<cr>
 
-" NERDComment toggle to Ctrl+x
-:vmap <silent> <C-x> :call NERDComment(0,"toggle")<CR>
-:nmap <silent> <C-x> :call NERDComment(0,"toggle")<CR>
+" Quickly fix the closest previous spelling error.
+imap <c-f> <c-g>u<Esc>[s1z=`]a<c-g>u
+nmap <c-f> [s1z=<c-o>
+
+" Map Ctrl+s to start a subshell instead of suspending vim.
+" You can exit from the subshell with either `exit` or Ctrl-d
+:nmap <silent> <C-z> :sh<CR>
 
 " ----------------------------------------------------------------------------
 "  Command flubs
@@ -274,4 +294,3 @@ noremap <leader>W :w !sudo tee % > /dev/null<CR>
 function! SyntaxItem()
   return synIDattr(synID(line("."),col("."),1),"name")
 endfunction
-
