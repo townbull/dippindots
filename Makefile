@@ -365,6 +365,9 @@ documents:
 		&& QMAKE=qmake6 ./build_linux.sh
 	sudo cp -r /tmp/sioyek/build /opt/sioyek
 	sudo ln -s /opt/sioyek/sioyek /usr/local/bin/sioyek
+	sudo ln -s /opt/sioyek/shaders /usr/local/bin/shaders
+	sudo ln -sf /opt/sioyek/keys.config /usr/local/bin/keys.config
+	sudo ln -sf /opt/sioyek/prefs.config /usr/local/bin/prefs.config
 
 	mkdir ~/.config/sioyek
 	ln -sf $(dir)/dots/sioyek/keys_user.config ~/.config/sioyek/keys_user.config
