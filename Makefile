@@ -12,7 +12,7 @@ apps: utils browser vpn torrents android documents dev
 
 prereqs:
 	@echo "Installing prereqs..."
-	sudo zypper in gcc gcc-c++ make cmake automake autoconf clang lld wget zip unzip openssh-server bzip2 curl ninja meson opi unar ntp
+	sudo zypper in gcc gcc-c++ make cmake automake autoconf clang lld wget zip unzip 7zip openssh-server bzip2 curl ninja meson opi ntp
 
 	timedatectl set-ntp true
 	sudo systemctl enable --now ntpd
@@ -60,6 +60,7 @@ tools:
 	sudo zypper in -y libopenssl-devel
 	sudo zypper in -y fzf jq htop tree gnupg ncdu dfc ffmpeg fd ripgrep
 	cargo install zoxide
+	cargo install ouch
 
 	# Usage: `cargo install-update -a`
 	cargo install cargo-update
