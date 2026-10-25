@@ -45,12 +45,10 @@ vim.keymap.set({ "n", "o", "x" }, "e", function() require('spider').motion('e') 
 vim.keymap.set({ "n", "o", "x" }, "E", function() require('spider').motion('e', {
 	customPatterns = { ident_pattern },
 }) end)
-vim.keymap.set({ "n", "o", "x" }, "<c-e>", "E")
 vim.keymap.set({ "n", "o", "x" }, "b", function() require('spider').motion('b') end)
 vim.keymap.set({ "n", "o", "x" }, "B", function() require('spider').motion('b', {
 	customPatterns = { ident_pattern },
 }) end)
-vim.keymap.set({ "n", "o", "x" }, "<c-b>", "B")
 
 --- Make word operations more intuitive
 -- Consider
@@ -85,7 +83,7 @@ vim.keymap.set("n", "yw", "ye", { remap = true })
 require('mini.indentscope').setup()
 
 require("flash").setup({
-  labels = "nrtschaeimldpfoumbwkyxz.,'-/",
+  labels = "asdfjkl:qweruiopghtyzxcvbnm,.'-/",
   label = {
     after = true,
     before = true,
@@ -111,7 +109,7 @@ require("flash").setup({
 })
 
 --- Jump to (start of) line.
-vim.keymap.set({"n", "x", "o"}, "<c-l>", function()
+vim.keymap.set({"n", "x", "o"}, "'l", function()
   require("flash").jump({
     search = { mode = "search", max_length = 0 },
     label = { after = { 0, 0 }, before = false },
@@ -141,24 +139,22 @@ local function flash_list_items()
   return inner
 end
 
-vim.keymap.set({"n"}, ",'", flash_delim({
+vim.keymap.set({"n"}, "\"", flash_delim({
   { '"', '"' },
   { "'", "'" },
   { '`', '`' },
 }))
 
-vim.keymap.set({"n"}, ",,", flash_delim({
+vim.keymap.set({"n"}, ";", flash_delim({
   { '(', ')' },
   { '[', ']' },
   { '{', '}' },
 }))
 
-vim.keymap.set({"n"}, ",.", flash_delim({
+vim.keymap.set({"n"}, "(", flash_delim({
   { '<', '>' },
   { '|', '|' },
 }))
-
-vim.keymap.set({"n"}, ",/", flash_list_items())
 
 --- Motion helpers
 -- Better to come after flash setup to avoid overwriting.

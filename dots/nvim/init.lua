@@ -18,7 +18,7 @@ require('filetypes')
 require('game')
 
 -- Experimental ui2
-require('vim._core.ui2').enable()
+-- require('vim._core.ui2').enable()
 
 vim.cmd([[colorscheme futora]])
 

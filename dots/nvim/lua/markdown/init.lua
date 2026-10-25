@@ -118,7 +118,7 @@ M.setup = function()
   -- Bindings
   local opts = { noremap = true, buffer = 0 }
   vim.keymap.set('n', ',S', screenshot, opts)
-  vim.keymap.set('n', ',s', toggle_checkbox, opts)
+  vim.keymap.set('n', ',f', toggle_checkbox, opts)
   vim.keymap.set('n', 'gv', media.open_url_under_cursor, opts)
 
   -- Media/images

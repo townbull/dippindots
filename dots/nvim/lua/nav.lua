@@ -26,7 +26,7 @@ require("nvim-window").setup({
   normal_hl = 'WindowTarget',
   border = 'none',
 })
-vim.keymap.set("n", ",w", function()
+vim.keymap.set("n", "'w", function()
   -- Exclude floating windows and scratch buffers
   local function is_real_win(win)
     -- Floating window

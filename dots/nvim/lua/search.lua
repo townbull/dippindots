@@ -78,7 +78,7 @@ require("fzf-lua").setup({
 vim.keymap.set("n", "<c-f>", search_files)
 
 --- Open buffers
-vim.keymap.set("n", ";", function()
+vim.keymap.set("n", "<c-b>", function()
   require('fzf-lua').buffers({
     winopts = {
       preview = { hidden = true },
@@ -90,21 +90,24 @@ vim.keymap.set("n", ";", function()
 end)
 
 --- Grep current word
-vim.keymap.set("n", "<c-.>", function()
+vim.keymap.set("n", "<c-w>", function()
   require('fzf-lua').grep_cword({
     cwd = get_root(),
   })
 end)
 
+--- Find references for word under cursor
+vim.keymap.set("n", "R", require('fzf-lua').lsp_references)
+
 --- Search by grep
-vim.keymap.set("n", "<c-'>", function()
+vim.keymap.set("n", "\\", function()
   require('fzf-lua').live_grep({
     cwd = get_root(),
   })
 end)
 
 --- Resume grep search
-vim.keymap.set("n", "<c-s-'>", function()
+vim.keymap.set("n", "<c-\\>", function()
   require('fzf-lua').live_grep({
     resume = true,
     cwd = get_root(),
@@ -112,7 +115,7 @@ vim.keymap.set("n", "<c-s-'>", function()
 end)
 
 --- Grep open buffer lines
-vim.keymap.set("n", "\\", function()
+vim.keymap.set("n", "<c-/>", function()
   require('fzf-lua').lines({
     winopts = {
       preview = { hidden = true }
@@ -120,25 +123,15 @@ vim.keymap.set("n", "\\", function()
   })
 end)
 
---- Find references for word under cursor
-vim.keymap.set("n", "R", require('fzf-lua').lsp_references)
-
 --- Search workspace diagnostics
-vim.keymap.set("n", "<c-\\>", function()
+vim.keymap.set("n", "<c-'>", function()
   require('fzf-lua').diagnostics_workspace({
     severity_only = 1,
   })
 end)
 
---- Warnings
-vim.keymap.set("n", "<c-s-\\>", function()
-  require('fzf-lua').diagnostics_workspace({
-    severity_only = 2,
-  })
-end)
-
 --- Search symbols
-vim.keymap.set("n", "+", function()
+vim.keymap.set("n", "=", function()
   if vim.bo.filetype == "markdown" then
     require('fzf-lua').lsp_document_symbols({
       fzf_opts = {

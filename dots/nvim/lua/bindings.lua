@@ -1,61 +1,17 @@
-local function _(key, cmd, modes, remap)
-  if remap == nil then
-    remap = false
+local function _(key, cmd, mode, opts)
+  local options = { silent = true }
+  if type(opts) == "table" then
+    options = vim.tbl_extend("force", options, opts)
   end
-  vim.keymap.set(modes, key, cmd, {
-    remap = remap,
-    silent = true,
-  })
+  vim.keymap.set(mode, key, cmd, options)
 end
 
--- Unused:
--- -------
--- .
--- f
--- F
--- <c-f>
--- L
--- <c-j>
--- <c-t>
--- <c-b>
--- {
--- }
--- <space>
--- <c-->
--- q
--- Q
--- z
--- Z
--- T
--- k
--- K
--- %
--- <c-n>
--- <c-q>
--- <c-g>
--- <c-s>
--- <c-x>
--- <c-v>
--- <c-y>
--- <c-k>
--- <c-,>
--- <c-'>
--- <c-/>
-
+-- Check if a binding if used, e.g.
+-- :verbose nmap <c-f>
 
 --- Tabs
-_("]t", ":tabnext<cr>", "n")
-_("[t", ":tabprevious<cr>", "n")
-
---- Replace <c-i> and <c-o>
-_("<c-p>", "<c-i>", "n")
-_("<c-h>", "<c-o>", "n")
-
---- Like `{` and `}`
---- but go to the start of the line for
---- each block, rather than the empty lines.
-_('<c-i>', '5jzz', { "n", "x", "o" })
-_('<c-o>', '5kzz', { "n", "x", "o" })
+-- _("[", ":tabnext<cr>", { "n" }, { nowait = true })
+-- _("]", ":tabprevious<cr>", { "n" }, { nowait = true })
 
 --- Prevent some motions from adding to the jumplist
 vim.keymap.set({ "n" }, "gg", function()
@@ -71,51 +27,54 @@ end, {
   silent = true,
   expr = true,
 })
-_('G',  ':keepjumps norm! G<cr>',  { "n" })
-_('n',  ':keepjumps norm! n<cr>',  { "n" })
-_('N',  ':keepjumps norm! n<cr>',  { "n" })
+_('G', ':keepjumps norm! G<cr>', { "n" })
+_('n', ':keepjumps norm! n<cr>', { "n" })
+_('N', ':keepjumps norm! n<cr>', { "n" })
 
 --- Jump between matching delimiters
-_('\'', '%', {"n", "x", "o"})
+_('m', '%', {"n", "x", "o"})
+
+--- Easier jump to start
+_('#', '^', {"n", "x", "o"})
 
 --- Bind return to clear last search highlight.
-_("<cr>", ":noh<cr>", "n")
+_("<cr>", ":noh<cr>", { "n" })
 
 --- Insert and go to new line above.
 _("<s-cr>", "<esc>O", {"i", "n"})
 
 --- Commenting
-_("`", "gcc", "n", true)
-_("`", "gc", "v", true)
+_("`", "gcc", { "n" }, { remap = true })
+_("`", "gc", { "v" },  { remap = true })
 
 --- Don't leave visual mode when changing indent
-_(">", ">gv", "x")
-_("<", "<gv", "x")
+_(">", ">gv", { "x" })
+_("<", "<gv", { "x" })
 
 --- Easily restore last visual selection with `vv`
-_("vv", "gv", "n")
+_("vv", "gv", { "n" })
 
 --- Keep search results in the screen center
-_("n", "nzz", "n")
-_("N", "Nzz", "n")
+_("n", "nzz", { "n" })
+_("N", "Nzz", { "n" })
 
 --- Insert common strings
-_('<c-t>', ' {<cr>}<Esc>O', "i")
-_('<c-v>', 'println!("{:?}", );<Left><Left>', "i")
-_('<c-b>', 'dbg!();<Left><Left>', "i")
+_('<c-t>', ' {<cr>}<Esc>O', { "i" })
+_('<c-v>', 'println!("{:?}", );<Left><Left>', { "i" })
+_('<c-b>', 'dbg!();<Left><Left>', { "i" })
 
 --- Delete previous word
-_('<c-backspace>', '<c-w>', "i")
+_('<s-backspace>', '<c-w>', { "i" })
 
 --- Delete previous subword
-_('<c-d>', '<esc>dmxi', "i", true)
+_('<c-d>', '<esc>dmxi', { "i" }, { remap = true })
 
 --- Splits
-_("|", ":vsplit<cr>", "n")
-_("_", ":split<cr>", "n")
+_("|", ":vsplit<cr>", { "n" })
+_("_", ":split<cr>", { "n" })
 
 --- Terminal
-_("<Esc>", "<C-\\><C-n>", "t")
+_("<Esc>", "<C-\\><C-n>", { "t" })
 
 --- This is necessary to avoid nvim's default
 --- bindings (set in `neovim/runtime/ftplugin/rust.vim`)
@@ -123,5 +82,5 @@ _("<Esc>", "<C-\\><C-n>", "t")
 vim.g.no_rust_maps = 1
 
 --- Incremental selection in visual mode
-_("f", "an", {"o", "x"}, true)
-_("F", "in", {"o", "x"}, true)
+_("q", "an", {"o", "x"}, { remap = true })
+_("Q", "in", {"o", "x"}, { remap = true })

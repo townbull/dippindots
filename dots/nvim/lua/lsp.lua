@@ -27,35 +27,31 @@ vim.lsp.log.set_level("off")
 --- * show menu
 --- * show popup with more info
 --- * don't auto-insert the first match
-vim.o.completeopt = "menuone,noinsert"
+vim.o.completeopt = "menuone,noinsert,noselect"
 vim.o.pumheight = 10        -- Max height of completion menu.
 vim.o.winborder = "single"  -- Single border on all floating windows.
 
---- Manually trigger completion if needed.
-vim.keymap.set('i', '<c-n>', function()
-  local function feedkeys(keys)
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), 'n', true)
-  end
+local function feedkeys(keys)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), 'n', true)
+end
 
-  -- Is the completion menu open?
-  local pumvisible = tonumber(vim.fn.pumvisible()) ~= 0
-  if pumvisible then
+--- Trigger completion if closed; cycle forward if open
+vim.keymap.set('i', '<c-e>', function()
+  if vim.fn.pumvisible() ~= 0 then
     feedkeys '<C-n>'
+  elseif next(vim.lsp.get_clients { bufnr = 0 }) then
+    vim.lsp.completion.get()
+  elseif vim.bo.omnifunc == '' then
+    feedkeys '<C-x><C-n>'
   else
-    if next(vim.lsp.get_clients { bufnr = 0 }) then
-      vim.lsp.completion.get()
-    else
-      if vim.bo.omnifunc == '' then
-        feedkeys '<C-x><C-n>'
-      else
-        feedkeys '<C-x><C-o>'
-      end
-    end
+    feedkeys '<C-x><C-o>'
   end
 end)
 
---- Accept current completion.
-vim.keymap.set('i', '<c-e>', '<c-y>')
+--- Cycle backward if menu is open; delete previous word if closed
+vim.keymap.set('i', '<c-w>', function()
+  return vim.fn.pumvisible() == 1 and '<C-p>' or '<C-w>'
+end, { expr = true })
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspAttach", { clear = true }),
@@ -104,24 +100,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
         })
     end
 
-    bind('Code action',
-      'ga', code_action)
-    bind('Hover documentation',
-      'gs', vim.lsp.buf.hover)
     bind('Go to definition',
-      'gd', vim.lsp.buf.definition)
+      "gd", vim.lsp.buf.definition)
+    bind('Code action',
+      "'a", code_action)
+    bind('Hover documentation',
+      "'d", vim.lsp.buf.hover)
     bind('Rename symbol',
-      'gr', vim.lsp.buf.rename)
+      "'r", vim.lsp.buf.rename)
     bind('Show diagnostics',
-      'ge', function()
+      "'e", function()
         vim.diagnostic.open_float(0, { scope = "line", focus = false })
       end)
-    vim.keymap.set('i', "<c-r>", code_action)
-
-    vim.keymap.set('v', "<c-u>", function() vim.lsp.buf.selection_range(1) end,
-      { buffer = ev.buf, desc = desc, noremap = true })
-    vim.keymap.set('v', "<c-o>", function() vim.lsp.buf.selection_range(-1) end,
-      { buffer = ev.buf, desc = desc, noremap = true })
 
     -- Format on write
     vim.api.nvim_create_autocmd("BufWritePre", {
