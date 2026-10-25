@@ -1,5 +1,5 @@
 [mgr]
-ratio         = [ 1, 4, 3 ]
+ratio          = [ 1, 4, 3 ]
 sort_by        = "natural"
 sort_sensitive = false
 sort_reverse   = false
@@ -16,88 +16,93 @@ cache_dir  = ""
 
 [opener]
 text = [
-	{ run = 'vi %s', block = true, desc = "Editor" },
+    { run = 'vi %s', block = true, desc = "Editor" },
 ]
 archive = [
-	{ run = 'unar %s', desc = "Extract here" },
+    { run = 'ouch decompress --dir . %s', desc = "Extract here" },
 ]
 pdf = [
-	{ run = 'sioyek --new-instance %s', block = false, orphan = true },
+    { run = 'sioyek --new-instance %s', block = false, orphan = true },
 ]
 epub = [
-	{ run = 'sioyek --new-instance %s', block = false, orphan = true },
+    { run = 'sioyek --new-instance %s', block = false, orphan = true },
 ]
 gif = [
-	{ run = 'vu %s', block = false },
+    { run = 'vu %s', block = false },
 ]
 image = [
-	{ run = 'vu %s', desc = "Open" },
-	{ run = 'flatpak run com.github.PintaProject.Pinta %s', block = false, desc = "Edit (Pinta)" },
-	{ run = 'flatpak run org.gimp.GIMP %s', block = false, desc = "Edit (GIMP)" },
-	{ run = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF" },
+    { run = 'vu %s', desc = "Open" },
+    { run = 'flatpak run com.github.PintaProject.Pinta %s', block = false, desc = "Edit (Pinta)" },
+    { run = 'flatpak run org.gimp.GIMP %s', block = false, desc = "Edit (GIMP)" },
+    { run = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show EXIF" },
 ]
 video = [
-	{ run = 'mpv %s', desc = "Play", orphan = true },
-	{ run = 'mpvc add %s', desc = "Append to playlist" },
-	{ run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
+    { run = 'mpv %s', desc = "Play", orphan = true },
+    { run = 'mpvc add %s', desc = "Append to playlist" },
+    { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]
 audio = [
-	{ run = 'mpv --no-audio-display %s', desc = "Play", orphan = true },
-	{ run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
+    { run = 'mpv --no-audio-display %s', desc = "Play", orphan = true },
+    { run = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info" },
 ]
 url = [
-	{ run = 'firefox $(cat %s)' },
+    { run = 'firefox $(cat %s)' },
 ]
 csv = [
     { run = 'visidata %s', block = true },
-	{ run = 'vi %s', block = true, desc = "Editor" },
+    { run = 'vi %s', block = true, desc = "Editor" },
 ]
 html = [
     { run = 'firefox %s', desc = "Browser" },
 ]
+markdown = [
+    { run = 'fish -c "md %s &"', desc = "Browser" },
+]
 blend = [
-	{ run = 'blender %s', block = false },
+    { run = 'blender %s', block = false },
 ]
 fallback = []
 
 [open]
 rules = [
-	{ url = "*/", use = "folder" },
+    { url = "*/", use = "folder" },
 
-	{ url = "*.url", use = "url" },
-	{ url = "*.gif", use = "gif" },
-	{ url = "*.csv", use = "csv" },
-	{ url = "*.tsv", use = "csv" },
-	{ url = "*.csvs", use = "csvs" },
-	{ url = "*.txt", use = ["text"] },
-	{ url = "*.html", use = ["text", "html"] },
-	{ url = "*.md", use = ["text"] },
-	{ url = "*.srt", use = ["text"] },
-	{ url = "*.typ", use = ["text"] },
-	{ url = "*.ora", use = "image" },
-	{ url = "*.blend", use = "blend" },
-	{ mime = "*/{xml,javascript,wine-extension-ini}", use = ["text"] },
+    { url = "*.url", use = "url" },
+    { url = "*.gif", use = "gif" },
+    { url = "*.csv", use = "csv" },
+    { url = "*.tsv", use = "csv" },
+    { url = "*.csvs", use = "csvs" },
+    { url = "*.txt", use = ["text"] },
+    { url = "*.html", use = ["text", "html"] },
+    { url = "*.md", use = ["text", "markdown"] },
+    { url = "*.srt", use = ["text"] },
+    { url = "*.typ", use = ["text"] },
+    { url = "*.ora", use = "image" },
+    { url = "*.blend", use = "blend" },
+    { mime = "*/{xml,javascript,wine-extension-ini}", use = ["text"] },
 
-	{ mime = "text/*", use = "text" },
-	{ mime = "image/*", use = "image" },
-	{ mime = "video/*", use = "video" },
-	{ mime = "audio/*", use = "audio" },
-	{ mime = "inode/x-empty", use = "text" },
-	{ mime = "application/pdf", use = "pdf" },
-	{ mime = "application/epub+zip", use = "epub" },
+    { mime = "text/*", use = "text" },
+    { mime = "image/*", use = "image" },
+    { mime = "video/*", use = "video" },
+    { mime = "audio/*", use = "audio" },
+    { mime = "inode/x-empty", use = "text" },
+    { mime = "application/pdf", use = "pdf" },
+    { mime = "application/epub+zip", use = "epub" },
 
-	{ mime = "application/json", use = "text" },
-	{ mime = "*/javascript", use = "text" },
+    { mime = "application/json", use = "text" },
+    { mime = "*/javascript", use = "text" },
 
-	{ mime = "application/zip", use = "archive" },
-	{ mime = "application/gzip", use = "archive" },
-	{ mime = "application/x-tar", use = "archive" },
-	{ mime = "application/x-bzip", use = "archive" },
-	{ mime = "application/x-bzip2", use = "archive" },
-	{ mime = "application/x-7z-compressed", use = "archive" },
-	{ mime = "application/x-rar", use = "archive" },
+    { url = "*.tar.xz", use = "archive" },
+    { mime = "application/x-xz", use = "archive" },
+    { mime = "application/zip", use = "archive" },
+    { mime = "application/gzip", use = "archive" },
+    { mime = "application/x-tar", use = "archive" },
+    { mime = "application/x-bzip", use = "archive" },
+    { mime = "application/x-bzip2", use = "archive" },
+    { mime = "application/x-7z-compressed", use = "archive" },
+    { mime = "application/x-rar", use = "archive" },
 
-	{ mime = "*", use = "fallback" },
+    { mime = "*", use = "fallback" },
 ]
 
 [tasks]
@@ -114,25 +119,25 @@ enabled = false
 
 [plugin]
 preloaders = [
-	{ mime = "image/{avif,heic,jxl,svg+xml}", run = "magick" },
-	{ mime = "image/*", run = "image" },
-	{ mime = "video/*", run = "video" },
-	{ mime = "application/pdf", run = "pdf" },
-	{ mime = "font/*", run = "font" },
-	{ mime = "application/vnd.ms-opentype", run = "font" },
+    { mime = "image/{avif,heic,jxl,svg+xml}", run = "magick" },
+    { mime = "image/*", run = "image" },
+    { mime = "video/*", run = "video" },
+    { mime = "application/pdf", run = "pdf" },
+    { mime = "font/*", run = "font" },
+    { mime = "application/vnd.ms-opentype", run = "font" },
 ]
 previewers = [
-	{ url = "*/", run = "folder", sync = true },
-	{ mime = "text/*", run = "code" },
-	{ mime = "*/{xml,javascript,wine-extension-ini}", run = "code" },
-	{ mime = "application/{json,ndjson}", run = "json" },
-	{ mime = "image/{avif,heic,jxl,svg+xml}", run = "magick" },
-	{ mime = "image/*", run = "image" },
-	{ mime = "video/*", run = "video" },
-	{ mime = "application/pdf", run = "pdf" },
-	{ mime = "application/{,g}zip", run = "archive" },
-	{ mime = "application/{tar,bzip*,7z-compressed,xz,rar,iso9660-image}", run = "archive" },
-	{ mime = "font/*", run = "font" },
-	{ mime = "application/vnd.ms-opentype", run = "font" },
-	{ url = "*", run = "file" },
+    { url = "*/", run = "folder", sync = true },
+    { mime = "text/*", run = "code" },
+    { mime = "*/{xml,javascript,wine-extension-ini}", run = "code" },
+    { mime = "application/{json,ndjson}", run = "json" },
+    { mime = "image/{avif,heic,jxl,svg+xml}", run = "magick" },
+    { mime = "image/*", run = "image" },
+    { mime = "video/*", run = "video" },
+    { mime = "application/pdf", run = "pdf" },
+    { mime = "application/{,g}zip", run = "archive" },
+    { mime = "application/{tar,bzip*,7z-compressed,xz,rar,iso9660-image}", run = "archive" },
+    { mime = "font/*", run = "font" },
+    { mime = "application/vnd.ms-opentype", run = "font" },
+    { url = "*", run = "file" },
 ]
