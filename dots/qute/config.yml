@@ -30,6 +30,8 @@ settings:
         a: scroll down
         b: tab-prev
         e: scroll up
+        gc: open -t calendar.google.com
+        gm: open -t maps.google.com
         k: set colors.webpage.bg black
         l: back
         m: null

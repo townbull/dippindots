@@ -103,9 +103,9 @@ binds {
     Mod+A { spawn "info"; }
     Mod+G { spawn "hyprpicker" "--autocopy"; }
     Mod+Shift+Plus { spawn "mpc" "toggle"; }
-    Mod+L { spawn "mpvc" "toggle"; }
+    Mod+Backslash { spawn "mpvc" "toggle"; }
     Mod+Space { spawn "sh" "-c" "bemenu-run -l 10 -p \">\""; }
-    Mod+Comma { spawn "sh" "-c" "kitty --title ncmpcpp -e ncmpcpp"; }
+    Mod+Shift+Semicolon { spawn "sh" "-c" "kitty --title ncmpcpp -e ncmpcpp"; }
     Mod+T { spawn "sh" "-c" "kitty --title todo --working-directory ~/notes -e nvim todo.md"; }
     Mod+P { spawn "sh" "-c" "kitty --title kpass -o EDITOR=nvim -e kpass ~/docs/pass.kdbx"; }
     Mod+Q allow-when-locked=true { spawn "lock"; }
@@ -123,12 +123,16 @@ binds {
     Mod+E { focus-column-right-or-first; }
     Mod+BracketLeft { focus-column-left-or-last; }
     Mod+BracketRight { focus-column-right-or-first; }
+    Mod+H { focus-column-left-or-last; }
+    Mod+L { focus-column-right-or-first; }
     Mod+Shift+BracketLeft  { move-column-left; }
     Mod+Shift+BracketRight { move-column-right; }
-    Mod+Ctrl+Up  { focus-monitor-next; }
-    Mod+Shift+Ctrl+Up  { move-column-to-monitor-next; }
-    Mod+Up  { focus-workspace-down; }
-    Mod+Shift+Up  { focus-workspace-up; }
+    Mod+Right  { focus-monitor-next; }
+    Mod+Left   { focus-monitor-previous; }
+    Mod+Shift+Right { move-column-to-monitor-next; }
+    Mod+Shift+Left  { move-column-to-monitor-previous; }
+    Mod+Down  { focus-workspace-down; }
+    Mod+Up    { focus-workspace-up; }
 
     Mod+F { maximize-column; }
     Mod+Shift+F { fullscreen-window; }
@@ -143,8 +147,8 @@ binds {
     // * adjust width as a percentage of screen width: "-10%" or "+10%"
     // Pixel sizes use logical, or scaled, pixels. I.e. on an output with scale 2.0,
     // set-column-width "100" will make the column occupy 200 physical screen pixels.
-    Mod+Alt+Left { set-column-width "-10%"; }
-    Mod+Alt+Right { set-column-width "+10%"; }
+    Mod+Alt+BracketLeft { set-column-width "-10%"; }
+    Mod+Alt+BracketRight { set-column-width "+10%"; }
 
     // Move the focused window between the floating and the tiling layout.
     Mod+V       { toggle-window-floating; }
